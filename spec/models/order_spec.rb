@@ -7,5 +7,7 @@ RSpec.describe Order, type: :model do
     it { should have_many(:items).through(:order_items) }
   end
   describe 'validations' do
+    it {should validate_presence_of(:order_status)}
+    it {should validate_presence_of(:user_id)}
   end
 end
