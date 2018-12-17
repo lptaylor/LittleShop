@@ -15,7 +15,7 @@ describe 'As a visitor' do
 
     click_on "Register"
 
-    expect(current_path).to eq(new_user_path)
+    expect(current_path).to eq(register_path)
 
     fill_in :user_username, with: username
     fill_in :user_password, with: password

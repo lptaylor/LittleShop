@@ -36,7 +36,7 @@ describe 'As a user' do
 
       visit root_path
       click_link "Register"
-      expect(current_path).to eq(new_user_path)
+      expect(current_path).to eq(register_path)
       expect(page).to have_content("New User")
     end
 
