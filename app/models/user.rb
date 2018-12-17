@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  validates_presence_of :user_name, :address, :city, :state, :zipcode,
-                        :email, :password, :permissions
+  validates_presence_of :username, :address, :city, :state, :zipcode,
+                        :email, :password, :role
 
   has_many :orders
   has_many :items
