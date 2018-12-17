@@ -36,13 +36,12 @@ describe 'As a user' do
 
       visit root_path
       click_link "Register"
-
-      expect(current_path).to eq(register_index_path)
-      expect(page).to have_content("Register")
+      expect(current_path).to eq(new_user_path)
+      expect(page).to have_content("New User")
     end
 
     it 'shows count of items in shopping cart' do
-      user_1 = User.create(user_name: "Jeff", address: "123 AbC St", city: "Denver", state: "Colorado", zipcode: 80128, email: "jeff@aol.com", password: "dogsaregreat", permissions: "user")
+      user_1 = User.create(username: "Jeff", address: "123 AbC St", city: "Denver", state: "Colorado", zipcode: 80128, email: "jeff@aol.com", password: "dogsaregreat", role: 0)
       item_1 = Item.create(item_name: "Socks", image: "https://www.uncommongoods.com/images/items/40200/40240_1_640px.jpg", qty_in_stock: 5, price: 10, description: "Taco socks, very warm", user: user_1)
       item_2 = Item.create(item_name: "Shoes", image: "https://www.uncommongoods.com/images/items/40200/40240_1_640px.jpg", qty_in_stock: 6, price: 12, description: "Shoes to wear with socks", user: user_1)
       item_3 = Item.create(item_name: "Dog Toy", image: "https://www.uncommongoods.com/images/items/40200/40240_1_640px.jpg", qty_in_stock: 7, price: 11, description: "It's a hedgehog!", user: user_1)
