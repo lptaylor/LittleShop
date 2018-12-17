@@ -1,7 +1,10 @@
 class User < ApplicationRecord
-  validates_presence_of :username, :address, :city, :state, :zipcode,
+  validates :username, uniqueness: true, presence: true
+  validates_presence_of :address, :city, :state, :zipcode,
                         :email, :password, :role
 
   has_many :orders
   has_many :items
+
+  has_secure_password
 end
