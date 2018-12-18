@@ -9,13 +9,13 @@ describe 'As a Visitor' do
     click_link "Login"
 
     expect(current_path).to eq(login_path)
-    fill_in :username, with: user.username
+    fill_in :email, with: user.email
     fill_in :password, with: user.password
 
     click_button "Login"
 
     expect(current_path).to eq(profile_path)
-    expect(page).to have_content("Welcome, #{user.username}")
+    expect(page).to have_content("Welcome, #{user.email}")
     expect(page).to_not have_link("Login")
   end
 
@@ -27,13 +27,13 @@ describe 'As a Visitor' do
     click_link "Login"
 
     expect(current_path).to eq(login_path)
-    fill_in :username, with: user.username
+    fill_in :email, with: user.email
     fill_in :password, with: user.password
 
     click_button "Login"
 
     expect(current_path).to eq(profile_path)
-    expect(page).to have_content("Welcome, #{user.username}")
+    expect(page).to have_content("Welcome, #{user.email}")
     expect(page).to_not have_link("Login")
     expect(page).to have_link("Logout")
 
