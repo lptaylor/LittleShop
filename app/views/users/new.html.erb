@@ -1,8 +1,9 @@
 <h1>New User</h1>
 
 <%= form_for @user do |f| %>
-  <%= f.label :username %>
-  <%= f.text_field :username %>
+
+  <%= f.label :email %>
+  <%= f.email_field :email %>
   <%= f.label :password %>
   <%= f.password_field :password %>
   <%= f.label :address %>
@@ -13,8 +14,6 @@
   <%= f.text_field :state %>
   <%= f.label :zipcode %>
   <%= f.number_field :zipcode %>
-  <%= f.label :email %>
-  <%= f.email_field :email %>
 
   <%= f.submit %>
 <% end %>

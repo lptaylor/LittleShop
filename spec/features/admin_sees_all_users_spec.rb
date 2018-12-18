@@ -11,9 +11,9 @@ describe 'as an Admin' do
     visit admin_users_path
 
     expect(page).to have_content('All Users')
-    expect(page).to have_content(user_1.username)
+    expect(page).to have_content(user_1.email)
     expect(page).to have_content(user_1.created_at)
-    expect(page).to have_content(user_2.username)
+    expect(page).to have_content(user_2.email)
     expect(page).to have_content(user_2.created_at)
   end
 end

@@ -1,6 +1,6 @@
 class Item < ApplicationRecord
-  validates_presence_of :item_name, :image,
-                        :qty_in_stock, :price, :description, :user_id
+  validates_presence_of :item_name, :image_url,
+                        :inventory, :price, :description, :user_id
 
   belongs_to :user
   has_many :order_items
