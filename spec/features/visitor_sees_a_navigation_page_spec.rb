@@ -54,6 +54,5 @@ describe 'As a user' do
 
       expect(page).to have_content("Item Count: #{items.count}")
     end
-
   end
 end
