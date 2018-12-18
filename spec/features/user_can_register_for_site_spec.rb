@@ -10,16 +10,16 @@ describe 'As a visitor' do
 
     expect(current_path).to eq(register_path)
 
-    fill_in :user_username, with: user.username
+
+    fill_in :user_email, with: user.email
     fill_in :user_password, with: user.password
     fill_in :user_address, with: user.address
     fill_in :user_city, with: user.city
     fill_in :user_state, with: user.state
     fill_in :user_zipcode, with: user.zipcode
-    fill_in :user_email, with: user.email
 
     click_on "Create User"
 
-    expect(page).to have_content("Welcome, #{user.username}")
+    expect(page).to have_content("Welcome, #{user.email}")
   end
 end
