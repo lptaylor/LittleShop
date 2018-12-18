@@ -10,13 +10,14 @@ describe 'As a visitor' do
 
     expect(current_path).to eq(register_path)
 
-
+    fill_in :user_name, with: user.name
     fill_in :user_email, with: user.email
-    fill_in :user_password, with: user.password
     fill_in :user_address, with: user.address
     fill_in :user_city, with: user.city
     fill_in :user_state, with: user.state
     fill_in :user_zipcode, with: user.zipcode
+    fill_in :user_password, with: user.password
+    fill_in :user_password, with: user.password
 
     click_on "Create User"
 
