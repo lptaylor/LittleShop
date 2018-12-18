@@ -25,13 +25,13 @@ describe 'As a user' do
       visit root_path
       click_link "Shopping Cart"
 
-      expect(current_path).to eq(cart_index_path)
+      expect(current_path).to eq(cart_path)
       expect(page).to have_content("Shopping Cart")
 
       visit root_path
       click_link "Login"
 
-      expect(current_path).to eq(login_index_path)
+      expect(current_path).to eq(login_path)
       expect(page).to have_content("Login")
 
       visit root_path
