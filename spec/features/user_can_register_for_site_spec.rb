@@ -12,7 +12,6 @@ describe 'As a visitor' do
     email = "jeff@aol.com"
     password = "dogsaregreat"
 
-
     click_on "Register"
 
     expect(current_path).to eq(register_path)

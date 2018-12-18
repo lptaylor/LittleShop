@@ -2,9 +2,8 @@ require 'rails_helper'
 
 describe 'As a Visitor' do
   it 'can login as a user' do
-    # user = User.create(username: "Jeff", address: "123 AbC St", city: "Denver", state: "Colorado", zipcode: 80128, email: "jeff@aol.com", password: "dogsaregreat", role: 0)
     user = create(:user)
-    binding.pry
+
     visit root_path
 
     click_link "Login"
@@ -21,7 +20,7 @@ describe 'As a Visitor' do
   end
 
   it 'can logout as a user' do
-    user = User.create(username: "Jeff", address: "123 AbC St", city: "Denver", state: "Colorado", zipcode: 80128, email: "jeff@aol.com", password: "dogsaregreat", role: 0)
+    user = create(:user)
 
     visit root_path
 
