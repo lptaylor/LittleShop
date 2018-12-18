@@ -1,12 +1,11 @@
 FactoryBot.define do
   factory :user, class: User do
-    sequence(:email) { |n| "user_#{n}@gmail.com" }
-    sequence(:password) { |n| "Password #{n}" }
-    sequence(:username) { |n| "Username #{n}" }
-    sequence(:address) { |n| "Address #{n}" }
-    sequence(:city) { |n| "City #{n}" }
-    sequence(:state) { |n| "State #{n}" }
-    sequence(:zipcode) { |n| "Zipcode #{n}" }
-    role { 0 }
+    sequence(:email) { Faker::Internet.safe_email }
+    sequence(:password) { Faker::Dog.name }
+    sequence(:username) { Faker::Name.last_name }
+    sequence(:address) { Faker::Address.street_address }
+    sequence(:city) { Faker::Address.city  }
+    sequence(:state) { Faker::Address.state }
+    sequence(:zipcode) { Faker::Address.zip }
   end
 end
