@@ -2,7 +2,11 @@ Rails.application.routes.draw do
 
   root 'root#index'
 
-  resources :users, only:[:index, :create]
+  namespace :admin do
+    resources :users, only: [:index]
+  end
+
+  resources :users, only: [:create]
   resources :merchants, only: [:index]
   resources :items
   resources :orders
