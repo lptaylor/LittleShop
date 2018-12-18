@@ -8,8 +8,8 @@ RSpec.describe Item, type: :model do
   end
   describe 'validations' do
     it {should validate_presence_of(:item_name)}
-    it {should validate_presence_of(:image)}
-    it {should validate_presence_of(:qty_in_stock)}
+    it {should validate_presence_of(:image_url)}
+    it {should validate_presence_of(:inventory)}
     it {should validate_presence_of(:price)}
     it {should validate_presence_of(:description)}
     it {should validate_presence_of(:user_id)}
