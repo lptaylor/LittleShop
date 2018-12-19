@@ -66,6 +66,31 @@ describe 'As a visitor' do
     expect(page).to have_content("Error: Missing required information")
   end
 
+  it 'confirms password' do
+    user = build(:user)
+
+
+    visit root_path
+    click_on "Register"
+
+    fill_in :user_name, with: user.name
+    fill_in :user_email, with: user.email
+    fill_in :user_password, with: user.password
+    fill_in :user_password_confirmation, with: "dogparty"
+    fill_in :user_address, with: user.address
+    fill_in :user_city, with: user.city
+    fill_in :user_state, with: user.state
+    fill_in :user_zipcode, with: user.zipcode
+
+    expect(page).to have_content("Password confirmation")
+
+    click_on "Create User"
+
+    expect(current_path).to eq(users_path)
+    expect(page).to have_content("Error: Missing required information")
+  end
+
+
 
 
 
