@@ -17,7 +17,7 @@
   <tbody>
     <% @items.each do |item| %>
       <tr>
-        <td><%= item.item_name %></td>
+        <td><%= link_to item.item_name, item_path(item) %></td>
         <td><%= item.image_url %></td>
         <td><%= item.inventory %></td>
         <td><%= item.price %></td>
