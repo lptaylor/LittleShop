@@ -18,5 +18,10 @@ describe 'as a user' do
     expect(page).to have_content(@item_1.image_url)
     expect(page).to have_content(@item_1.inventory)
     expect(page).to have_content(@item_1.merchant_name)
+
+    click_on "#{@item_4.item_name}"
+
+    expect(current_path).to eq(item_path(@item_4))
   end
+
 end
