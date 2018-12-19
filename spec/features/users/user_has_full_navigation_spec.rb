@@ -22,4 +22,14 @@ describe 'As a user' do
     expect(current_path).to eq(profile_orders_path)
   end
 
+  it 'Can navigate to profile page' do
+
+    click_link "My Orders"
+
+    expect(current_path).to eq(profile_orders_path)
+
+    click_link "My Profile"
+
+    expect(current_path).to eq(profile_path)
+  end
 end
