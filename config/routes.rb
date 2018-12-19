@@ -6,7 +6,9 @@ Rails.application.routes.draw do
     resources :users, only: [:index]
   end
 
-  resources :users, only: [:create, :edit]
+  resources :users, only: [:create, :edit] do
+    resources :orders, only: [:index, :show]
+  end
   resources :merchants, only: [:index]
   resources :items
   resources :orders
@@ -18,6 +20,7 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
   get '/profile', to: "users#show"
+  get '/profile/orders', to: "orders#index"
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
