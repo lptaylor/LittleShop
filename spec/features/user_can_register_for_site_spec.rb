@@ -12,13 +12,13 @@ describe 'As a visitor' do
 
     fill_in :user_name, with: user.name
     fill_in :user_email, with: user.email
+    fill_in :user_password, with: user.password
+    fill_in :user_password_confirmation, with: user.password
     fill_in :user_address, with: user.address
     fill_in :user_city, with: user.city
     fill_in :user_state, with: user.state
     fill_in :user_zipcode, with: user.zipcode
-    fill_in :user_password, with: user.password
-    fill_in :user_password, with: user.password
-
+save_and_open_page
     click_on "Create User"
 
     expect(page).to have_content("Welcome, #{user.email}")
