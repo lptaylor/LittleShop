@@ -5,10 +5,10 @@ describe 'As a Visitor' do
     user = create(:user)
 
     visit root_path
-
     click_link "Login"
 
     expect(current_path).to eq(login_path)
+
     fill_in :email, with: user.email
     fill_in :password, with: user.password
 
@@ -23,10 +23,10 @@ describe 'As a Visitor' do
     user = create(:user)
 
     visit root_path
-
     click_link "Login"
 
     expect(current_path).to eq(login_path)
+
     fill_in :email, with: user.email
     fill_in :password, with: user.password
 
@@ -40,6 +40,20 @@ describe 'As a Visitor' do
     click_link "Logout"
 
     expect(current_path).to eq(root_path)
+  end
 
+  it 'will not allow the user to login with invalid credentials' do
+    user = create(:user)
+
+    visit root_path
+    click_link "Login"
+
+    fill_in :email, with: user.email
+    fill_in :password, with: "Hotdog"
+
+    click_button "Login"
+
+    expect(current_path).to eq(login_path)
+    expect(page).to have_content("Your username or password is incorrect")
   end
 end
