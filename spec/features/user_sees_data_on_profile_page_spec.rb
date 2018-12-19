@@ -22,6 +22,7 @@ describe 'as a registered user' do
       expect(page).to have_content(user.city)
       expect(page).to have_content(user.state)
       expect(page).to have_content(user.zipcode)
+      expect(page).to have_link("Edit Profile")
     end
   end
 end
