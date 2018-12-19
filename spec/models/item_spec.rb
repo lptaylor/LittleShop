@@ -36,5 +36,13 @@ RSpec.describe Item, type: :model do
 
       expect(summed_ids).to eq(6)
     end
+
+    it 'shows merchant name' do
+      merchant_1 = create(:user, name: 'Marty')
+      item_7 = Item.create(item_name: 'socks', image_url: 'http//:something.org', inventory: 4, price: 123.00, description: "something nice", user_id: merchant_1.id)
+      merchant = item_7.merchant_name
+
+      expect(merchant).to eq('Marty')
+    end
   end
 end
