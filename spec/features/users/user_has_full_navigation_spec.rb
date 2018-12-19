@@ -32,4 +32,10 @@ describe 'As a user' do
 
     expect(current_path).to eq(profile_path)
   end
+
+  it 'Does not display Register Link' do
+
+
+    expect(page).to_not have_link("Register")
+  end
 end

@@ -14,7 +14,9 @@
       <%= link_to "Items", items_path %>
       <%= link_to "Merchants", merchants_path %>
       <%= link_to "Shopping Cart", cart_path %>
-      <%= link_to "Register", register_path %>
+      <% if !current_user %>
+        <%= link_to "Register", register_path %>
+      <% end %>
       <% if current_user %>
         <%= link_to "Logout", logout_path, method: :delete %>
       <% else %>
