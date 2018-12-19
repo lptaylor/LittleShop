@@ -44,6 +44,6 @@ describe 'As a visitor' do
 
     click_on "Create User"
 
-    expect(flash[:success]).to be_present
+    expect(page).to have_content("You are now registered & logged in!")
   end
 end
