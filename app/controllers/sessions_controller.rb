@@ -8,6 +8,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to profile_path
     else
+      flash[:error] = "Your username or password is incorrect"
       render :new
     end
   end
