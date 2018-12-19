@@ -35,7 +35,11 @@ describe 'As a user' do
 
   it 'Does not display Register Link' do
 
-
     expect(page).to_not have_link("Register")
+  end
+
+  it 'Shows name for user' do
+
+    expect(page).to have_content("Logged in as: #{@user.name}")
   end
 end
