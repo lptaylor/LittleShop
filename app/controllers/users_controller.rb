@@ -19,6 +19,7 @@ class UsersController < ApplicationController
       flash[:success] = "You are now registered & logged in!"
       redirect_to profile_path
     else
+      flash[:error] = "Error: Missing required information"
       render :new
     end
   end
@@ -26,6 +27,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:name, :address, :city, :state, :zipcode, :email, :password, :role)
+      params.require(:user).permit(:name, :address, :city, :state, :zipcode, :email, :password, :password_confirmation, :role)
     end
 end
