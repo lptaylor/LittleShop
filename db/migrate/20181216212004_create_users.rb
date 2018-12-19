@@ -9,6 +9,7 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :email
       t.string :password
       t.string :permissions
+      t.integer :active, default: 1
 
       t.timestamps
     end
