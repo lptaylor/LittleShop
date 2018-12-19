@@ -16,6 +16,7 @@ class UsersController < ApplicationController
     @user = User.new(user_params)
     if @user.save
       session[:user_id] = @user.id
+      flash[:success] = "You are now registered & logged in!"
       redirect_to profile_path
     else
       render :new
@@ -25,6 +26,6 @@ class UsersController < ApplicationController
   private
 
     def user_params
-      params.require(:user).permit(:address, :city, :state, :zipcode, :email, :password, :role)
+      params.require(:user).permit(:name, :address, :city, :state, :zipcode, :email, :password, :role)
     end
 end
