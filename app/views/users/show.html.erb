@@ -8,3 +8,5 @@
   <p>State: <%= @current_user.state %></p>
   <p>Zipcode: <%= @current_user.zipcode %></p>
 </div>
+
+<%= link_to "Edit Profile", edit_user_path(@current_user) %>
