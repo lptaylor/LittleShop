@@ -13,7 +13,9 @@
       <%= link_to "Homepage", root_path %>
       <%= link_to "Items", items_path %>
       <%= link_to "Merchants", merchants_path %>
-      <%= link_to "Shopping Cart", cart_path %>
+      <% if !current_user || current_user.role == "registered_user" %>    
+        <%= link_to "Shopping Cart", cart_path %>
+      <% end %>
       <% if !current_user %>
         <%= link_to "Register", register_path %>
       <% end %>
