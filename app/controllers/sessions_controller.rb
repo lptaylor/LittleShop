@@ -6,7 +6,13 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to profile_path
+      if user.role == 'registered_user'
+        redirect_to profile_path
+      elsif user.role == 'merchant'
+        redirect_to dashboard_path
+      else user.role == 'admin'
+        redirect_to root_path
+      end
     else
       flash[:error] = "Your username or password is incorrect"
       render :new
