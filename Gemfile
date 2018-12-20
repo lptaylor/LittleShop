@@ -33,6 +33,7 @@ gem 'bcrypt', '~> 3.1.7'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 gem 'shoulda-matchers'
+gem 'faker'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -43,7 +44,6 @@ group :development, :test do
   gem 'pry'
   gem 'simplecov'
   gem 'factory_bot_rails'
-  gem 'faker'
 end
 
 group :development do

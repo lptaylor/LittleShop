@@ -5,7 +5,7 @@ FactoryBot.define do
     sequence(:password) { Faker::Dog.unique.name }
     sequence(:address) { Faker::Address.unique.street_address }
     sequence(:city) { Faker::Address.unique.city  }
-    sequence(:state) { Faker::Address.unique.state }
+    sequence(:state) { Faker::Address.state }
     sequence(:zipcode) { Faker::Address.unique.zip }
   end
 end
