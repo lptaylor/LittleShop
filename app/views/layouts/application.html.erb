@@ -13,7 +13,7 @@
       <%= link_to "Homepage", root_path %>
       <%= link_to "Items", items_path %>
       <%= link_to "Merchants", merchants_path %>
-      <% if !current_user || current_user.role == "registered_user" %>    
+      <% if !current_user || current_user.role == "registered_user" %>
         <%= link_to "Shopping Cart", cart_path %>
       <% end %>
       <% if !current_user %>
@@ -30,6 +30,9 @@
         <%= link_to "My Orders", profile_orders_path %>
         <% if current_user.role == "merchant" %>
           <%= link_to "My Dashboard", dashboard_path %>
+        <% end %>
+        <% if current_user.role == "admin" %>
+          <%= link_to "All Users", admin_users_path %>
         <% end %>
       <% end %>
     </nav>
