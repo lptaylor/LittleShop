@@ -21,6 +21,9 @@ describe 'As a visitor' do
       expect(current_path).to eq(items_path)
       expect(page).to have_content("Shopping Cart: 1")
 
+      visit item_path(@item_2)
+      click_button "Add Item to Cart"
+      expect(page).to have_content("Shopping Cart: 2")
     end
 
   end
