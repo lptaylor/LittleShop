@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'As a Visitor' do
+describe 'As a User' do
   it 'can login as a user' do
     user = create(:user)
 
@@ -55,5 +55,53 @@ describe 'As a Visitor' do
 
     expect(current_path).to eq(login_path)
     expect(page).to have_content("Your username or password is incorrect")
+  end
+
+  it 'redirects to the appropriate page for registered_user' do
+    user = create(:user)
+
+    visit root_path
+    click_link "Login"
+
+    expect(current_path).to eq(login_path)
+
+    fill_in :email, with: user.email
+    fill_in :password, with: user.password
+
+    click_button "Login"
+    expect(current_path).to eq(profile_path)
+    expect(page).to have_content("You are logged in!")
+  end
+
+  it 'redirects to the appropriate page for merchant' do
+    merchant = create(:user, role: 1)
+
+    visit root_path
+    click_link "Login"
+
+    expect(current_path).to eq(login_path)
+
+    fill_in :email, with: merchant.email
+    fill_in :password, with: merchant.password
+
+    click_button "Login"
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("You are logged in!")
+  end
+
+  it 'redirects to the appropriate page for admin' do
+    admin = create(:user, role: 2)
+
+    visit root_path
+    click_link "Login"
+
+    expect(current_path).to eq(login_path)
+
+    fill_in :email, with: admin.email
+    fill_in :password, with: admin.password
+
+    click_button "Login"
+    expect(current_path).to eq(root_path)
+    expect(page).to have_content("You are logged in!")
   end
 end
