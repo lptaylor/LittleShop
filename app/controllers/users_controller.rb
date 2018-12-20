@@ -18,6 +18,9 @@ class UsersController < ApplicationController
       session[:user_id] = @user.id
       flash[:success] = "You are now registered & logged in!"
       redirect_to profile_path
+    elsif user_params[:email] == User.existing_email(user_params)
+      flash[:alert] = "Alert: Email is already in use"
+      render :new
     else
       flash[:error] = "Error: Missing required information"
       render :new
