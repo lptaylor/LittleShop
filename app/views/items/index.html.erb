@@ -18,14 +18,14 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= link_to item.item_name, item_path(item) %></td>
-        <td><%= item.image_url %></td>
+        <td><img src="<%= item.image_url %>"</td>
         <td><%= item.inventory %></td>
         <td><%= item.price %></td>
         <td><%= item.description %></td>
         <td><%= item.merchant_name %></td>
-        <td><%= link_to 'Show', item %></td>
-        <td><%= link_to 'Edit', edit_item_path(item) %></td>
-        <td><%= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <!-- <td>< %= link_to 'Show', item %></td>
+        <td>< %= link_to 'Edit', edit_item_path(item) %></td>
+        <td>< %= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       </tr>
     <% end %>
   </tbody>
