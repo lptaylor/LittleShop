@@ -5,6 +5,6 @@ FactoryBot.define do
     sequence(:image_url) { Faker::Dog.unique.name }
     sequence(:inventory) { Faker::Number.between(1, 1000) }
     sequence(:price) { Faker::Number.between(1, 50_000) }
-    sequence(:description) { Faker::FamousLastWords.unique.last_words  }
+    sequence(:description) { Faker::FamousLastWords.last_words  }
   end
 end
