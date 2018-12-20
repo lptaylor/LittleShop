@@ -18,7 +18,7 @@ Rails.application.routes.draw do
   resources :items
   resources :orders
 
-  resource :cart, only: [:show]
+  resource :cart, only: [:show, :create]
 
   get '/register', to: "users#new"
   get '/profile', to: "users#show"
