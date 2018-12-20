@@ -8,4 +8,12 @@ class User < ApplicationRecord
 
   has_secure_password
   enum role: ["registered_user", "merchant", "admin"]
+
+  def self.existing_email(user_params)
+    if find_by(email: user_params[:email]).class == User
+      find_by(email: user_params[:email]).email
+    else
+      nil
+    end
+  end
 end

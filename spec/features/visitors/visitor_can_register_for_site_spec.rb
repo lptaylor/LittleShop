@@ -48,6 +48,8 @@ describe 'As a visitor' do
 
   it 'will not allow registration if details are missing' do
     user = build(:user)
+    create(:user, email: "bob@gmail.com")
+
 
     visit root_path
     click_on "Register"
@@ -61,14 +63,48 @@ describe 'As a visitor' do
     fill_in :user_zipcode, with: user.zipcode
 
     click_on "Create User"
-
     expect(current_path).to eq(users_path)
     expect(page).to have_content("Error: Missing required information")
   end
 
+  it 'will not allow registration if email is not unique' do
+    user_1 = create(:user, email: "bob@gmail.com")
+
+    visit root_path
+    click_on "Register"
+
+    fill_in :user_name, with: user_1.name
+    fill_in :user_email, with: user_1.email
+    fill_in :user_password, with: user_1.password
+    fill_in :user_password_confirmation, with: user_1.password
+    fill_in :user_city, with: user_1.city
+    fill_in :user_state, with: user_1.state
+    fill_in :user_zipcode, with: user_1.zipcode
+
+    click_on "Create User"
+
+    user_2 = build(:user, email: "bob@gmail.com")
+
+    visit root_path
+    click_on "Register"
+
+    fill_in :user_name, with: user_2.name
+    fill_in :user_email, with: user_2.email
+    fill_in :user_password, with: user_2.password
+    fill_in :user_password_confirmation, with: user_2.password
+    fill_in :user_city, with: user_2.city
+    fill_in :user_state, with: user_2.state
+    fill_in :user_zipcode, with: user_2.zipcode
+
+    click_on "Create User"
+
+    expect(current_path).to eq(users_path)
+    expect(page).to have_content("Alert: Email is already in use")
+  end
+
   it 'confirms password' do
     user = build(:user)
-
+    create(:user, email: "bob@gmail.com")
 
     visit root_path
     click_on "Register"
