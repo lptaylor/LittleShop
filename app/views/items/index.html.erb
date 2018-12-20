@@ -18,7 +18,7 @@
     <% @items.each do |item| %>
       <tr>
         <td><%= link_to item.item_name, item_path(item) %></td>
-        <td><img src="<%= item.image_url %>"</td>
+        <td><a href='<%=item_path(item) %>'><img src="<%=item.image_url%>" </a>
         <td><%= item.inventory %></td>
         <td><%= item.price %></td>
         <td><%= item.description %></td>

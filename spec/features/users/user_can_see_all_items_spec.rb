@@ -15,7 +15,6 @@ describe 'as a user' do
 
     expect(page).to have_content(@item_1.description)
     expect(page).to have_content(@item_1.item_name)
-    expect(page).to have_content(@item_1.image_url)
     expect(page).to have_content(@item_1.inventory)
     expect(page).to have_content(@item_1.merchant_name)
 
