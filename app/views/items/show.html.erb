@@ -25,6 +25,13 @@
   <%= @item.description %>
 </p>
 
-<%= link_to 'Edit', edit_item_path(@item) %> |
-<%= link_to 'Back', items_path %>
+<p>
+  <strong>Merchant:</strong>
+  <%= @item.merchant_name %>
+</p>
+
 <%= button_to "Add Item to Cart", cart_path(item_id: @item.id) %>
+
+
+<!-- < %= link_to 'Edit', edit_item_path(@item) %> |
+< %= link_to 'Back', items_path %> -->
