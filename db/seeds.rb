@@ -5,6 +5,10 @@
 #
 #   movies = Movie.create!([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create!(name: 'Luke', movie: movies.first)
+
+User.destroy_all
+Item.destroy_all
+
 user_1 = User.create!(name: "Ali", address: "Turing Cellar", city: "Denver", state: "Colorado", zipcode: 80000, email: "Ali@gmail.com", password: "1234", role: 2)
 user_2 = User.create!(name: "Aaron", address: "Turing Cellar", city: "Denver", state: "Colorado", zipcode: 80000, email: "Aaron@gmail.com", password: "1234", role: 2)
 user_3 = User.create!(name: "Lance", address: "Turing Cellar", city: "Denver", state: "Colorado", zipcode: 80000, email: "Lance@gmail.com", password: "1234", role: 2)
@@ -50,3 +54,7 @@ Item.create!(item_name: "Butterfly Dog Costume", image_url: "https://www.working
 Item.create!(item_name: "Pineapple Dog Costume", image_url: "http://www4.pictures.livingly.com/mp/9TOBMoxRFgyl.jpg", inventory: 10, price: 25, user: user_7, description: "DOG COSTUMES")
 Item.create!(item_name: "Bumblebee Dog Costume", image_url: "https://images-na.ssl-images-amazon.com/images/I/71X4X-5LILL._SX466_.jpg", inventory: 10, price: 25, user: user_7, description: "DOG COSTUMES")
 Item.create!(item_name: "Sheep Dog Costume", image_url: "https://i.pinimg.com/originals/64/99/17/649917bb5702c3ed7c44b23892cd422e.jpg", inventory: 10, price: 25, user: user_7, description: "DOG COSTUMES")
+
+
+p "Created #{Item.count} items"
+p "Created #{User.count} users"
