@@ -54,5 +54,21 @@ describe 'As a user' do
 
       expect(page).to have_content("Item Count: #{items.count}")
     end
+
+    it 'shows all items in system except disabled items' do
+      user_1 = create(:user)
+
+      item_1 = Item.create(item_name: "Socks", image_url: "https://www.uncommongoods.com/images/items/40200/40240_1_640px.jpg", inventory: 5, price: 10, description: "Taco socks, very warm", user: user_1)
+      item_2 = Item.create(item_name: "Shoes", image_url: "https://www.uncommongoods.com/images/items/40200/40240_1_640px.jpg", inventory: 6, price: 12, description: "Shoes to wear with socks", user: user_1)
+      item_3 = Item.create(item_name: "Dog Toy", image_url: "https://www.uncommongoods.com/images/items/40200/40240_1_640px.jpg", inventory: 7, price: 11, description: "It's a hedgehog!", user: user_1)
+      item_4 = Item.create(item_name: "Chair", image_url: "https://www.uncommongoods.com/images/items/40200/40240_1_640px.jpg", inventory: 8, price: 13, description: "You can sit in it", user: user_1, enabled: false)
+
+      visit items_path
+
+      expect(page).to have_content(item_1.item_name)
+      expect(page).to have_content(item_2.item_name)
+      expect(page).to have_content(item_3.item_name)
+      expect(page).not_to have_content(item_4.item_name)
+    end
   end
 end
