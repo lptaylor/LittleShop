@@ -126,9 +126,15 @@ describe 'As a visitor' do
     expect(page).to have_content("Error: Missing required information")
   end
 
+  it "can navigate to login path and not show flash message or redirect" do
+    visit login_path
+    save_and_open_page
 
+    expect(current_path).to eq(login_path)
+    expect(current_path).to_not eq(profile_path)
+    expect(current_path).to_not eq(dashboard_path)
+    expect(current_path).to_not eq(root_path)
+    expect(page).to_not have_content("You are already logged in!")
 
-
-
-
+  end
 end
