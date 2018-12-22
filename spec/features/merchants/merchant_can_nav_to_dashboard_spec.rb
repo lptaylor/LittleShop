@@ -13,8 +13,9 @@ describe 'As a Merchant' do
     click_button "Login"
   end
 
-  it 'is redirected to dashboard after login' do
+  it 'is redirected to dashboard after login with flash message' do
     expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content("You are logged in!")
   end
 
   it 'does not display shopping cart or number of items ' do

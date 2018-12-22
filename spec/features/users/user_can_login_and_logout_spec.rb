@@ -57,7 +57,7 @@ describe 'As a User' do
     expect(page).to have_content("Your username or password is incorrect")
   end
 
-  it 'redirects to the appropriate page for registered_user' do
+  it 'redirects to the appropriate page for registered_user with flash message' do
     user = create(:user)
 
     visit root_path
@@ -70,38 +70,6 @@ describe 'As a User' do
 
     click_button "Login"
     expect(current_path).to eq(profile_path)
-    expect(page).to have_content("You are logged in!")
-  end
-
-  it 'redirects to the appropriate page for merchant' do
-    merchant = create(:user, role: 1)
-
-    visit root_path
-    click_link "Login"
-
-    expect(current_path).to eq(login_path)
-
-    fill_in :email, with: merchant.email
-    fill_in :password, with: merchant.password
-
-    click_button "Login"
-    expect(current_path).to eq(dashboard_path)
-    expect(page).to have_content("You are logged in!")
-  end
-
-  it 'redirects to the appropriate page for admin' do
-    admin = create(:user, role: 2)
-
-    visit root_path
-    click_link "Login"
-
-    expect(current_path).to eq(login_path)
-
-    fill_in :email, with: admin.email
-    fill_in :password, with: admin.password
-
-    click_button "Login"
-    expect(current_path).to eq(root_path)
     expect(page).to have_content("You are logged in!")
   end
 end
