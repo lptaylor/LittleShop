@@ -4,6 +4,11 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def index
+    binding.pry
+    @mechants = User.active_merchants
+  end
+
   def new
     @user = User.new
   end
