@@ -18,6 +18,6 @@ class User < ApplicationRecord
   end
 
   def self.active_merchants
-    where("role = 1 && active = true")
+    merchant.where("active = true")
   end
 end

@@ -5,7 +5,6 @@ class UsersController < ApplicationController
   end
 
   def index
-    binding.pry
     @mechants = User.active_merchants
   end
 

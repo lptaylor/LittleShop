@@ -6,8 +6,8 @@ describe 'As a visitor' do
     merch_1 = create(:user, role: 1)
     merch_2 = create(:user, role: 1)
     merch_3 = create(:user, role: 1)
-    merch_4 = create(:user, role: 1, active: false)
-    merch_5 = create(:user, role: 1, active: false)
+    merch_4 = create(:user, role: 1, active: false, created_at: 3.days.ago)
+    merch_5 = create(:user, role: 1, active: false, created_at: 3.days.ago)
 
 
     visit merchants_path
