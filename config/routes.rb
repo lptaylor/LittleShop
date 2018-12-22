@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   resources :items
   resources :orders
 
-  resource :cart, only: [:show, :create]
+  # resource :cart, only: [:create, :index]
+  post '/cart', to: 'carts#create'
+  get '/cart', to: 'carts#index'
+  delete '/cart', to: 'carts#destroy'
 
   get '/register', to: "users#new"
   get '/profile', to: "users#show"
@@ -32,7 +35,7 @@ Rails.application.routes.draw do
   get '/profile/orders', to: "orders#index"
   get "/profile/orders/#{:id}", to: "orders#show"
   get '/dashboard', to: 'dashboard#show'
-  
+
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
