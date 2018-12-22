@@ -23,7 +23,7 @@ describe 'as a registered user' do
       new_zipcode = 12345
 
       click_link "Edit Profile"
-save_and_open_page
+
       fill_in :user_name, with: new_name
       fill_in :user_email, with: new_email
       fill_in :user_password, with: new_password
@@ -34,7 +34,7 @@ save_and_open_page
       fill_in :user_zipcode, with: new_zipcode
 
       click_on "Update User"
-save_and_open_page
+
       expect(current_path).to eq(profile_path)
       expect(page).to have_content(new_name)
       expect(page).to have_content(new_email)
