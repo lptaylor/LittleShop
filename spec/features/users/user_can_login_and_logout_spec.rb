@@ -72,4 +72,21 @@ describe 'As a User' do
     expect(current_path).to eq(profile_path)
     expect(page).to have_content("You are logged in!")
   end
+
+  it 'login screen redirects you to profile with flash message' do
+    user = create(:user)
+
+    visit root_path
+    click_link "Login"
+
+    fill_in :email, with: user.email
+    fill_in :password, with: user.password
+
+    click_button "Login"
+
+    visit login_path
+
+    expect(current_path).to eq(profile_path)
+    expect(page).to have_content("You are already logged in!")
+  end
 end
