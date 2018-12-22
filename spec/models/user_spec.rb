@@ -43,4 +43,15 @@ RSpec.describe User, type: :model do
       expect(registered_user.admin?).to be_falsey
     end
   end
+  describe 'class methods' do
+    it 'will return only active merchants' do
+      create(:user, role: 1)
+      create(:user, role: 1)
+      create(:user, role: 1)
+      create(:user, role: 1, active: false, created_at: 3.days.ago)
+      create(:user, role: 1, active: false, created_at: 3.days.ago)
+
+      expect(User.active_merchants.length).to eq(3)
+    end
+  end
 end
