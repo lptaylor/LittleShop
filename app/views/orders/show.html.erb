@@ -1,9 +1,23 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Order status:</strong>
-  <%= @order.order_status %>
-</p>
+<h1> Order </h1>
+<p>Id: <%= @order.id %> </p>
+<p>Order placed on: <%= @order.created_at %> </p>
+<p>Order last updated: <%= @order.updated_at %> </p>
+<p>Order status: <%= @order.order_status %> </p>
+<ul>Order items:
+  <% @order.order_items.each do |order_item| %>
+    <li><%= order_item.item.item_name %> </li>
+    <li><%= order_item.item.description %> </li>
+    <li><%= order_item.item.price %> </li>
+    <li><img src="<%=order_item.item.image_url%>"></li>
+  <% end %>
+</ul>
+<li>Number of Items in Order: <%= @order.total_order_items %> </li>
+<li>Total Order Price: <%= @order.total_order_price %> </li>
 
-<%= link_to 'Edit', edit_order_path(@order) %> |
-<%= link_to 'Back', orders_path %>
+
+
+
+<!-- < %= link_to 'Edit', edit_order_path(@order) %> |
+< %= link_to 'Back', orders_path %> -->
