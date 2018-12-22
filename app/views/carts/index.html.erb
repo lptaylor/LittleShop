@@ -1,0 +1,9 @@
+
+<% if @cart.total_item_count == 0 %>
+  <h2> your cart is empty </h2>
+<% else %>
+  <% @items.each do |item| %>
+  <%= item.item_name %>
+  <% end %>
+  <%= link_to "Empty My Cart", cart_path, method: :delete, data: {confirm: "Are you sure?"} %>
+<% end %>
