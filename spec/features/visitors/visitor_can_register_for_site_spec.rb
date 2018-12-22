@@ -128,7 +128,7 @@ describe 'As a visitor' do
 
   it "can navigate to login path and not show flash message or redirect" do
     visit login_path
-    save_and_open_page
+    
 
     expect(current_path).to eq(login_path)
     expect(current_path).to_not eq(profile_path)
