@@ -1,7 +1,8 @@
 class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
 
-  def show
+  def index
+    @items = Item.where(id: @cart.contents.keys)
   end
 
   def create
@@ -13,5 +14,16 @@ class CartsController < ApplicationController
 
     redirect_to items_path
     flash[:success] = "You now have #{pluralize(count, "item")} in your shopping cart"
+  end
+
+  def destroy
+    if params[:item_id]
+      item = Item.find(params[:item_id])
+      cart.remove_item(item.id)
+      redirect_to cart_path
+    else
+      session[:cart] = nil
+      redirect_to cart_path
+    end
   end
 end

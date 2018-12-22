@@ -20,7 +20,10 @@ Rails.application.routes.draw do
   resources :items
   resources :orders
 
-  resource :cart, only: [:show, :create]
+  # resource :cart, only: [:create, :index]
+  post '/cart', to: 'carts#create'
+  get '/cart', to: 'carts#index'
+  delete '/cart', to: 'carts#destroy'
 
   get '/register', to: "users#new"
   get '/profile', to: "users#show"
