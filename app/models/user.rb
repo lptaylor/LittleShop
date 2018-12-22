@@ -16,4 +16,8 @@ class User < ApplicationRecord
       nil
     end
   end
+
+  def self.active_merchants
+    merchant.where("active = true")
+  end
 end

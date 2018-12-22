@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def index
+    @mechants = User.active_merchants
+  end
+
   def new
     @user = User.new
   end

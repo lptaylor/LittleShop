@@ -1,1 +1,9 @@
 <h1>All Merchants</h1>
+
+
+<% @mechants.each do |merchant| %>
+  <%= merchant.name %>
+  <%= merchant.city %>
+  <%= merchant.state %>
+  <%= merchant.created_at %>
+<% end %>
