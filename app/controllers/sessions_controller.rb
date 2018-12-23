@@ -1,5 +1,19 @@
 class SessionsController < ApplicationController
   def new
+    if current_user
+      if current_user.role == 'registered_user'
+        redirect_to profile_path
+        flash[:alert] = "You are already logged in!"
+      elsif current_user.role == 'merchant'
+        redirect_to dashboard_path
+        flash[:alert] = "You are already logged in!"
+      else current_user.role == 'admin'
+        redirect_to root_path
+        flash[:alert] = "You are already logged in!"
+      end
+    else
+      render :new
+    end
   end
 
   def create

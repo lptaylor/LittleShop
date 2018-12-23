@@ -4,6 +4,10 @@ class UsersController < ApplicationController
     @user = current_user
   end
 
+  def index
+    @mechants = User.active_merchants
+  end
+
   def new
     @user = User.new
   end
@@ -21,6 +25,16 @@ class UsersController < ApplicationController
       flash[:error] = "Error: Missing required information"
       render :new
     end
+  end
+
+  def edit
+    @user = current_user
+  end
+
+  def update
+    current_user.update(user_params)
+    flash[:success] = "Your information has been updated."
+    redirect_to profile_path
   end
 
   private

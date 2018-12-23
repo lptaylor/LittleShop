@@ -13,31 +13,33 @@ Rails.application.routes.draw do
     resources :items, only: [:index, :new, :create, :show, :edit]
   end
 
-
   get '/profile', to: 'users#show'
   namespace :profile do
     resources :orders, only: [:show, :index]
   end
 
-
-  resources :users, only: [:create, :edit] do
+  resources :users, only: [:create, :edit, :update] do
     resources :orders, only: [:show]
   end
 
   resources :items
   resources :orders
 
-  resource :cart, only: [:show, :create]
+  # resource :cart, only: [:create, :index]
+  post '/cart', to: 'carts#create'
+  get '/cart', to: 'carts#index'
+  delete '/cart', to: 'carts#destroy'
 
   get '/register', to: "users#new"
 
   get '/merchants', to: "users#index"
+
+  get "/profile/edit", to: "users#edit"
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
   get '/dashboard', to: 'dashboard#show'
-
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
