@@ -34,7 +34,12 @@ class UsersController < ApplicationController
   def update
     current_user.update(user_params)
     flash[:success] = "Your information has been updated."
-    redirect_to profile_path
+    if current_user.role == "admin"
+      redirect_to admin_user_path
+      binding.pry
+    else
+      redirect_to profile_path
+    end
   end
 
   private
