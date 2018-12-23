@@ -17,8 +17,7 @@ RSpec.describe OrderItem, type: :model do
 
       expect(order_item_1.subtotal).to eq(12.5)
     end
-
+    
   end
-
 
 end
