@@ -11,7 +11,7 @@ describe 'As a registered user' do
       order_item_1 = create(:order_item, order: order_1, item: item_1)
       order_item_2 = create(:order_item, order: order_1, item: item_2)
 
-      visit order_path(order_1)
+      visit profile_order_path(order_1)
 
       expect(page).to have_content(order_1.id)
 
