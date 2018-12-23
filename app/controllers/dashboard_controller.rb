@@ -1,5 +1,5 @@
 class DashboardController < ApplicationController
   def show
-    @current_merchant
+    current_merchant 
   end
 end
