@@ -29,4 +29,15 @@ describe 'As a Merchant' do
     expect(page).to_not have_link("Shopping Cart")
     # expect(page).to_not have_content("Item Count")
   end
+
+  it 'shows merchant profile information without edit button' do
+    expect(current_path).to eq(dashboard_path)
+    expect(page).to have_content(@merchant.name)
+    expect(page).to have_content(@merchant.email)
+    expect(page).to have_content(@merchant.city)
+    expect(page).to have_content(@merchant.state)
+    expect(page).to have_content(@merchant.zipcode)
+
+    expect(page).to_not have_link("Edit")
+  end
 end
