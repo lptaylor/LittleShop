@@ -10,13 +10,11 @@ class Order < ApplicationRecord
   enum order_status: ["pending", "completed", "cancelled"]
 
   def total_order_items
-    items.count
+    order_items.count
   end
 
   def total_order_price
-    prices = items.map do |item|
-      item.price
-    end
-    number_to_currency(prices.sum.to_f)
+    order_items.sum("order_items.price * order_items.quantity")
   end
+
 end
