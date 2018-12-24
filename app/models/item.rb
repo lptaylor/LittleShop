@@ -11,8 +11,8 @@ class Item < ApplicationRecord
   end
 
   def total_for_item
-    total = 0.00
-    self.price += total
-    total
+    total = Hash.new(0)
+    total[:price] += self.price
+    total[:price]
   end
 end
