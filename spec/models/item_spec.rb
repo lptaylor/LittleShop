@@ -45,4 +45,11 @@ RSpec.describe Item, type: :model do
       expect(merchant).to eq('Marty')
     end
   end
+  describe 'instance methods' do
+    it 'can add total items within cart' do
+      item_1 = Item.create(item_name: 'socks', image_url: 'http//:something.org', inventory: 4, price: 123.00, description: "something nice")
+
+      expect(item_1.total_for_item).to eq(123)
+    end
+  end
 end

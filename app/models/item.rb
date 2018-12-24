@@ -9,4 +9,10 @@ class Item < ApplicationRecord
   def merchant_name
     user.name
   end
+
+  def total_for_item
+    total = Hash.new(0)
+    total[:price] += self.price
+    total[:price]
+  end
 end
