@@ -9,4 +9,10 @@ class Item < ApplicationRecord
   def merchant_name
     user.name
   end
+
+  def total_for_item
+    total = 0.00
+    self.price += total
+    total
+  end
 end
