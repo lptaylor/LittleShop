@@ -75,9 +75,10 @@ describe 'as a registered user' do
       fill_in :user_zipcode, with: new_zipcode
 
       click_on "Update User"
-      save_and_open_page
       expect(page).to have_content("The email entered is already in use")
       expect(page).to have_button("Update User")
+      expect(page).to_not have_content("Your information has been updated.")
+      expect(page).to_not have_content(user_2.email)
     end
 
   end
