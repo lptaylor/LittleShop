@@ -52,5 +52,33 @@ describe 'as a registered user' do
       expect(page).to_not have_content(@user.state)
       expect(page).to_not have_content(@user.zipcode)
     end
+
+    it 'shows a flash message if a duplicate email is entered' do
+      user_2 = create(:user, email: "ali@aol.com")
+      new_name = "Tom"
+      new_email = "test@test.com"
+      new_password = "ILoveMom"
+      new_address = "125 Main St."
+      new_city = "Zaregerege"
+      new_state = "ZZ"
+      new_zipcode = 12345
+
+      click_link "Edit Profile"
+
+      fill_in :user_name, with: new_name
+      fill_in :user_email, with: user_2.email
+      fill_in :user_password, with: new_password
+      fill_in :user_password_confirmation, with: new_password
+      fill_in :user_address, with: new_address
+      fill_in :user_city, with: new_city
+      fill_in :user_state, with: new_state
+      fill_in :user_zipcode, with: new_zipcode
+
+      click_on "Update User"
+      save_and_open_page
+      expect(page).to have_content("The email entered is already in use")
+      expect(page).to have_button("Update User")
+    end
+
   end
 end
