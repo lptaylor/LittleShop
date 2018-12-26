@@ -3,6 +3,9 @@ class CartsController < ApplicationController
 
   def index
     @items = Item.where(id: @cart.contents.keys)
+    @cart_total = @cart.contents.map do |item_id, quantity|
+      Item.find(item_id).price * quantity
+    end.sum
   end
 
   def create
@@ -14,6 +17,20 @@ class CartsController < ApplicationController
 
     redirect_to items_path
     flash[:success] = "You now have #{pluralize(count, "item")} in your shopping cart"
+  end
+
+  def add_item
+    item = Item.find(params[:id])
+    @cart.add_item(item.id)
+    session[:cart] = @cart.contents
+    redirect_to cart_path
+  end
+
+  def minus_item
+    item = Item.find(params[:id])
+    @cart.subtract_item(item.id)
+    session[:cart] = @cart.contents
+    redirect_to cart_path
   end
 
   def destroy
