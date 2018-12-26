@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   post '/cart', to: 'carts#create'
   get '/cart', to: 'carts#index'
   delete '/cart', to: 'carts#destroy'
+  post 'cart/:id/add',   to: 'carts#add_item'
+  post 'cart/:id/subtract', to: 'carts#minus_item'
 
   get '/register', to: "users#new"
 
