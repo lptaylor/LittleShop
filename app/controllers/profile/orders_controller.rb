@@ -1,4 +1,5 @@
 class Profile::OrdersController < ApplicationController
+
   def index
     @orders = Order.all
   end
@@ -6,5 +7,5 @@ class Profile::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
-  
+
 end

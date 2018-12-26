@@ -10,3 +10,12 @@
 </div>
 
 <%= link_to "Edit Profile", profile_edit_path(@current_user) %>
+
+<div class="all-orders">
+  < % @current_user.order.each do |order_item| %>
+   < %= order_item.item.item_name %>
+  < %= binding.pry %>
+  < % end %>
+</div>
+
+<%= binding.pry %>
