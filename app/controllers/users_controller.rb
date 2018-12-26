@@ -32,13 +32,15 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user = current_user
-    if current_user.update(user_params)
+    if current_user.role == "admin"
+      @user = User.find(params[:id])
+      @user.update(user_params)
+      flash[:success] = "#{@user.name}'s information has been updated."
+      redirect_to admin_user_path(@user)
+    else
+      current_user.update(user_params)
       flash[:success] = "Your information has been updated."
       redirect_to profile_path
-    else
-      flash[:error] = "The email entered is already in use"
-      render :new
     end
   end
 
