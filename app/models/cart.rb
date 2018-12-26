@@ -19,5 +19,4 @@ attr_reader :contents
   def count_of(item_id)
     @contents[item_id.to_s] ||= 0
   end
-
 end

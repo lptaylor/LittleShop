@@ -29,6 +29,5 @@ RSpec.describe Cart do
       expect(cart.count_of(2)).to eq(2)
       expect(cart.count_of(14)).to eq(0)
     end
-
   end
 end

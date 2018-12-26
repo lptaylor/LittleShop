@@ -9,7 +9,6 @@ describe 'As a visitor' do
     merch_4 = create(:user, role: 1, active: false, created_at: 3.days.ago)
     merch_5 = create(:user, role: 1, active: false, created_at: 3.days.ago)
 
-
     visit merchants_path
 
     expect(page).to have_content(merch_1.name)

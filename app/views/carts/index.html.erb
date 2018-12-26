@@ -3,7 +3,15 @@
   <h2> your cart is empty </h2>
 <% else %>
   <% @items.each do |item| %>
-  <%= item.item_name %>
+  <ul>
+    <li>Item Name: <%= item.item_name %></li>
+    <li><%= item.image_url %></li>
+    <li>Merchant: <%= item.merchant_name %></li>
+    <li>Price: <%= number_to_currency(item.price) %></li>
+    <li><%=item.item_name%> count: <%= @cart.count_of(item.id) %></li>
+    <li><%=item.item_name%> total price:<%= number_to_currency(item.total_for_item) %></li>
+  </ul>
   <% end %>
+  <h3>Cart Total: <%= number_to_currency(@items.sum {|item| item.price}) %></h3>
   <%= link_to "Empty My Cart", cart_path, method: :delete, data: {confirm: "Are you sure?"} %>
 <% end %>

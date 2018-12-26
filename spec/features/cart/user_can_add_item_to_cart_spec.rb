@@ -62,4 +62,32 @@ describe 'As a visitor' do
 
       expect(page).to have_content("Shopping Cart: 0")
   end
+    it 'can see attributes of each item on cart path' do
+      item_5 = create(:item, price: 100)
+
+      visit item_path(item_5)
+      click_button 'Add Item to Cart'
+
+      visit cart_path(@user)
+
+      expect(page).to have_content(item_5.item_name)
+      expect(page).to have_content(item_5.image_url)
+      expect(page).to have_content(item_5.merchant_name)
+      expect(page).to have_content("#{item_5.item_name} count: 1")
+      expect(page).to have_content(item_5.total_for_item)
+  end
+    it 'can see grand total of all items in cart' do
+      item_5 = create(:item, price: 100.00)
+      item_6 = create(:item, price: 150.00)
+
+      visit item_path(item_5)
+      click_button 'Add Item to Cart'
+
+      visit item_path(item_6)
+      click_button 'Add Item to Cart'
+
+      visit cart_path(@user)
+
+      expect(page).to have_content("Cart Total: $#{item_5.price + item_6.price}")
+  end
 end
