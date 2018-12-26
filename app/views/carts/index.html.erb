@@ -11,6 +11,7 @@
     <li><%=item.item_name%> count: <%= @cart.count_of(item.id) %></li>
     <li><%=item.item_name%> total price:<%= number_to_currency(item.total_for_item) %></li>
   </ul>
+  <%= link_to "Remove From Cart", cart_path(item_id: item.id), method: :delete %>
   <% end %>
   <h3>Cart Total: <%= number_to_currency(@items.sum {|item| item.price}) %></h3>
   <%= link_to "Empty My Cart", cart_path, method: :delete, data: {confirm: "Are you sure?"} %>
