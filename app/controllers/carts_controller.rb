@@ -19,7 +19,7 @@ class CartsController < ApplicationController
   def destroy
     if params[:item_id]
       item = Item.find(params[:item_id])
-      cart.remove_item(item.id)
+      @cart.remove_item(item.id)
       redirect_to cart_path
     else
       session[:cart] = nil
