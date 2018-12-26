@@ -30,12 +30,20 @@ describe 'As a visitor' do
       expect(page).to_not have_content("Remove From Cart")
     end
     it 'can increase count of item for purchase' do
+      item_1 = create(:item, inventory: 10, price: 10.00)
 
-      visit item_path(@item_2)
-
+      visit item_path(item_1)
       click_button "Add Item to Cart"
-      save_and_open_page
-      expect(page).to have_content("")
+
+      visit cart_path(@user)
+
+      click_button "+"
+
+      expect(page).to have_content("Cart Total: $20.00")
+
+      click_button "-"
+
+      expect(page).to have_content("Cart Total: $10.00")
     end
   end
 end
