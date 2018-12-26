@@ -15,8 +15,11 @@ Rails.application.routes.draw do
 
   get '/profile', to: 'users#show'
   namespace :profile do
+
     resources :orders, only: [:show, :index]
   end
+
+  get "/profile/edit", to: "users#edit"
 
   resources :users, only: [:create, :edit, :update] do
     resources :orders, only: [:show]
@@ -34,7 +37,6 @@ Rails.application.routes.draw do
 
   get '/merchants', to: "users#index"
 
-  get "/profile/edit", to: "users#edit"
 
   get '/login', to: "sessions#new"
   post '/login', to: "sessions#create"
