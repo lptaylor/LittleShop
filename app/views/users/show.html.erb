@@ -1,21 +1,26 @@
-<h1>Welcome, <%= @current_user.email %></h1>
+<h1>Welcome, <%= current_user.email %></h1>
 
 <div class="profile_info">
-  <p>Name: <%= @current_user.name %></p>
-  <p>Email: <%= @current_user.email %></p>
-  <p>Address: <%= @current_user.address %></p>
-  <p>City: <%= @current_user.city %></p>
-  <p>State: <%= @current_user.state %></p>
-  <p>Zipcode: <%= @current_user.zipcode %></p>
+  <p>Name: <%= current_user.name %></p>
+  <p>Email: <%= current_user.email %></p>
+  <p>Address: <%= current_user.address %></p>
+  <p>City: <%= current_user.city %></p>
+  <p>State: <%= current_user.state %></p>
+  <p>Zipcode: <%= current_user.zipcode %></p>
 </div>
 
-<%= link_to "Edit Profile", profile_edit_path(@current_user) %>
+<%= link_to "Edit Profile", profile_edit_path(current_user) %>
 
-<div class="all-orders">
-  < % @current_user.order.each do |order_item| %>
-   < %= order_item.item.item_name %>
-  < %= binding.pry %>
-  < % end %>
-</div>
-
-<%= binding.pry %>
+<h2> All Orders </h2>
+<ul class="all-orders">
+  <% current_user.orders.each_with_index do |order, index| %>
+    <div id="order-<%= index %>">
+      <li>Order Id: <%= link_to order.id, order_path(order) %> </li>
+      <li>Order Placed On: <%= order.created_at.to_date %></li>
+      <li>Order Last Updated: <%= order.updated_at.to_date %></li>
+      <li>Order Status: <%= order.order_status %></li>
+      <li>Total Items Ordered: <%=order.total_order_items %></li>
+      <li>Total Order Price: <%= number_to_currency(order.total_order_price) %></li>
+    </div>
+  <% end %>
+</ul>
