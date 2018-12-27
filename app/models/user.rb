@@ -20,4 +20,7 @@ class User < ApplicationRecord
   def self.active_merchants
     merchant.where("active = true")
   end
+
+  def self.ordered_merchants_by
+  end
 end
