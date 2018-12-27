@@ -112,5 +112,18 @@ describe 'As a visitor' do
       click_button "-"
 
       expect(page).to_not have_content(item_8)
+    end
+  end
+  describe 'non registered user' do
+    it 'will not see a button to checkout' do
+      item_9 = create(:item)
+
+      visit item_path(item_9)
+
+      click_button "Add Item to Cart"
+
+      click_on "Shopping Cart"
+
+      expect(page).to_not have_content("Check Out")
   end
 end
