@@ -11,9 +11,11 @@
     <li><%=item.item_name%> count: <%= @cart.count_of(item.id) %></li>
     <li><%=item.item_name%> total price:<%= number_to_currency(item.total_for_item) %></li>
   </ul>
-  <% if @cart.count_of(item.id) != item.inventory %><%= button_to "+", "cart/#{item.id}/add" %>
+  <% if @cart.count_of(item.id) <= item.inventory %><%= button_to "+", "cart/#{item.id}/add" %>
     <%= button_to "-", "cart/#{item.id}/subtract" %>
-  <% end %>
+    <% else %>
+      <h3>Requested More than Available</h3>
+    <% end %>
   <%= link_to "Remove From Cart", cart_path(item_id: item.id), method: :delete %>
   <% end %>
   <h3>Cart Total: <%= number_to_currency(@cart_total) %></h3>
