@@ -6,10 +6,22 @@
     <%= item.item_name %>
     <%= item.inventory %>
     <%= item.price %>
-    <%= item.enabled %>
-    <a> <img src="<%=item.image_url%>" </a>
+    <a> <img id= "item-thumbnail-<%= item.id %>" src="<%=item.image_url%>" </a>
     <%= link_to "Edit This Item", edit_dashboard_item_path(item) %>
-    <%= link_to "Delete This Item", destroy_dashboard_item_path(item), unless OrderItem.find_by(item_id: item.id) %>
+    <% if item.orders.length == 0 %>
+      <%= link_to "Delete This Item" %>
+    <% end %>
+    <% if item.enabled %>
+      <%= form_for item do |t| %>
+        <%= t.label :enabled %><br/>
+        <%= t.submit "Deactivate" %>
+      <% end %>
+    <% else %>
+      <%= form_for item do |t| %>
+        <%= t.label :enabled %><br/>
+        <%= t.submit "Activate" %>
+      <% end %>
+    <% end %>
   </div>
 <% end %>
 
