@@ -9,9 +9,9 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
-    patch '/item/:id/toggle_active', to: 'item#toggle_active'
     resources :items do
       member do
+        post '/toggle_active', to: 'items#toggle_active', as: 'toggle'
       end
     end
     resources :orders, only: [:show]
