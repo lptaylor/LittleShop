@@ -5,9 +5,6 @@ describe 'As a visitor' do
     @item_1 = create(:item)
     @item_2 = create(:item)
     @item_3 = create(:item)
-    @item_4 = create(:item)
-    @item_5 = create(:item)
-    @item_6 = create(:item)
 
     @user = create(:user)
   end
@@ -89,5 +86,31 @@ describe 'As a visitor' do
       visit cart_path(@user)
 
       expect(page).to have_content("Cart Total: $#{item_5.price + item_6.price}")
+  end
+    it 'will only allow you to add based on inventory size' do
+      item_7 = create(:item, inventory: 1)
+
+      visit item_path(item_7)
+
+      click_button 'Add Item to Cart'
+
+      visit cart_path(@user)
+
+      click_button "+"
+
+      expect(page).to have_content("Requested More than Available")
+  end
+    it 'will remove item from cart if count is zero' do
+      item_8 = create(:item, inventory: 1)
+
+      visit item_path(item_8)
+
+      click_button 'Add Item to Cart'
+
+      visit cart_path(@user)
+
+      click_button "-"
+
+      expect(page).to_not have_content(item_8)
   end
 end
