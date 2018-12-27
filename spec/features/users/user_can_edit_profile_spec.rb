@@ -80,6 +80,5 @@ describe 'as a registered user' do
       expect(page).to_not have_content("Your information has been updated.")
       expect(page).to_not have_content(user_2.email)
     end
-
   end
 end
