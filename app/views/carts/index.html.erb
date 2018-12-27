@@ -20,4 +20,8 @@
   <% end %>
   <h3>Cart Total: <%= number_to_currency(@cart_total) %></h3>
   <%= link_to "Empty My Cart", cart_path, method: :delete, data: {confirm: "Are you sure?"} %>
+  <% if current_user %>
+  <% %>
+    <%= link_to "Check Out",  profile_orders_path, method: :post %>
+  <% end %>
 <% end %>
