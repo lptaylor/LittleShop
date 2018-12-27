@@ -12,9 +12,9 @@
       <%= link_to "Delete This Item" %>
     <% end %>
     <% if item.enabled %>
-      <%= button_to "Deactivate", action: 'toggle_active' %>
+      <%= button_to "Deactivate", toggle_dashboard_item_path(item) %>
     <% else %>
-      <%= button_to "Activate", action: 'toggle_active' %>
+      <%= button_to "Activate", toggle_dashboard_item_path(item) %>
     <% end %>
   </div>
 <% end %>

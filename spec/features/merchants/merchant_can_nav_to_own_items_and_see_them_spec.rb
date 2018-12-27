@@ -8,7 +8,7 @@ describe 'As a merchant' do
       @item_3 = create(:item, user_id: @merchant.id, enabled: false)
       @order_1 = create(:order)
       @order_1.items += [@item_2]
-      binding.pry
+
       visit root_path
       click_link "Login"
 
@@ -51,4 +51,17 @@ describe 'As a merchant' do
         expect(page).to_not have_button("Deactivate")
       end
     end
+
+    it 'deactivates an item' do
+      click_link "My Items"
+
+      within ".item-#{@item_1.id}" do
+        click_button "Deactivate"
+      end
+
+      within ".item-#{@item_1.id}" do
+        expect(page).to have_button("Activate")
+      end
+    end
+
 end

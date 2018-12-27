@@ -16,13 +16,8 @@ class Item < ApplicationRecord
     total[:price]
   end
 
-  def toggle_active(toggle_params)
+  def toggle_active
     toggle(:enabled).save
   end
 
-  private
-
-  def toggle_params
-      params.require(:item).permit(:enabled)
-  end
 end

@@ -35,8 +35,10 @@ class Dashboard::ItemsController < ApplicationController
     end
   end
 
-  def toggle_active(toggle_params)
-    toggle(:enabled).save
+  def toggle_active
+    @item = Item.find(params[:id])
+    @item.toggle(:enabled).save
+    redirect_to dashboard_items_path
   end
 
   def destroy
