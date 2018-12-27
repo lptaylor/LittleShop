@@ -1,11 +1,16 @@
 <h1>Your Items</h1>
 
 <% @current_merchant.items.each do |item| %>
-  <%= item.item_name %>
-  <%= item.inventory %>
-  <%= item.price %>
-  <%= item.description %>
-  <%= item.enabled %>
-  <%= item.created_at %>
-  <%= item.updated_at %>
+  <div class="item-<%= item.id %>">
+    <%= item.id %>
+    <%= item.item_name %>
+    <%= item.inventory %>
+    <%= item.price %>
+    <%= item.enabled %>
+    <a> <img src="<%=item.image_url%>" </a>
+    <%= link_to "Edit This Item", edit_dashboard_item_path(item) %>
+    <%= link_to "Delete This Item", destroy_dashboard_item_path(item), unless OrderItem.find_by(item_id: item.id) %>
+  </div>
 <% end %>
+
+<%= link_to "Add New Item", new_dashboard_item_path %>
