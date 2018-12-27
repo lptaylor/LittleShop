@@ -5,7 +5,7 @@ describe 'As a merchant' do
       @merchant = create(:user, role: 1)
       @item_1 = create(:item, user_id: @merchant.id)
       @item_2 = create(:item, user_id: @merchant.id)
-      @item_3 = create(:item, user_id: @merchant.id, active: false)
+      @item_3 = create(:item, user_id: @merchant.id, enabled: false)
       @order_1 = create(:order)
       @order_1 += @item_2
 
