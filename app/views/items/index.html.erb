@@ -1,37 +1,26 @@
-<p id="notice"><%= notice %></p>
+<section class="jumbotron">
+  <i class="fas fa-mask"></i>
+  <h1>Items</h1>
+</section>
 
-<h1>Items</h1>
 
-<table>
-  <thead>
-    <tr>
-      <th>Item name</th>
-      <th>Image</th>
-      <th>Qty in stock</th>
-      <th>Price</th>
-      <th>Description</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
+<div class="row">
     <% @items.each do |item| %>
-      <tr>
-        <td><% if item.enabled == true %></td>
-        <td><%= link_to item.item_name, item_path(item) %></td>
-        <td><a href='<%=item_path(item) %>'><img src="<%=item.image_url%>" </a>
-        <td><%= item.inventory %></td>
-        <td><%= number_to_currency(item.price) %></td>
-        <td><%= item.description %></td>
-        <td><%= item.merchant_name %></td>
+      <% if item.enabled == true %>
+        <div class="item col-md-3">
+        <h2><%= link_to item.item_name, item_path(item) %>:</h2>
+        <h2><%= number_to_currency(item.price) %></h2>
+        <a href='<%=item_path(item) %>'><img src="<%=item.image_url%>" </a>
+        <h4>Quantity in Stock: <%= item.inventory %></h4>
+        <h5>Item Description: <%= item.description %></h5>
+        <h4>Merchant Name: <%= item.merchant_name %></h4>
+        </div>
         <!-- <td>< %= link_to 'Show', item %></td>
         <td>< %= link_to 'Edit', edit_item_path(item) %></td>
         <td>< %= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
-      </tr>
       <% end %>
     <% end %>
-  </tbody>
-</table>
+</div>
 
 <br>
 

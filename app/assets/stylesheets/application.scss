@@ -1,5 +1,90 @@
 @import "bootstrap";
 
+body {
+  background-color: #21A0A0;
+  color: #FCFFF7;
+  font-family: 'Quicksand', sans-serif;
+}
+
 img {
-  height: 10rem;
+  width: 20rem;
+}
+
+#root_icons {
+  font-size: 125px;
+  margin-right: 20px;
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.jumbotron {
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #D17B0F;
+  border-width: 2px;
+  text-align: center;
+  margin: 30px;
+  background-color: #D17B0F;
+}
+
+.jumbotron i {
+  font-size: 200px;
+  padding-bottom: 30px;
+}
+
+.navbar {
+  background-color: #D17B0F;
+}
+
+.cart {
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #FCFFF7;
+  border-width: 2px;
+  padding: 10px;
+  text-align: right;
+}
+
+.login {
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #D17B0F;
+  border-width: 2px;
+  padding: 10px;
+  text-align: justify;
+  margin: 200px;
+  background-color: #D17B0F;
+}
+
+.register {
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #D17B0F;
+  border-width: 2px;
+  padding: 10px;
+  text-align: justify;
+  margin: 200px;
+  background-color: #D17B0F;
+}
+
+.item {
+  color: #FCFFF7;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #D17B0F;
+  border-width: 2px;
+  padding: 10px;
+  margin: 20px;
+  background-color: #D17B0F;
+}
+
+.item img {
+  border-style: solid;
+  border-radius: 5px;
+  border-color: grey;
+  border-width: 2px;
+}
+
+.col-md-3 {
+  margin-left: 80px;
 }

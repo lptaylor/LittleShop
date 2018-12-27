@@ -6,10 +6,12 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
   </head>
 
   <body>
-    <nav>
+    <nav class="navbar bg-dark">
       <%= link_to "Homepage", root_path %>
       <%= link_to "Items", items_path %>
       <%= link_to "Merchants", merchants_path %>
@@ -25,14 +27,10 @@
         <%= link_to "Login", login_path %>
       <% end %>
 
-      <% if !current_user || current_user.role == "registered_user" %>
-        <%= link_to "Shopping Cart: #{@cart.total_item_count}", cart_path %>
-      <% end %>
-
       <% if current_user %>
         <%= link_to "My Profile", profile_path %>
         <%= link_to "My Orders", profile_orders_path %>
-    
+
 
         <% if current_user.role == "merchant" %>
           <%= link_to "My Dashboard", dashboard_path %>
@@ -43,6 +41,13 @@
         <% end %>
 
       <% end %>
+
+      <div class="cart">
+        <% if !current_user || current_user.role == "registered_user" %>
+          <i class="fas fa-shopping-cart"></i>
+          <%= link_to "Shopping Cart: #{@cart.total_item_count}", cart_path %>
+        <% end %>
+      </div>
     </nav>
 
     <div>
