@@ -12,15 +12,9 @@
       <%= link_to "Delete This Item" %>
     <% end %>
     <% if item.enabled %>
-      <%= form_for item do |t| %>
-        <%= t.label :enabled %><br/>
-        <%= t.submit "Deactivate" %>
-      <% end %>
+      <%= button_to "Deactivate", action: 'toggle_active' %>
     <% else %>
-      <%= form_for item do |t| %>
-        <%= t.label :enabled %><br/>
-        <%= t.submit "Activate" %>
-      <% end %>
+      <%= button_to "Activate", action: 'toggle_active' %>
     <% end %>
   </div>
 <% end %>
