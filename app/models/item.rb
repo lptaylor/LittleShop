@@ -15,4 +15,14 @@ class Item < ApplicationRecord
     total[:price] += self.price
     total[:price]
   end
+
+  def toggle_active(toggle_params)
+    toggle(:enabled).save
+  end
+
+  private
+
+  def toggle_params
+      params.require(:item).permit(:enabled)
+  end
 end
