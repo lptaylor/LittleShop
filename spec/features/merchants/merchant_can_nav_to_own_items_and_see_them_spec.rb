@@ -8,7 +8,7 @@ describe 'As a merchant' do
       @item_3 = create(:item, user_id: @merchant.id, enabled: false)
       @order_1 = create(:order)
       @order_1.items += [@item_2]
-
+      binding.pry
       visit root_path
       click_link "Login"
 
@@ -30,16 +30,16 @@ describe 'As a merchant' do
       click_link "My Items"
 
       expect(page).to have_link("Add New Item")
-      
+
       within ".item-#{@item_1.id}" do
         expect(page).to have_content(@item_1.id)
         expect(page).to have_content(@item_1.item_name)
         expect(page).to have_content(@item_1.price)
         expect(page).to have_content(@item_1.inventory)
-        # expect(page).to have_content(@item_1.image_url)
         expect(page).to have_link("Edit This Item")
         expect(page).to have_link("Delete This Item")
         expect(page).to have_button("Deactivate")
+        expect(page).to_not have_button("Activate")
       end
 
       within ".item-#{@item_2.id}" do
@@ -48,6 +48,7 @@ describe 'As a merchant' do
 
       within ".item-#{@item_3.id}" do
         expect(page).to have_button("Activate")
+        expect(page).to_not have_button("Deactivate")
       end
     end
 end
