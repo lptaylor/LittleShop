@@ -1,1 +1,11 @@
 <h1>Your Items</h1>
+
+<% @current_merchant.items.each do |item| %>
+  <%= item.item_name %>
+  <%= item.inventory %>
+  <%= item.price %>
+  <%= item.description %>
+  <%= item.enabled %>
+  <%= item.created_at %>
+  <%= item.updated_at %>
+<% end %>
