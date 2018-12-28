@@ -26,6 +26,8 @@ describe 'as an Admin' do
 
       visit admin_user_path(user_1)
 
+      expect(page).to have_content("Logged in as: #{admin.name}")
+      
       within "#order-0" do
         expect(page).to have_link("#{order_1.id}")
         expect(page).to have_content("Order Placed On: #{order_1.created_at.to_date}")
