@@ -73,6 +73,7 @@ describe 'As a merchant' do
 
       expect(page).to_not have_content(@item_1.item_name)
       expect(page).to_not have_content(@item_1.description)
+      expect(page).to have_content("You have deleted this item.")
     end
 
 end

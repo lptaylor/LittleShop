@@ -45,6 +45,7 @@ class Dashboard::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     @item.destroy
     redirect_to dashboard_items_path
+    flash[:success] = "You have deleted this item."
   end
 
   private
