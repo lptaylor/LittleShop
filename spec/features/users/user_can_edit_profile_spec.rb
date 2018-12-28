@@ -54,9 +54,9 @@ describe 'as a registered user' do
     end
 
     it 'shows a flash message if a duplicate email is entered' do
-      user_2 = create(:user, email: "ali@aol.com")
+      user_2 = create(:user, email: "test@test.com")
       new_name = "Tom"
-      new_email = "test@test.com"
+      new_email = @user.email
       new_password = "ILoveMom"
       new_address = "125 Main St."
       new_city = "Zaregerege"
@@ -66,7 +66,7 @@ describe 'as a registered user' do
       click_link "Edit Profile"
 
       fill_in :user_name, with: new_name
-      fill_in :user_email, with: user_2.email
+      fill_in :user_email, with: new_email
       fill_in :user_password, with: new_password
       fill_in :user_password_confirmation, with: new_password
       fill_in :user_address, with: new_address
@@ -75,7 +75,8 @@ describe 'as a registered user' do
       fill_in :user_zipcode, with: new_zipcode
 
       click_on "Update User"
-      expect(page).to have_content("The email entered is already in use")
+
+      expect(page).to have_content("Alert: Email is already in use")
       expect(page).to have_button("Update User")
       expect(page).to_not have_content("Your information has been updated.")
       expect(page).to_not have_content(user_2.email)
