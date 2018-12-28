@@ -1,18 +1,21 @@
 class OrdersController < ApplicationController
   # before_action :set_order, only: [:show, :edit, :update, :destroy]
 
-  # GET /orders
-  # GET /orders.json
   def index
     @orders = Order.all
   end
 
-  # # GET /orders/1
-  # # GET /orders/1.json
   def show
     @order = Order.find(params[:id])
   end
-  #
+
+  def destroy
+    @order = Order.find(params[:id])
+    @order.destroy
+    flash[:success] = 'Order was successfully destroyed'
+    redirect_to profile_path(current_user)
+  end
+
   # # GET /orders/new
   # def new
   #   @order = Order.new
@@ -49,16 +52,6 @@ class OrdersController < ApplicationController
   #       format.html { render :edit }
   #       format.json { render json: @order.errors, status: :unprocessable_entity }
   #     end
-  #   end
-  # end
-  #
-  # # DELETE /orders/1
-  # # DELETE /orders/1.json
-  # def destroy
-  #   @order.destroy
-  #   respond_to do |format|
-  #     format.html { redirect_to orders_url, notice: 'Order was successfully destroyed.' }
-  #     format.json { head :no_content }
   #   end
   # end
 
