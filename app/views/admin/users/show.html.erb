@@ -9,4 +9,18 @@
   <p>Zipcode: <%= @user.zipcode %></p>
 </div>
 
-<%= link_to "Edit Profile", edit_user_path(@user) %>
+<%= link_to "Edit Profile", edit_admin_user_path(@user) %>
+
+<h2> All Orders </h2>
+<ul class="all-orders">
+  <% @user.orders.each_with_index do |order, index| %>
+    <div id="order-<%= index %>">
+      <li>Order Id: <%= link_to order.id, order_path(order) %> </li>
+      <li>Order Placed On: <%= order.created_at.to_date %></li>
+      <li>Order Last Updated: <%= order.updated_at.to_date %></li>
+      <li>Order Status: <%= order.order_status %></li>
+      <li>Total Items Ordered: <%=order.total_order_items %></li>
+      <li>Total Order Price: <%= number_to_currency(order.total_order_price) %></li>
+    </div>
+  <% end %>
+</ul>

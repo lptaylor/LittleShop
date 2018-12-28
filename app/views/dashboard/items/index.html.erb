@@ -1,0 +1,22 @@
+<h1>Your Items</h1>
+
+<% @current_merchant.items.each do |item| %>
+  <div class="item-<%= item.id %>">
+    <%= item.id %>
+    <%= item.item_name %>
+    <%= item.inventory %>
+    <%= item.price %>
+    <a> <img id= "item-thumbnail-<%= item.id %>" src="<%=item.image_url%>" </a>
+    <%= link_to "Edit This Item", edit_dashboard_item_path(item) %>
+    <% if item.orders.length == 0 %>
+      <%= link_to "Delete This Item" %>
+    <% end %>
+    <% if item.enabled %>
+      <%= button_to "Deactivate", toggle_dashboard_item_path(item) %>
+    <% else %>
+      <%= button_to "Activate", toggle_dashboard_item_path(item) %>
+    <% end %>
+  </div>
+<% end %>
+
+<%= link_to "Add New Item", new_dashboard_item_path %>

@@ -3,7 +3,28 @@
   <h2> your cart is empty </h2>
 <% else %>
   <% @items.each do |item| %>
-  <%= item.item_name %>
+  <ul>
+    <li>Item Name: <%= item.item_name %></li>
+    <li><%= item.image_url %></li>
+    <li>Merchant: <%= item.merchant_name %></li>
+    <li>Price: <%= number_to_currency(item.price) %></li>
+    <li><%=item.item_name%> count: <%= @cart.count_of(item.id) %></li>
+    <li><%=item.item_name%> total price:<%= number_to_currency(item.total_for_item) %></li>
+  </ul>
+  <% if @cart.count_of(item.id) <= item.inventory %><%= button_to "+", "cart/#{item.id}/add" %>
+    <%= button_to "-", "cart/#{item.id}/subtract" %>
+    <% else %>
+      <h3>Requested More than Available</h3>
+    <% end %>
+  <%= link_to "Remove From Cart", cart_path(item_id: item.id), method: :delete %>
   <% end %>
+  <h3>Cart Total: <%= number_to_currency(@cart_total) %></h3>
   <%= link_to "Empty My Cart", cart_path, method: :delete, data: {confirm: "Are you sure?"} %>
+  <% if current_user %>
+    <%= link_to "Check Out",  profile_orders_path, method: :post %>
+  <% else %>
+    <h3>if you'd like to checkout, please login or register...</h3>
+    <%= link_to "login", login_path %>
+    <%= link_to "register", register_path %>
+  <% end %>
 <% end %>

@@ -17,7 +17,7 @@ RSpec.describe Cart do
         "1" => 1,
         "2" => 2,
         "3" => 1,
-        "4" => 1,
+        "4" => 1
       }
       expect(cart.contents).to eq(expected)
     end
@@ -30,5 +30,27 @@ RSpec.describe Cart do
       expect(cart.count_of(14)).to eq(0)
     end
 
+    it 'can remove_item from cart' do
+      cart = Cart.new({"1" => 1, "2" => 2})
+      cart.add_item(3)
+      cart.remove_item(1)
+
+      expected = {
+        "2" => 2,
+        "3" => 1
+      }
+      expect(cart.contents).to eq(expected)
+    end
+
+    it 'can subtract item from cart' do
+      cart = Cart.new({"1" => 1, "2" => 2})
+      cart.subtract_item(2)
+
+      expected = {
+        "1" => 1,
+        "2" => 1
+      }
+      expect(cart.contents).to eq(expected)
+    end  
   end
 end
