@@ -9,8 +9,12 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
+    resources :items do
+      member do
+        post '/toggle_active', to: 'items#toggle_active', as: 'toggle'
+      end
+    end
     resources :orders, only: [:show]
-    resources :items, only: [:index, :new, :create, :show, :edit]
   end
 
   get '/profile', to: 'users#show'

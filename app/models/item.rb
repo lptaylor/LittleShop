@@ -15,4 +15,9 @@ class Item < ApplicationRecord
     total[:price] += self.price
     total[:price]
   end
+
+  def toggle_active
+    toggle(:enabled).save
+  end
+
 end
