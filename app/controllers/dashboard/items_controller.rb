@@ -42,8 +42,8 @@ class Dashboard::ItemsController < ApplicationController
   end
 
   def destroy
-    item = Item.find(params[:id])
-    item.destroy
+    @item = Item.find(params[:id])
+    @item.destroy
     redirect_to dashboard_items_path
   end
 
