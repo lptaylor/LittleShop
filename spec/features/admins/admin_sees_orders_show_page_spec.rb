@@ -24,7 +24,9 @@ describe 'as an Admin' do
       click_link "#{order_1.id}"
 
       expect(current_path).to eq(admin_order_path(order_1))
-      
+
+      expect(page).to have_content("Logged in as: #{admin.name}")
+
       within ".order-item-0" do
         expect(page).to have_content("Name: #{item_1.item_name}")
         expect(page).to have_content("Description: #{item_1.description}")
