@@ -37,7 +37,7 @@ describe 'As a visitor' do
       visit item_path(item_5)
 
       click_button 'Add Item to Cart'
-
+      
       visit cart_path(@user)
 
       expect(page).to have_content(item_5.item_name)
