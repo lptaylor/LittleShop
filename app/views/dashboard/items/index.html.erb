@@ -9,7 +9,7 @@
     <a> <img id= "item-thumbnail-<%= item.id %>" src="<%=item.image_url%>" </a>
     <%= link_to "Edit This Item", edit_dashboard_item_path(item) %>
     <% if item.orders.length == 0 %>
-      <%= link_to "Delete This Item" %>
+      <%= link_to "Delete This Item", dashboard_item_path(item), method: :delete %>
     <% end %>
     <% if item.enabled %>
       <%= button_to "Deactivate", toggle_dashboard_item_path(item) %>
