@@ -25,6 +25,10 @@ class User < ApplicationRecord
     where(role: "registered_user")
   end
 
+  def self.merchants
+    where(role: "merchant")
+  end
+
   def enable
     update(active: true)
   end
