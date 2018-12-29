@@ -1,1 +1,15 @@
-hello
+<section class="jumbotron">
+<h1>All Registered Users</h1>
+</section>
+
+<% @merchants.each do |merchant|%>
+<div id="merchant-<%= merchant.id %>">
+  <%= link_to merchant.name, admin_merchant_path(merchant.id) %>
+  <%= merchant.city %>, <%= merchant.state %>
+  <%if merchant.active == true %>
+    <%= button_to "disable", merchant.disable %>
+  <% else %>
+    <%= button_to "enable", merchant.enable %>
+  <% end %>
+</div>
+<%end%>
