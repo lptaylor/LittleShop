@@ -20,4 +20,16 @@ class User < ApplicationRecord
   def self.active_merchants
     merchant.where("active = true")
   end
+
+  def self.registered_users
+    where(role: "registered_user")
+  end
+
+  def enable
+    update(active: true)
+  end
+
+  def disable
+    update(active: false)
+  end
 end
