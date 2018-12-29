@@ -1,6 +1,15 @@
-<h1>All Users</h1>
+<section class="jumbotron">
+<h1>All Registered Users</h1>
+</section>
 
 <% @users.each do |user|%>
-  <%= user.email %>
+<div id="user-<%= user.id %>">
+  <%= link_to user.name, admin_user_path(user.id) %>
   <%= user.created_at %>
+  <%if user.active == true %>
+    <%= button_to "disable", user.disable %>
+  <% else %>
+    <%= button_to "enable", user.enable %>
+  <% end %>
+</div>
 <%end%>
