@@ -4,7 +4,7 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :users, only: [:index, :show, :edit, :update]
-    resources :merchants, only: [:show]
+    resources :merchants, only: [:index, :show]
     resources :orders, only: [:show]
   end
 
