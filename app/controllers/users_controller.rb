@@ -38,9 +38,14 @@ class UsersController < ApplicationController
       flash[:success] = "#{@user.name}'s information has been updated."
       redirect_to admin_user_path(@user)
     else
+      if current_user.email == User.existing_email(user_params)
+        flash[:alert] = "Alert: Email is already in use"
+        redirect_to edit_user_path
+      else
       current_user.update(user_params)
       flash[:success] = "Your information has been updated."
       redirect_to profile_path
+      end
     end
   end
 

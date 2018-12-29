@@ -2,12 +2,9 @@ require 'rails_helper'
 
 describe 'As a visitor' do
   before(:each) do
-    @item_1 = create(:item)
-    @item_2 = create(:item)
-    @item_3 = create(:item)
-    @item_4 = create(:item)
-    @item_5 = create(:item)
-    @item_6 = create(:item)
+    @item_1 = create(:item, image_url: "http://something.com")
+    @item_2 = create(:item, image_url: "http://something.com")
+    @item_3 = create(:item, image_url: "http://something.com")
 
     @user = create(:user)
   end

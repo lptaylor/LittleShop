@@ -64,4 +64,16 @@ describe 'As a merchant' do
       end
     end
 
+    it 'deletes an item' do
+      click_link 'My Items'
+
+      within ".item-#{@item_1.id}" do
+        click_link "Delete This Item"
+      end
+
+      expect(page).to_not have_content(@item_1.item_name)
+      expect(page).to_not have_content(@item_1.description)
+      expect(page).to have_content("You have deleted this item.")
+    end
+
 end

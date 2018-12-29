@@ -47,5 +47,20 @@ describe 'Registered User' do
       expect(page).to have_content("Your order was created successfully")
       expect(page).to have_content("Total Items Ordered: 2")
     end
+    it 'if order is pending, user sees a link to cancel order' do
+      visit item_path(@item_1)
+
+      click_button "Add Item to Cart"
+
+      visit cart_path(@user)
+      click_link "Check Out"
+
+      expect(page).to have_link("Cancel Order")
+
+      click_link "Cancel Order"
+
+      expect(current_path).to eq(profile_path(@user))
+      expect(page).to have_content("Order was successfully destroyed")
+    end
   end
 end
