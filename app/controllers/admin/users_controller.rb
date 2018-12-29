@@ -1,7 +1,7 @@
 class Admin::UsersController < ApplicationController
 
   def index
-    @users = User.all
+    @users = User.registered_users
   end
 
   def show
