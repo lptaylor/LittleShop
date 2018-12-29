@@ -29,13 +29,23 @@ describe 'Registered User' do
 
       click_button "Add Item to Cart"
 
+      visit item_path(@item_1)
+
+      click_button "Add Item to Cart"
+
+      visit item_path(@item_2)
+
+      click_button "Add Item to Cart"
+
       visit cart_path(@user)
+
       click_link "Check Out"
 
       expect(current_path).to eq(profile_orders_path)
 
-      expect(page).to have_content("Order status pending")
+      expect(page).to have_content("Order Status: pending")
       expect(page).to have_content("Your order was created successfully")
+      expect(page).to have_content("Total Items Ordered: 2")
     end
   end
 end
