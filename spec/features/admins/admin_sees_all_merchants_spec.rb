@@ -37,7 +37,7 @@ describe 'as an admin' do
       expect(page).to have_content(@merchant_3.name)
       expect(page).to have_content(@merchant_4.name)
 
-      within "#user-#{@merchant_1.id}" do
+      within "#merchant-#{@merchant_1.id}" do
         expect(page).to have_link(@merchant_1.name)
         expect(page).to have_content(@merchant_1.city)
         expect(page).to have_content(@merchant_1.state)
@@ -52,7 +52,7 @@ describe 'as an admin' do
         expect(page).to_not have_content(@user_4.name)
       end
 
-      within "#user-#{@merchant_2.id}" do
+      within "#merchant-#{@merchant_2.id}" do
         expect(page).to have_link(@merchant_2.name)
         expect(page).to have_content(@merchant_2.city)
         expect(page).to have_content(@merchant_2.state)
@@ -60,7 +60,7 @@ describe 'as an admin' do
         expect(page).to_not have_button(disabled)
       end
 
-      within "#user-#{@merchant_3.id}" do
+      within "#merchant-#{@merchant_3.id}" do
         expect(page).to have_link(@merchant_3.name)
         expect(page).to have_content(@merchant_3.city)
         expect(page).to have_content(@merchant_3.state)
@@ -68,7 +68,7 @@ describe 'as an admin' do
         expect(page).to_not have_button(disabled)
       end
 
-      within "#user-#{@merchant_4.id}" do
+      within "#merchant-#{@merchant_4.id}" do
         expect(page).to have_link(@merchant_4.name)
         expect(page).to have_content(@merchant_4.city)
         expect(page).to have_content(@merchant_4.state)
