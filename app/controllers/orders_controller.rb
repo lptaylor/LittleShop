@@ -11,8 +11,9 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
+    @order.order_status = "cancelled"
     @order.destroy
-    flash[:success] = 'Order was successfully destroyed'
+    flash[:success] = 'Order was successfully cancelled'
     redirect_to profile_path(current_user)
   end
 
