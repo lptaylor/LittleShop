@@ -27,20 +27,19 @@ describe 'as an Admin' do
       visit admin_user_path(user_1)
 
       expect(page).to have_content("Logged in as: #{admin.name}")
-      
+
       within "#order-0" do
         expect(page).to have_link("#{order_1.id}")
-        expect(page).to have_content("Order Placed On: #{order_1.created_at.to_date}")
-        expect(page).to have_content("Order Status: #{order_1.order_status}")
-        expect(page).to have_content("Total Items Ordered: #{order_1.total_order_items}")
+        expect(page).to have_content("Status: #{order_1.order_status}")
       end
 
       within "#order-1" do
         expect(page).to have_link("#{order_2.id}")
-        expect(page).to have_content("Order Placed On: #{order_2.created_at.to_date}")
-        expect(page).to have_content("Order Status: #{order_2.order_status}")
-        expect(page).to have_content("Total Items Ordered: #{order_2.total_order_items}")
+        expect(page).to have_content("Status: #{order_2.order_status}")
       end
+
+      click_link "My Orders"
+
 
     end
   end
