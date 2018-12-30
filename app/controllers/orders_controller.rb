@@ -11,9 +11,11 @@ class OrdersController < ApplicationController
 
   def destroy
     @order = Order.find(params[:id])
-    @order.destroy
-    flash[:success] = 'Order was successfully destroyed'
+    @order.order_status = "cancelled"
+    @order.save
+    flash[:success] = 'Order was successfully cancelled'
     redirect_to profile_path(current_user)
+    # if items destroyed, needs to be added back to merchant inventory
   end
 
   # # GET /orders/new
