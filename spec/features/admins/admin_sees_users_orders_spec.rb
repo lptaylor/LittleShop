@@ -5,8 +5,9 @@ describe 'as an Admin' do
     it 'shows all the users order information' do
       admin = create(:user, role: 2)
       user_1 = create(:user)
-
+      
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(admin)
+
 
       item_1 = create(:item)
       item_2 = create(:item)
@@ -27,6 +28,7 @@ describe 'as an Admin' do
       visit admin_user_path(user_1)
 
       expect(page).to have_content("Logged in as: #{admin.name}")
+      expect(page).to have_content("Welcome, #{user_1.email}")
 
       within "#order-0" do
         expect(page).to have_link("#{order_1.id}")
@@ -38,9 +40,7 @@ describe 'as an Admin' do
         expect(page).to have_content("Status: #{order_2.order_status}")
       end
 
-      click_link "My Orders"
-
-
     end
+
   end
 end
