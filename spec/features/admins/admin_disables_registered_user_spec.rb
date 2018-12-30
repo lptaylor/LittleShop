@@ -26,13 +26,11 @@ describe 'as an admin' do
     end
     it 'can disable a registered user' do
       visit admin_users_path
-save_and_open_page
-binding.pry
+
       within "#user-#{@user_1.id}" do
         click_on "disable"
       end
-save_and_open_page
-binding.pry
+
       expect(current_path).to eq(admin_users_path)
       expect(page).to have_content("#{@user_1.name}'s account is now disabled")
 
@@ -44,13 +42,11 @@ binding.pry
 
       it 'can enable a registered user' do
         visit admin_users_path
-save_and_open_page
-binding.pry
+
         within "#user-#{@user_4.id}" do
           click_on "enable"
         end
-save_and_open_page
-binding.pry
+
         expect(current_path).to eq(admin_users_path)
         expect(page).to have_content("#{@user_1.name}'s account has now been enabled")
 
