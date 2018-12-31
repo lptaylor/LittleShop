@@ -19,4 +19,13 @@ class Item < ApplicationRecord
   def toggle_active
     toggle(:enabled).save
   end
+
+  def self.popular_items(direction)
+    Item.joins(:order_items)
+      .select("items.*, sum(order_items.quantity) as total_sold")
+      .group(:id)
+      .order("total_sold #{direction}")
+      .where("order_items.fulfilled=?", true)
+      .limit(5)
+  end
 end
