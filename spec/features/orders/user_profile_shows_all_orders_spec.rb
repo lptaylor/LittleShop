@@ -39,7 +39,7 @@ describe 'As a registered user' do
       order_item_5 = create(:order_item, order: order_4, item: item_1)
       order_item_6 = create(:order_item, order: order_4, item: item_2)
 
-      visit profile_path(@user)
+      visit profile_orders_path
 
       within ".all-orders" do
         expect(page).to have_content("Order Id: #{order_1.id}")

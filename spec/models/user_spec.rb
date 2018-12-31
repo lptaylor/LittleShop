@@ -65,6 +65,19 @@ RSpec.describe User, type: :model do
 
       expect(User.registered_users).to eq([user_1, user_2, user_3])
     end
+
+
+    it 'will return only merchants' do
+      user_1 = create(:user)
+      user_2 = create(:user)
+      user_3 = create(:user)
+      user_4 = create(:user, role: 1)
+      user_5 = create(:user, role: 1)
+      user_6 = create(:user, role: 2)
+      user_7 = create(:user, role: 2)
+
+      expect(User.merchants).to eq([user_4, user_5])
+    end
   end
 
   describe 'instance methods' do
