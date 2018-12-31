@@ -7,11 +7,15 @@
 <section class="statistics">
 
   <div id="most-popular">
-
+    <% @top_items.each do |item| %>
+      <%= item.item_name %>
+    <% end %>
   </div>
 
   <div id="least-popular">
-
+    <% @bottom_items.each do |item| %>
+      <%= item.item_name %>
+    <% end %>
   </div>
 </section>
 
@@ -26,13 +30,6 @@
         <h5>Item Description: <%= item.description %></h5>
         <h4>Merchant Name: <%= item.merchant_name %></h4>
         </div>
-        <!-- <td>< %= link_to 'Show', item %></td>
-        <td>< %= link_to 'Edit', edit_item_path(item) %></td>
-        <td>< %= link_to 'Destroy', item, method: :delete, data: { confirm: 'Are you sure?' } %></td> -->
       <% end %>
     <% end %>
 </div>
-
-<br>
-
-<%= link_to 'New Item', new_item_path %>
