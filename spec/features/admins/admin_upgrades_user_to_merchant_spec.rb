@@ -23,9 +23,9 @@ describe 'as an Admin' do
 
     expect(current_path).to eq(admin_merchant_path(user.id))
     expect(page).to have_content("Upgrade to Merchant Successful")
-    expect(user.role).to eq("merchant")
+    expect(user.reload.role).to eq("merchant")
 
     expect(current_path).to_not eq(admin_user_path(user.id))
-    expect(user.role).to_not eq("registered_user")
+    expect(user.reload.role).to_not eq("registered_user")
   end
 end
