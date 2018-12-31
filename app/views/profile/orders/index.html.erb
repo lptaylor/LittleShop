@@ -10,12 +10,9 @@
       <li>Order Status: <%= order.order_status %></li>
       <li>Total Items Ordered: <%=order.total_order_items %></li>
       <li>Total Order Price: <%= number_to_currency(order.total_order_price) %></li>
+      <%= link_to 'Cancel Order', order, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-      <ul>
-        <%= link_to 'Cancel Order', order, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </ul>
+    
 
 
 <%= link_to 'New Order', new_order_path %>
-
