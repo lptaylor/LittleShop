@@ -11,10 +11,10 @@ describe 'as an admin' do
       @merchant_2 = create(:user, role: 1)
       @merchant_3 = create(:user, role: 1)
 
-      @user_1 = create(:user)
-      @user_2 = create(:user)
-      @user_3 = create(:user)
-      @user_4 = create(:user, active: false)
+      @joe = create(:user)
+      @bob = create(:user)
+      @tom = create(:user)
+      @sally = create(:user, active: false)
 
       visit root_path
       click_link "Login"
@@ -27,33 +27,35 @@ describe 'as an admin' do
     it 'can disable a registered user' do
       visit admin_users_path
 
-      within "#user-#{@user_1.id}" do
+      within "#user-#{@joe.id}" do
         click_on "disable"
       end
 
       expect(current_path).to eq(admin_users_path)
-      expect(page).to have_content("#{@user_1.name}'s account is now disabled")
+      expect(page).to have_content("#{@joe.name}'s account is now disabled")
 
-      within "#user-#{@user_1.id}" do
-        expect(@user_1.active).to be false
+      within "#user-#{@joe.id}" do
+
         expect(page).to have_button("enable")
       end
+      expect(@joe.reload.active).to be false
     end
 
       it 'can enable a registered user' do
         visit admin_users_path
 
-        within "#user-#{@user_4.id}" do
+        within "#user-#{@sally.id}" do
           click_on "enable"
         end
 
         expect(current_path).to eq(admin_users_path)
-        expect(page).to have_content("#{@user_1.name}'s account has now been enabled")
+        expect(page).to have_content("#{@sally.name}'s account is now enabled")
 
-        within "#user-#{@user_4.id}" do
-          expect(@user_4.active).to be true
+        within "#user-#{@sally.id}" do
           expect(page).to have_button("disable")
         end
+
+        expect(@sally.reload.active).to be true
       end
   end
 end
