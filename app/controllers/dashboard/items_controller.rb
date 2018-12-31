@@ -14,9 +14,11 @@ class Dashboard::ItemsController < ApplicationController
   end
 
   def create
-    @item = Item.create(item_params)
+    @current_merchant = current_merchant
+    @item = @current_merchant.items.create(item_params)
     if @item.save
       redirect_to dashboard_items_path
+      flash[:success] = "Your Item Has Been Added"
     else
       render :new
     end
@@ -30,6 +32,8 @@ class Dashboard::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update_attributes(item_params)
       @item.save
+      redirect_to dashboard_items_path
+      flash[:success] = "Your Item Has Been Edited"
     else
       render :edit
     end
@@ -49,10 +53,6 @@ class Dashboard::ItemsController < ApplicationController
   end
 
   private
-
-  def toggle_params
-    params.require(:item).permit(:enabled)
-  end
 
   def item_params
     params.require(:item).permit(:item_name, :image_url, :inventory, :price, :description)

@@ -1,5 +1,5 @@
 class Item < ApplicationRecord
-  validates_presence_of :item_name, :image_url,
+  validates_presence_of :item_name,
                         :inventory, :price, :description, :user_id
 
   belongs_to :user
@@ -20,4 +20,12 @@ class Item < ApplicationRecord
     toggle(:enabled).save
   end
 
+  def self.popular_items(direction)
+    Item.joins(:order_items)
+      .select("items.*, sum(order_items.quantity) as total_sold")
+      .group(:id)
+      .order("total_sold #{direction}")
+      .where("order_items.fulfilled=?", true)
+      .limit(5)
+  end
 end

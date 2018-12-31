@@ -2,20 +2,18 @@
 <h1> All Orders </h1>
 <ul class="all-orders">
   <% current_user.orders.each_with_index do |order, index| %>
-
-    <div id="order-<%= index %>">
-      <li>Order Id: <%= link_to order.id, order_path(order) %> </li>
-      <li>Order Placed On: <%= order.created_at.to_date %></li>
-      <li>Order Last Updated: <%= order.updated_at.to_date %></li>
-      <li>Order Status: <%= order.order_status %></li>
-      <li>Total Items Ordered: <%=order.total_order_items %></li>
-      <li>Total Order Price: <%= number_to_currency(order.total_order_price) %></li>
+  
+  <div id="order-<%= index %>">
+    <li>Order Id: <%= link_to order.id, order_path(order) %> </li>
+    <li>Order Placed On: <%= order.created_at.to_date %></li>
+    <li>Order Last Updated: <%= order.updated_at.to_date %></li>
+    <li>Order Status: <%= order.order_status %></li>
+    <li>Total Items Ordered: <%=order.total_order_items %></li>
+    <li>Total Order Price: <%= number_to_currency(order.total_order_price) %></li>
+    <% if order.order_status == "pending" %>
+      <%= link_to 'Cancel Order', order, method: :delete, data: { confirm: 'Are you sure?' } %>
     <% end %>
-      <ul>
-        <%= link_to 'Cancel Order', order, method: :delete, data: { confirm: 'Are you sure?' } %>
-        <% end %>
-      </ul>
-
+  <% end %>
+  </div>
 
 <%= link_to 'New Order', new_order_path %>
-

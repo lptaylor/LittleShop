@@ -25,4 +25,22 @@ class Order < ApplicationRecord
                           quantity: content.last)
     end
   end
+
+  def update_inventory
+    order_items.each do |oitem|
+      to_update = oitem.item.inventory
+      oitem.item.update( inventory: to_update -= oitem.quantity )
+    end
+  end
+
+  def add_back_inventory
+    items.each do |item|
+      order_items.each do |oi|
+        if oi.item_id == item.id
+          item.update( inventory: item.inventory += oi.quantity )
+        end
+      end
+    end
+  end
+
 end
