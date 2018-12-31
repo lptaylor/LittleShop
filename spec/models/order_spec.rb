@@ -24,6 +24,20 @@ RSpec.describe Order, type: :model do
       expect(order_1.total_order_items).to eq(6)
       expect(order_1.total_order_price).to eq(14.5)
     end
+    it 'updates inventory of item when order created or cancelled' do
+      user = create(:user)
+      item_1 = create(:item, inventory: 5)
 
+      order_1 = create(:order, user: user)
+      create(:order_item, order: order_1, item: item_1, price: 2.5, quantity: 1)
+
+      order_1.update_inventory
+
+      expect(order_1.items.first.inventory).to eq(4)
+
+      order_1.add_back_inventory
+
+      expect(order_1.items.first.inventory).to eq(5)
+    end
   end
 end
