@@ -14,3 +14,26 @@
   font-size: 30px;
   font-weight: bold;
 }
+
+.profile-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 2rem 10rem;
+
+}
+
+.profile_info {
+  margin: auto;
+  text-align: justify;
+  font-size: 20px;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #D17B0F;
+  border-width: 2px;
+  padding: 20px;
+}
+
+.profile-img {
+  margin: auto
+}
