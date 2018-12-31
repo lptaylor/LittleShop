@@ -33,11 +33,9 @@ describe 'As a visitor' do
     expect(page).to have_content(merch_3.created_at)
     expect(page).to_not have_content(merch_4.name)
     expect(page).to_not have_content(merch_4.city)
-    expect(page).to_not have_content(merch_4.state)
     expect(page).to_not have_content(merch_4.created_at)
     expect(page).to_not have_content(merch_5.name)
     expect(page).to_not have_content(merch_5.city)
-    expect(page).to_not have_content(merch_5.state)
     expect(page).to_not have_content(merch_5.created_at)
   end
 end
