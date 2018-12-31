@@ -3,10 +3,14 @@
   <h1>All Merchants</h1>
 </section>
 
-
-<% @mechants.each do |merchant| %>
-  <%= merchant.name %>
-  <%= merchant.city %>
-  <%= merchant.state %>
-  <%= merchant.created_at %>
-<% end %>
+<section class="merchant-show-container">
+  <div class="row">
+  <% @mechants.each_with_index do |merchant, index| %>
+      <div class="merchant col-md-3">
+        <h2><%= merchant.name %></h2>
+        <p><strong>Location:</strong> <%= merchant.city %>,
+        <%= merchant.state %></p>
+        <p><strong>Active since:</strong> <%= merchant.created_at.to_date %></p>
+    </div>
+  <% end %>
+  </div>
