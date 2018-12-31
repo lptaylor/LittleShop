@@ -12,6 +12,15 @@ img {
   width: 20rem;
 }
 
+a {
+    color: white;
+
+  &:hover {
+    color: #6c757d;
+    text-decoration: none;
+  }
+}
+
 #root_icons {
   font-size: 125px;
   margin-right: 20px;
