@@ -58,6 +58,7 @@ a {
 }
 
 .login {
+  width: 50%;
   border-style: solid;
   border-radius: 5px;
   border-color: #D17B0F;
@@ -68,18 +69,6 @@ a {
   background-color: #D17B0F;
 }
 
-.register {
-  border-style: solid;
-  border-radius: 5px;
-  border-color: #D17B0F;
-  border-width: 2px;
-  padding: 20px;
-  text-align: justify;
-  margin: 200px;
-  background-color: #D17B0F;
-  width: 50%;
-  // margin: 0 auto;
-}
 
 .col-md-3 {
   margin-left: 80px;
@@ -89,4 +78,11 @@ a {
   width: 50%;
   text-align: center;
   margin: 2rem auto;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #D17B0F;
+  border-width: 2px;
+  padding: 20px;
+  // text-align: justify;
+  background-color: #D17B0F;
 }
