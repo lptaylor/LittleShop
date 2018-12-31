@@ -32,10 +32,4 @@ class Admin::UsersController < ApplicationController
       flash[:notice] = "#{@user.name}'s account is now disabled"
     end
   end
-
-private
-
-  def update_user_params
-    params.require(:user).permit(:active)
-  end
 end
