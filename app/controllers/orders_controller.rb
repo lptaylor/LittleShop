@@ -17,7 +17,7 @@ class OrdersController < ApplicationController
     redirect_to profile_path(current_user)
     # if items destroyed, needs to be added back to merchant inventory
   end
-
+end
   # # GET /orders/new
   # def new
   #   @order = Order.new
@@ -67,4 +67,3 @@ class OrdersController < ApplicationController
   #   def order_params
   #     params.require(:order).permit(:order_status)
   #   end
-end
