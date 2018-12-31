@@ -32,6 +32,8 @@ class Dashboard::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update_attributes(item_params)
       @item.save
+      redirect_to dashboard_items_path
+      flash[:success] = "Your Item Has Been Edited"
     else
       render :edit
     end

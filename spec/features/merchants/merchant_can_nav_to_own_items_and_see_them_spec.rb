@@ -6,6 +6,7 @@ describe 'As a merchant' do
       @item_1 = create(:item, user_id: @merchant.id)
       @item_2 = create(:item, user_id: @merchant.id)
       @item_3 = create(:item, user_id: @merchant.id, enabled: false)
+      @item_4 = create(:item, user_id: @merchant.id)
       @order_1 = create(:order)
       @order_1.items += [@item_2]
 
@@ -140,5 +141,38 @@ describe 'As a merchant' do
         expect(page).to have_content(item_1.inventory)
         expect(page).to have_content(item_1.price)
       end
+    end
+
+    it 'allows editing of items' do
+      click_link "My Items"
+      within ".item-#{@item_4.id}" do
+        click_link "Edit This Item"
+      end
+
+      expect(current_path).to eq(edit_dashboard_item_path(@item_4))
+      fill_in :item_item_name, with: "LANCE EDIT"
+
+        click_on "Edit Item"
+
+      expect(current_path).to eq(dashboard_items_path)
+
+      within ".item-#{@item_4.id}" do
+        expect(page).to have_content("LANCE EDIT")
+        expect(page).to have_content(@item_4.inventory)
+        expect(page).to have_content(@item_4.price)
+      end
+    end
+
+    it 'will not save edit if missing info' do
+      click_link 'My Items'
+
+      within ".item-#{@item_4.id}" do
+        click_link "Edit This Item"
+      end
+
+      fill_in :item_item_name, with: ""
+
+      click_on 'Edit Item'
+      expect(page).to have_content("1 error prohibited this item from")
     end
 end
