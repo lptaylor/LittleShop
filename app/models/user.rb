@@ -36,4 +36,8 @@ class User < ApplicationRecord
   def upgrade_to_merchant
     update_column(:role, "merchant")
   end
+
+  def downgrade_to_user
+    update_column(:role, "registered_user")
+  end
 end
