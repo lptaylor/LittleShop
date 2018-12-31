@@ -30,10 +30,10 @@ class User < ApplicationRecord
   end
 
   def enable
-    update(active: true)
+    update_column(:active, true)
   end
 
   def disable
-    update(active: false)
+    update_column(:active, false)
   end
 end

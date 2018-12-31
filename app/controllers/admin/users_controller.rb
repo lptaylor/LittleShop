@@ -12,4 +12,23 @@ class Admin::UsersController < ApplicationController
     @user = User.find(params[:id])
   end
 
+  def update
+    @user = User.find(params[:id])
+
+    if @user.active == false
+      @user.enable
+      redirect_to admin_users_path
+      flash[:notice] = "#{@user.name}'s account is now enabled"
+    else
+      @user.disable
+      redirect_to admin_users_path
+      flash[:notice] = "#{@user.name}'s account is now disabled"
+    end
+  end
+
+private
+
+  def update_user_params
+    params.require(:user).permit(:active)
+  end
 end

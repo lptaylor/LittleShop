@@ -7,9 +7,9 @@
   <%= link_to user.name, admin_user_path(user.id) %>
   <%= user.created_at %>
   <%if user.active == true %>
-    <%= button_to "disable", user.disable %>
+    <%= button_to "disable", admin_user_path(user.id), method: :patch %>
   <% else %>
-    <%= button_to "enable", user.enable %>
+    <%= button_to "enable", admin_user_path(user.id), method: :patch %>
   <% end %>
 </div>
 <%end%>
