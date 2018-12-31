@@ -1,4 +1,6 @@
 @import "bootstrap";
+@import "users.scss";
+@import "items.scss";
 
 body {
   background-color: #21A0A0;
@@ -65,24 +67,6 @@ img {
   text-align: justify;
   margin: 200px;
   background-color: #D17B0F;
-}
-
-.item {
-  color: #FCFFF7;
-  border-style: solid;
-  border-radius: 5px;
-  border-color: #D17B0F;
-  border-width: 2px;
-  padding: 10px;
-  margin: 20px;
-  background-color: #D17B0F;
-}
-
-.item img {
-  border-style: solid;
-  border-radius: 5px;
-  border-color: grey;
-  border-width: 2px;
 }
 
 .col-md-3 {
