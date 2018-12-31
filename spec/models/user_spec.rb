@@ -75,12 +75,21 @@ RSpec.describe User, type: :model do
       expect(user_1.active).to eq(true)
       expect(user_1.active).to_not eq(false)
     end
+
     it 'changes a user from enabled to disabled' do
       user_1 = create(:user)
       user_1.disable
 
       expect(user_1.active).to eq(false)
       expect(user_1.active).to_not eq(true)
+    end
+
+    it 'changes a registered user to a merchant' do
+      user_1 = create(:user)
+      user_1.upgrade_to_merchant
+
+      expect(user_1.role).to eq("merchant")
+      expect(user_1.role).to_not eq("registered_user")
     end
   end
 end
