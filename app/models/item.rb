@@ -19,5 +19,4 @@ class Item < ApplicationRecord
   def toggle_active
     toggle(:enabled).save
   end
-
 end

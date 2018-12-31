@@ -11,6 +11,7 @@ class Profile::OrdersController < ApplicationController
   def create
     @order = Order.create(user: current_user)
     @order.add_cart_items(@cart.contents)
+    @order.update_inventory
     redirect_to profile_orders_path
     flash[:success] = "Your order was created successfully"
   end
