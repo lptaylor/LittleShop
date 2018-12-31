@@ -25,7 +25,7 @@ class OrdersController < ApplicationController
     redirect_to profile_orders_path
     flash[:success] = "Your order was created successfully"
   end
-
+end
   # # GET /orders/new
   # def new
   #   @order = Order.new
@@ -75,4 +75,3 @@ class OrdersController < ApplicationController
   #   def order_params
   #     params.require(:order).permit(:order_status)
   #   end
-end

@@ -36,4 +36,12 @@ class User < ApplicationRecord
   def disable
     update_column(:active, false)
   end
+
+  def upgrade_to_merchant
+    update_column(:role, "merchant")
+  end
+
+  def downgrade_to_user
+    update_column(:role, "registered_user")
+  end
 end

@@ -10,6 +10,7 @@
 </div>
 
 <%= link_to "Edit Profile", edit_admin_user_path(@user) %>
+<%= link_to "Upgrade to Merchant", admin_user_path(@user, upgrade: true), :method => :put %>
 
 <h2>Order History</h2>
 <ul class="order-history">
