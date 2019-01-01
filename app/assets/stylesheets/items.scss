@@ -1,3 +1,10 @@
+.stats-container {
+  display: flex;
+  justify-content: space-around;
+  margin: 15px;
+  padding: 12px;
+}
+
 .item {
   color: #FCFFF7;
   border-style: solid;
@@ -27,5 +34,4 @@
   margin: 3rem auto;
   background-color: #D17B0F;
   text-align: center;
-
 }

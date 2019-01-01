@@ -3,19 +3,23 @@
   <h1>Items</h1>
 </section>
 
-<h1>Items</h1>
-<section class="statistics">
-
-  <div id="most-popular">
-    <% @top_items.each do |item| %>
-      <%= item.item_name %>
-    <% end %>
+<section class="stats-container">
+  <div class="most-popular">
+    <h3>Most Popular Items</h3>
+    <ul>
+      <% @top_items.each do |item| %>
+        <li><%= item.item_name %></li>
+      <% end %>
+    </ul>
   </div>
 
-  <div id="least-popular">
-    <% @bottom_items.each do |item| %>
-      <%= item.item_name %>
-    <% end %>
+  <div class="least-popular">
+    <h3>Least Popular Items</h3>
+    <ul>
+      <% @bottom_items.each do |item| %>
+        <li><%= item.item_name %></li>
+      <% end %>
+    </ul>
   </div>
 </section>
 
