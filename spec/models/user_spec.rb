@@ -217,6 +217,5 @@ RSpec.describe User, type: :model do
       top_cities = top_cities_dirty.map {|user| user.city}
       expect(top_cities).to eq([@user_1.city, @user_4.city, @user_6.city])
     end
-
   end
 end

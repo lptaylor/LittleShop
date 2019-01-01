@@ -41,6 +41,46 @@ RSpec.describe Order, type: :model do
     end
   end
 
+  describe 'class methods' do
+    before(:each) do
+      @merch_1 = create(:user, role: 1, name: "merch_1")
+      @merch_2 = create(:user, role: 1, name: "merch_2")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merch_1)
+
+      @user_1 = create(:user, city: "Springfield", state: "Colorado")
+      @user_2 = create(:user, city: "Springfield", state: "Colorado")
+      @user_3 = create(:user, city: "Springfield", state: "Colorado")
+      @user_4 = create(:user, city: "Dayton", state: "Florida")
+
+      @item_1 = create(:item, user: @merch_1, inventory: 1000, price: 1)
+      @item_2 = create(:item, user: @merch_1, inventory: 350, price: 2)
+      @item_3 = create(:item, user: @merch_1, inventory: 800, price: 3)
+      @item_4 = create(:item, user: @merch_1, inventory: 9, price: 4)
+      @item_5 = create(:item, user: @merch_1, inventory: 500, price: 5)
+      @item_6 = create(:item, user: @merch_2, inventory: 10000, price: 0.02)
+
+      @order_1 = create(:order, user: @user_1)
+      @order_2 = create(:order, user: @user_1)
+      @order_3 = create(:order, user: @user_1)
+      @order_4 = create(:order, user: @user_1)
+      @order_5 = create(:order, user: @user_2, order_status: 2)
+      @order_6 = create(:order, user: @user_2)
+
+      @order_item_1 = create(:order_item, item: @item_1, order: @order_1, quantity: 300, fulfilled: false, created_at: 12.days.ago, updated_at: 10.days.ago, price: @item_1.price)
+      @order_item_2 = create(:order_item, item: @item_2, order: @order_2, quantity: 175, fulfilled: false, created_at: 12.days.ago, updated_at: 9.days.ago, price: @item_2.price)
+      @order_item_3 = create(:order_item, item: @item_3, order: @order_3, quantity: 400, fulfilled: false, created_at: 12.days.ago, updated_at: 4.days.ago, price: @item_3.price)
+      @order_item_4 = create(:order_item, item: @item_4, order: @order_4, quantity: 9, fulfilled: false, created_at: 12.days.ago, updated_at: 2.days.ago, price: @item_4.price)
+      @order_item_5 = create(:order_item, item: @item_5, order: @order_5, quantity: 200, fulfilled: true, created_at: 12.days.ago, updated_at: 1.days.ago, price: @item_5.price)
+      @order_item_6 = create(:order_item, item: @item_6, order: @order_6, quantity: 700, fulfilled: false, created_at: 12.days.ago, updated_at: 5.days.ago, price: @item_6.price)
+
+    end
+
+    it 'returns only items for current_merchant that are pending' do
+      pending_orders = Order.pending_orders(@merch_1.id)
+
+      expect(pending_orders).to eq([@order_1, @order_2, @order_3, @order_4])
+    end
+  end
   describe 'statistics methods' do
     before(:each) do
       @user_1 = create(:user, city: "Springfield", state: "Colorado")
