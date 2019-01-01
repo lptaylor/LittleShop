@@ -28,4 +28,8 @@ class Item < ApplicationRecord
       .where("order_items.fulfilled=?", true)
       .limit(5)
   end
+
+  def order_quantity(order)
+    order_items.where(order_id: order.id).pluck(:quantity).last
+  end
 end
