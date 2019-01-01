@@ -12,7 +12,6 @@
         <li><img src="<%=order_item.item.image_url%>" </li>
         <% if order_item.order.order_status == 'pending' %>
         <!-- < % binding.pry %> -->
-          <%= link_to 'Cancel This Order', admin_order_path(order_item), method: :delete, data: { confirm: 'Are you sure?' } %>
         <% end %>
       </div>
     <% end %>
@@ -25,3 +24,4 @@
     <p>Number of Items in Order: <%= @order.total_order_items %> </p>
     <p>Total Order Price: <%= number_to_currency(@order.total_order_price) %> </p>
 </div>
+<%= link_to 'Cancel This Order', admin_order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %>

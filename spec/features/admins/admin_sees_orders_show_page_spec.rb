@@ -28,7 +28,6 @@ describe 'as an Admin' do
         expect(page).to have_content("Description: #{item_1.description}")
         expect(page).to have_content("Price: $#{order_item_1.price}")
         expect(page).to have_content("Quantity: #{order_item_1.quantity}")
-        expect(page).to have_link("Cancel This Order")
       end
 
       within ".order-item-1" do
@@ -36,7 +35,6 @@ describe 'as an Admin' do
         expect(page).to have_content("Description: #{item_2.description}")
         expect(page).to have_content("Price: $#{(order_item_2.price)}")
         expect(page).to have_content("Quantity: #{order_item_2.quantity}")
-        expect(page).to have_link("Cancel This Order")
       end
 
       within ".order-info" do
@@ -64,10 +62,7 @@ describe 'as an Admin' do
 
       click_link "#{order_2.id}"
 
-      within ".order-item-0" do
-        click_link "Cancel This Order"
-
-      end
+      click_link "Cancel This Order"
       expect(page).to have_content('users order was successfully cancelled')
     end
   end
