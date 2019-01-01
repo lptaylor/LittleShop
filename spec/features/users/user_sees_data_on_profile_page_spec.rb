@@ -16,12 +16,12 @@ describe 'as a registered user' do
 
       visit profile_path
 
-      expect(page).to have_content("Name: #{user.name}")
-      expect(page).to have_content("Email: #{user.email}")
-      expect(page).to have_content("Address: #{user.address}")
-      expect(page).to have_content("City: #{user.city}")
-      expect(page).to have_content("State: #{user.state}")
-      expect(page).to have_content("Zipcode: #{user.zipcode}")
+      expect(page).to have_content("NAME: #{user.name}")
+      expect(page).to have_content("EMAIL: #{user.email}")
+      expect(page).to have_content("ADDRESS: #{user.address}")
+      expect(page).to have_content("CITY: #{user.city}")
+      expect(page).to have_content("STATE: #{user.state}")
+      expect(page).to have_content("ZIP: #{user.zipcode}")
       expect(page).to_not have_content(user.password)
       expect(page).to have_link("Edit Profile")
     end
