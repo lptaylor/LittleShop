@@ -1,15 +1,22 @@
 <section class="jumbotron">
-<h1>All Registered Users</h1>
+<h1>All Merchants</h1>
 </section>
 
-<% @merchants.each do |merchant|%>
-<div id="merchant-<%= merchant.id %>">
-  <%= link_to merchant.name, admin_merchant_path(merchant.id) %>
-  <%= merchant.city %>, <%= merchant.state %>
-  <%if merchant.active == true %>
-    <%= button_to "disable", admin_merchant_path(merchant.id), method: :patch %>
-  <% else %>
-    <%= button_to "enable", admin_merchant_path(merchant.id), method: :patch %>
-  <% end %>
+<div class="row">
+
+  <% @merchants.each do |merchant|%>
+  <div class="merchant col-md-3">
+    <div id="merchant-<%= merchant.id %>">
+      <h3><%= link_to merchant.name, admin_merchant_path(merchant.id) %></h3>
+      <p><%= merchant.city %>, <%= merchant.state %></p>
+        <%if merchant.active == true %>
+          <%= button_to "disable", admin_merchant_path(merchant.id), method: :patch %>
+        <% else %>
+          <%= button_to "enable", admin_merchant_path(merchant.id), method: :patch %>
+        <% end %>
+        </br>
+    </div>
+  </div>
+  <%end%>
+
 </div>
-<%end%>

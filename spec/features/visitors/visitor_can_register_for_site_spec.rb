@@ -118,8 +118,6 @@ describe 'As a visitor' do
     fill_in :user_state, with: user.state
     fill_in :user_zipcode, with: user.zipcode
 
-    expect(page).to have_content("Password confirmation")
-
     click_on "Create User"
 
     expect(current_path).to eq(users_path)

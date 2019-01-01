@@ -50,9 +50,9 @@ describe 'Registered User' do
       visit cart_path(@user)
       click_link "Check Out"
 
-      expect(page).to have_link("Cancel Order")
+      expect(page).to have_button("Cancel Order")
 
-      click_link "Cancel Order"
+      click_button "Cancel Order"
 
       expect(current_path).to eq(profile_path(@user))
       expect(page).to have_content("Order was successfully cancelled")
@@ -69,7 +69,7 @@ describe 'Registered User' do
 
       expect(@user.orders.first.order_status).to eq("pending")
 
-      click_link "Cancel Order"
+      click_button "Cancel Order"
 
       expect(@item_1.order_items.first.fulfilled).to eq(false)
       expect(@item_2.order_items.first.fulfilled).to eq(false)
@@ -89,7 +89,7 @@ describe 'Registered User' do
       click_link "Check Out"
       expect(@item_2.reload.inventory).to eq(8)
 
-      click_link "Cancel Order"
+      click_button "Cancel Order"
 
       expect(@item_2.reload.inventory).to eq(10)
     end
@@ -108,7 +108,7 @@ describe 'Registered User' do
       expect(@item_1.reload.inventory).to eq(19)
       expect(@item_2.reload.inventory).to eq(9)
 
-      click_link "Cancel Order"
+      click_button "Cancel Order"
 
       expect(@item_1.reload.inventory).to eq(20)
       expect(@item_2.reload.inventory).to eq(10)

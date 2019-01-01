@@ -1,5 +1,7 @@
 require 'rails_helper'
 
+include ActionView::Helpers::NumberHelper
+
 describe 'as a user' do
     before(:each) do
       @item_1 = create(:item)
@@ -17,9 +19,9 @@ describe 'as a user' do
       expect(current_path).to eq("/items/#{@item_1.id}")
       expect(page).to have_content(@item_1.item_name)
       expect(page).to have_content(@item_1.description)
-      expect(page).to have_content(@item_1.inventory)
-      expect(page).to have_content(@item_1.merchant_name)
-      expect(page).to have_content(@item_1.price)
+      expect(page).to have_content("Quantity in Stock: #{@item_1.inventory}")
+      expect(page).to have_content("Merchant: #{@item_1.merchant_name}")
+      expect(page).to have_content("Price: #{number_to_currency(@item_1.price)}")
       expect(page).to have_button("Add Item to Cart")
     end
   end

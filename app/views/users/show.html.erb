@@ -1,12 +1,29 @@
-<h1>Welcome, <%= current_user.email %></h1>
+<section class="jumbotron">
+  <h1>Welcome, <%= current_user.email %></h1>
+</section>
 
-<div class="profile_info">
-  <p>Name: <%= current_user.name %></p>
-  <p>Email: <%= current_user.email %></p>
-  <p>Address: <%= current_user.address %></p>
-  <p>City: <%= current_user.city %></p>
-  <p>State: <%= current_user.state %></p>
-  <p>Zipcode: <%= current_user.zipcode %></p>
-</div>
 
-<%= link_to "Edit Profile", profile_edit_path(current_user) %>
+<section class="profile-container">
+
+  <div class="profile-img">
+    <img src="https://images.unsplash.com/photo-1517423568366-8b83523034fd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=675&q=80">
+  </div>
+
+  <div class="profile_info">
+    <p><strong>NAME:</strong> <%= current_user.name %></p>
+
+    <p><strong>EMAIL:</strong> <%= current_user.email %></p>
+
+    <p><strong>ADDRESS:</strong> <%= current_user.address %></p>
+
+    <p><strong>CITY:</strong> <%= current_user.city %></p>
+
+    <p><strong>STATE:</strong> <%= current_user.state %></p>
+
+    <p><strong>ZIP:</strong> <%= current_user.zipcode %></p>
+    <br>
+
+  <%= button_to "Edit Profile", profile_edit_path(current_user) %>
+  </div>
+
+</section>
