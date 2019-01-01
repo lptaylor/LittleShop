@@ -23,7 +23,9 @@
     <p><strong>ZIP:</strong> <%= current_user.zipcode %></p>
     <br>
 
-  <%= button_to "Edit Profile", profile_edit_path(current_user) %>
+    <div class="edit_profile">
+    <%= link_to "Edit Profile", profile_edit_path(current_user) %>
+    </div>
   </div>
 
 </section>

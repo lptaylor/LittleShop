@@ -68,9 +68,9 @@ describe 'As a visitor' do
       visit cart_path(@user)
 
       expect(page).to have_content(item_5.item_name)
-      expect(page).to have_content(item_5.image_url)
+      expect(page).to have_css("img[src='#{item_5.image_url}']")
       expect(page).to have_content(item_5.merchant_name)
-      expect(page).to have_content("#{item_5.item_name} count: 1")
+      expect(page).to have_content("Item Count: 1")
       expect(page).to have_content(item_5.total_for_item)
   end
     it 'can see grand total of all items in cart' do
