@@ -6,6 +6,13 @@ class UsersController < ApplicationController
 
   def index
     @mechants = User.active_merchants
+    @top_three_quantity = User.top_sellers_by_quantity
+    @top_three_revenue = User.top_sellers_by_revenue
+    @top_three_by_avg_fulfill_time = User.ordered_by_fulfillment("asc")
+    @bottom_three_by_avg_fulfill_time = User.ordered_by_fulfillment("desc")
+    @top_three_states = User.ordered_by_states_most_shipped_to
+    @top_three_cities = User.ordered_by_cities_most_shipped_to
+    @top_three_largest_orders = Order.largest_orders
   end
 
   def new
@@ -54,4 +61,5 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:name, :address, :city, :state, :zipcode, :email, :password, :password_confirmation)
     end
+
 end

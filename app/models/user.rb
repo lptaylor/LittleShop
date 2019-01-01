@@ -29,6 +29,59 @@ class User < ApplicationRecord
     where(role: "merchant")
   end
 
+  def self.top_sellers_by_quantity
+    User.joins(:items, {items: :order_items})
+      .select("users.*, sum(order_items.quantity) as top_by_qty")
+      .group(:id)
+      .where("order_items.fulfilled=?", true)
+      .where("users.role = 1")
+      .order("top_by_qty desc")
+      .limit(3)
+  end
+
+  def self.top_sellers_by_revenue
+    User.joins(:items, {items: :order_items})
+      .select("users.*, sum(order_items.price*order_items.quantity) as revenue")
+      .group(:id)
+      .group("order_items.item_id")
+      .where("order_items.fulfilled=?", true)
+      .where("users.role = 1")
+      .order("revenue desc")
+      .limit(3)
+  end
+
+  def self.ordered_by_fulfillment(direction)
+    User.joins(items: :order_items)
+    .select("users.*, avg(order_items.updated_at-order_items.created_at) as avg_fulfill_time")
+    .group(:id)
+    .where("order_items.fulfilled = true")
+    .where("users.role = 1")
+    .order("avg_fulfill_time #{direction}")
+    .limit(3)
+  end
+
+  def self.ordered_by_states_most_shipped_to
+    User.joins(:orders, {orders: :order_items})
+    .select("users.state, count(*) as total_by_state")
+    .where("order_items.fulfilled = true")
+    .where("users.role = 0")
+    .group("users.state")
+    .order("total_by_state desc")
+    .limit(3)
+  end
+
+  def self.ordered_by_cities_most_shipped_to
+    User.joins(:orders, {orders: :order_items})
+      .select(("users.city, users.state, count(orders.id) as city_states"))
+      .where("order_items.fulfilled = true")
+      .where("users.role = 0")
+      .group(:state)
+      .group(:id)
+      .group(:city)
+      .order("city_states desc")
+      .limit(3)
+  end
+
   def enable
     update_column(:active, true)
   end

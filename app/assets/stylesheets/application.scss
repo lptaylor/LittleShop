@@ -1,4 +1,7 @@
 @import "bootstrap";
+@import "users.scss";
+@import "items.scss";
+@import "orders.scss";
 
 body {
   background-color: #21A0A0;
@@ -8,6 +11,15 @@ body {
 
 img {
   width: 20rem;
+}
+
+a {
+    color: white;
+
+  &:hover {
+    color: #6c757d;
+    text-decoration: none;
+  }
 }
 
 #root_icons {
@@ -46,6 +58,7 @@ img {
 }
 
 .login {
+  width: 50%;
   border-style: solid;
   border-radius: 5px;
   border-color: #D17B0F;
@@ -56,35 +69,19 @@ img {
   background-color: #D17B0F;
 }
 
-.register {
-  border-style: solid;
-  border-radius: 5px;
-  border-color: #D17B0F;
-  border-width: 2px;
-  padding: 10px;
-  text-align: justify;
-  margin: 200px;
-  background-color: #D17B0F;
-}
-
-.item {
-  color: #FCFFF7;
-  border-style: solid;
-  border-radius: 5px;
-  border-color: #D17B0F;
-  border-width: 2px;
-  padding: 10px;
-  margin: 20px;
-  background-color: #D17B0F;
-}
-
-.item img {
-  border-style: solid;
-  border-radius: 5px;
-  border-color: grey;
-  border-width: 2px;
-}
 
 .col-md-3 {
   margin-left: 80px;
+}
+
+.form_container {
+  width: 50%;
+  text-align: center;
+  margin: 2rem auto;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #D17B0F;
+  border-width: 2px;
+  padding: 20px;
+  background-color: #D17B0F;
 }

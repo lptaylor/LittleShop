@@ -43,4 +43,15 @@ class Order < ApplicationRecord
     end
   end
 
+  def self.largest_orders
+    Order.joins(:order_items)
+    .select("order_items.quantity, orders.*, sum(quantity)")
+    .where("order_items.fulfilled = true")
+    .group(:id)
+    .group(:order_id)
+    .group(:quantity)
+    .order("quantity desc")
+    .limit(3)
+  end
+
 end

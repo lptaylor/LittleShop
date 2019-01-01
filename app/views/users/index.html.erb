@@ -4,9 +4,57 @@
 </section>
 
 
-<% @mechants.each do |merchant| %>
-  <%= merchant.name %>
-  <%= merchant.city %>
-  <%= merchant.state %>
-  <%= merchant.created_at %>
-<% end %>
+<div class="top-three-merch-quantity">
+  <% @top_three_quantity.each do |merch| %>
+    <%= merch.name %>
+  <% end  %>
+</div>
+
+<div class="top-three-merch-revenue">
+  <% @top_three_revenue.each do |merch| %>
+    <%= merch.name %>
+  <% end  %>
+</div>
+
+<div class="top-three-merch-fulfillment">
+  <% @top_three_by_avg_fulfill_time.each do |merch| %>
+    <%= merch.name %>
+  <% end  %>
+</div>
+
+<div class="bottom-three-merch-fulfillment">
+  <% @bottom_three_by_avg_fulfill_time.each do |merch| %>
+    <%= merch.name %>
+  <% end  %>
+</div>
+
+<div class="top-three-states">
+  <% @top_three_states.each do |user| %>
+    <%= user.state %>
+  <% end  %>
+</div>
+
+<div class="top-three-cities">
+  <% @top_three_cities.each do |user| %>
+    <%= "#{user.city}, #{user.state}" %>
+  <% end  %>
+</div>
+
+<div class="top-three-largest-orders">
+  <% @top_three_largest_orders.each do |order| %>
+    <%= "#{order.id}, #{order.quantity}" %>
+  <% end  %>
+</div>
+
+<section class="merchant-show-container">
+  <div class="row">
+  <% @mechants.each_with_index do |merchant, index| %>
+      <div class="merchant col-md-3">
+        <h2><%= merchant.name %></h2>
+        <p><strong>Location:</strong> <%= merchant.city %>,
+        <%= merchant.state %></p>
+        <p><strong>Active since:</strong> <%= merchant.created_at.to_date %></p>
+      </div>
+  <% end %>
+  </div>
+
