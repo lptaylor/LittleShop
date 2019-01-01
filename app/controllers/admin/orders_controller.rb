@@ -8,7 +8,7 @@ class Admin::OrdersController < ApplicationController
   end
 
   def destroy
-    @order = OrderItem.find(params[:id]).order
+    @order = Order.find(params[:id])
     @order.order_status = "cancelled"
     @order.add_back_inventory
     @order.save
