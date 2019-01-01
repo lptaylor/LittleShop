@@ -78,9 +78,10 @@ order_8 = Order.create(user: user_8)
 order_9 = Order.create(user: user_9)
 order_10 = Order.create(user: user_10)
 order_11 = Order.create(user: user_11)
-order_12 = Order.create(user: user_13)
-order_13 = Order.create(user: user_14)
-order_14 = Order.create(user: user_15)
+order_12 = Order.create(user: user_12)
+order_13 = Order.create(user: user_13)
+order_14 = Order.create(user: user_14)
+order_15 = Order.create(user: user_15)
 
 order_item_1 = OrderItem.create(item: item_1, order: order_1, quantity: 1, fulfilled: true, created_at: 12.days.ago, updated_at: 10.days.ago, price: item_1.price)
 order_item_2 = OrderItem.create(item: item_2, order: order_1, quantity: 1, fulfilled: true, created_at: 12.days.ago, updated_at: 9.days.ago, price: item_2.price)
@@ -107,4 +108,4 @@ order_item_20 = OrderItem.create(item: item_20, order: order_15, quantity: 1, fu
 p "Created #{Item.count} items"
 p "Created #{User.count} users"
 p "Created #{Order.count} orders"
-p "Created #{Order_item.count} orders_items"
+p "Created #{OrderItem.count} orders_items"
