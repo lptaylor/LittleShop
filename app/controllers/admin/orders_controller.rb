@@ -6,4 +6,13 @@ class Admin::OrdersController < ApplicationController
   def show
     @order = Order.find(params[:id])
   end
+
+  def destroy
+    @order = OrderItem.find(params[:id]).order
+    @order.order_status = "cancelled"
+    @order.add_back_inventory
+    @order.save
+    flash[:success] = 'users order was successfully cancelled'
+    redirect_to admin_user_path(current_user)
+  end
 end
