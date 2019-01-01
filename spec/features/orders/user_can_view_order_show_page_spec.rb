@@ -15,14 +15,14 @@ describe 'As a registered user' do
 
       expect(page).to have_content(order_1.id)
 
-      within ".order-item-0" do
+      within "#order-item-0" do
         expect(page).to have_content("Name: #{item_1.item_name}")
         expect(page).to have_content("Description: #{item_1.description}")
         expect(page).to have_content("Price: $#{order_item_1.price}")
         expect(page).to have_content("Quantity: #{order_item_1.quantity}")
       end
 
-      within ".order-item-1" do
+      within "#order-item-1" do
         expect(page).to have_content("Name: #{item_2.item_name}")
         expect(page).to have_content("Description: #{item_2.description}")
         expect(page).to have_content("Price: $#{(order_item_2.price)}")

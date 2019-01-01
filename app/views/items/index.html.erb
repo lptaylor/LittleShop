@@ -30,8 +30,12 @@
         <h2><%= link_to item.item_name, item_path(item) %>:</h2>
         <h2><%= number_to_currency(item.price) %></h2>
         <a href='<%=item_path(item) %>'><img src="<%=item.image_url%>" </a>
+        <br>
+        <br>
         <h4>Quantity in Stock: <%= item.inventory %></h4>
-        <h5>Item Description: <%= item.description %></h5>
+        <br>
+        <h5><%= item.description %></h5>
+        <br>
         <h4>Merchant Name: <%= item.merchant_name %></h4>
         </div>
       <% end %>
