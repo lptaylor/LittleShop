@@ -45,7 +45,7 @@ describe 'as a user' do
 
       visit items_path
 
-      within "#most-popular" do
+      within ".most-popular" do
         expect(page).to have_content(item_1.item_name)
         expect(page).to have_content(item_2.item_name)
         expect(page).to have_content(item_3.item_name)
@@ -53,7 +53,7 @@ describe 'as a user' do
         expect(page).to have_content(item_5.item_name)
       end
 
-      within "#least-popular" do
+      within ".least-popular" do
         expect(page).to have_content(item_8.item_name)
         expect(page).to have_content(item_9.item_name)
         expect(page).to have_content(item_10.item_name)
@@ -61,7 +61,7 @@ describe 'as a user' do
         expect(page).to have_content(item_12.item_name)
       end
 
-      within ".statistics" do
+      within ".stats-container" do
         expect(page).to_not have_content(item_6.item_name)
         expect(page).to_not have_content(item_7.item_name)
       end
