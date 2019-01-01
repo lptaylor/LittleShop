@@ -1,10 +1,10 @@
 <h1>My Dashboard</h1>
 
-<%= @current_merchant.name %>
-<%= @current_merchant.email %>
-<%= @current_merchant.city %>
-<%= @current_merchant.state %>
-<%= @current_merchant.zipcode %>
+<%= current_user.name %>
+<%= current_user.email %>
+<%= current_user.city %>
+<%= current_user.state %>
+<%= current_user.zipcode %>
 
 <%= link_to "My Items", dashboard_items_path %>
 

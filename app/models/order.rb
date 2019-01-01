@@ -55,8 +55,9 @@ class Order < ApplicationRecord
   end
 
   def self.pending_orders(id)
-    Order.where(order_status: 0)
-    .where("orders.user_id = ?", id)
+    Order.joins(:items)
+    .where(order_status: 0)
+    .where("items.user_id = #{id}")
   end
 
 end

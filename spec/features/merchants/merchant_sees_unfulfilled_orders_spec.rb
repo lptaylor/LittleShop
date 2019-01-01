@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'as a merchant' do
   before(:each) do
-    before(:each) do
+
       @user_1 = create(:user, city: "Springfield", state: "Colorado")
       @user_2 = create(:user, city: "Springfield", state: "Colorado")
       @user_3 = create(:user, city: "Springfield", state: "Colorado")
@@ -17,6 +17,7 @@ describe 'as a merchant' do
       @user_12 = create(:user, city: "Blue Field", state: "Washington")
 
       @merch_1 = create(:user, role: 1, name: "merch_1")
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merch_1)
       @merch_2 = create(:user, role: 1, name: "merch_2")
 
       @item_1 = create(:item, user: @merch_1, inventory: 1000, price: 1)
@@ -37,7 +38,7 @@ describe 'as a merchant' do
       @order_2 = create(:order, user: @user_1)
       @order_3 = create(:order, user: @user_1)
       @order_4 = create(:order, user: @user_1)
-      @order_5 = create(:order, user: @user_2, status: 2)
+      @order_5 = create(:order, user: @user_2, order_status: 2)
       @order_6 = create(:order, user: @user_2)
       @order_7 = create(:order, user: @user_2)
       @order_8 = create(:order, user: @user_3)
@@ -45,9 +46,9 @@ describe 'as a merchant' do
       @order_10 = create(:order, user: @user_5)
       @order_11 = create(:order, user: @user_4)
       @order_12 = create(:order, user: @user_4)
+      @order_13 = create(:order, user: @user_4)
 
       @order_item_1 = create(:order_item, item: @item_13, order: @order_1, quantity: 300, fulfilled: false, created_at: 12.days.ago, updated_at: 10.days.ago, price: @item_1.price)
-      @order_item_13 = create(:order_item, item: @item_1, order: @order_1, quantity: 250, fulfilled: false, created_at: 12.days.ago, updated_at: 10.days.ago, price: @item_1.price)
       @order_item_2 = create(:order_item, item: @item_2, order: @order_2, quantity: 175, fulfilled: false, created_at: 12.days.ago, updated_at: 9.days.ago, price: @item_2.price)
       @order_item_3 = create(:order_item, item: @item_3, order: @order_3, quantity: 400, fulfilled: false, created_at: 12.days.ago, updated_at: 4.days.ago, price: @item_3.price)
       @order_item_4 = create(:order_item, item: @item_4, order: @order_4, quantity: 9, fulfilled: false, created_at: 12.days.ago, updated_at: 2.days.ago, price: @item_4.price)
@@ -59,7 +60,8 @@ describe 'as a merchant' do
       @order_item_10 = create(:order_item, item: @item_10, order: @order_10, quantity: 30, fulfilled: false, created_at: 12.days.ago, updated_at: 5.days.ago, price: @item_10.price)
       @order_item_11 = create(:order_item, item: @item_11, order: @order_11, quantity: 25, fulfilled: false, created_at: 12.days.ago, updated_at: 5.days.ago, price: @item_11.price)
       @order_item_12 = create(:order_item, item: @item_12, order: @order_12, quantity: 50, fulfilled: false, created_at: 12.days.ago, updated_at: 11.days.ago, price: @item_12.price)
-
+      @order_item_13 = create(:order_item, item: @item_1, order: @order_1, quantity: 250, fulfilled: false, created_at: 12.days.ago, updated_at: 10.days.ago, price: @item_1.price)
+      @order_item_14 = create(:order_item, item: @item_13, order: @order_13, quantity: 250, fulfilled: false, created_at: 12.days.ago, updated_at: 10.days.ago, price: @item_1.price)
       visit '/dashboard'
     end
 
@@ -69,7 +71,7 @@ describe 'as a merchant' do
         expect(page).to have_content(@order_7.id)
         expect(page).to have_content(@order_9.id)
         expect(page).to_not have_content(@order_5.id)
+        expect(page).to_not have_content(@order_13.id)
       end
     end
-  end
 end
