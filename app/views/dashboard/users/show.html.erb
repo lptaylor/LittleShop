@@ -1,0 +1,18 @@
+<h1>My Dashboard</h1>
+
+<%= current_user.name %>
+<%= current_user.email %>
+<%= current_user.city %>
+<%= current_user.state %>
+<%= current_user.zipcode %>
+
+<%= link_to "My Items", dashboard_items_path %>
+
+<div class="pending-orders">
+  <% @pending_orders.each do |order| %>
+  <li><%= link_to order.id, dashboard_order_path(order) %></li>
+  <li><%= order.created_at %></li>
+  <li><%= order.total_order_items %></li>  
+  <li><%= order.total_order_price %></li>  
+  <% end %>
+</div>

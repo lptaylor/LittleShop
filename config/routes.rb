@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   end
 
   namespace :dashboard do
+    get '/', to: "users#show"
     resources :items do
       member do
         post '/toggle_active', to: 'items#toggle_active', as: 'toggle'
@@ -48,6 +49,5 @@ Rails.application.routes.draw do
   post '/login', to: "sessions#create"
   delete '/logout', to: "sessions#destroy"
 
-  get '/dashboard', to: 'dashboard#show'
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end
