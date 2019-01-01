@@ -36,11 +36,6 @@ describe 'As a registered user' do
         expect(page).to have_content("Number of Items in Order: #{order_1.total_order_items}")
         expect(page).to have_content("Total Order Price: $#{order_1.total_order_price}")
       end
-
-
-
-
-
     end
   end
 end
