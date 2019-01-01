@@ -7,7 +7,7 @@
     <% current_user.orders.each_with_index do |order, index| %>
       <div class="order col-md-3">
         <div id="order-<%= index %>">
-          <h2>Order Id: <%= link_to order.id, order_path(order) %> </h2>
+          <h2><%= link_to "Order Id: #{order.id}", order_path(order) %> </h2>
           <p>Order Placed On: <%= order.created_at.to_date %></p>
           <p>Order Last Updated: <%= order.updated_at.to_date %></p>
           <p>Order Status: <%= order.order_status %></p>
