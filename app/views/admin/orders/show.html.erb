@@ -48,7 +48,7 @@
   </div>
 
 </div>
-                  
-<% if order_item.order.order_status == 'pending' %>
+
+<% if @order.order_status == 'pending' %>
 <%= link_to 'Cancel This Order', admin_order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %>
 <% end %>
