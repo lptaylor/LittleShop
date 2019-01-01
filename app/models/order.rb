@@ -54,4 +54,9 @@ class Order < ApplicationRecord
     .limit(3)
   end
 
+  def self.pending_orders(id)
+    Order.where(order_status: 0)
+    .where("orders.user_id = ?", id)
+  end
+
 end
