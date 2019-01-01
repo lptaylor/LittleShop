@@ -7,6 +7,7 @@
   padding: 10px;
   margin: 20px;
   background-color: #D17B0F;
+  text-align: center;
 }
 
 .item img {
@@ -14,4 +15,17 @@
   border-radius: 5px;
   border-color: grey;
   border-width: 2px;
+}
+
+.item-show-container  {
+  color: #FCFFF7;
+  border-style: solid;
+  border-radius: 5px;
+  border-color: #D17B0F;
+  border-width: 2px;
+  padding: 10px;
+  margin: 3rem auto;
+  background-color: #D17B0F;
+  text-align: center;
+
 }
