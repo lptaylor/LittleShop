@@ -3,6 +3,29 @@
   <h1>All Merchants</h1>
 </section>
 
+<div class="top-three-merch-quantity">
+  <% @top_three_quantity.each do |merch| %>
+    <%= merch.name %>
+  <% end  %>
+</div>
+
+<div class="top-three-merch-revenue">
+  <% @top_three_revenue.each do |merch| %>
+    <%= merch.name %>
+  <% end  %>
+</div>
+
+<div class="top-three-merch-fulfillment">
+  <% @top_three_by_avg_fulfill_time.each do |merch| %>
+    <%= merch.name %>
+  <% end  %>
+</div>
+
+<div class="bottom-three-merch-fulfillment">
+  <% @bottom_three_by_avg_fulfill_time.each do |merch| %>
+    <%= merch.name %>
+  <% end  %>
+</div>
 
 <% @mechants.each do |merchant| %>
   <%= merchant.name %>
