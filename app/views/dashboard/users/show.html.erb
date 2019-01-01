@@ -10,6 +10,9 @@
 
 <div class="pending-orders">
   <% @pending_orders.each do |order| %>
-    <%= link_to order.id, dashboard_order_path(order) %>
-    <% end %>
+  <li><%= link_to order.id, dashboard_order_path(order) %></li>
+  <li><%= order.created_at %></li>
+  <li><%= order.total_order_items %></li>  
+  <li><%= order.total_order_price %></li>  
+  <% end %>
 </div>
