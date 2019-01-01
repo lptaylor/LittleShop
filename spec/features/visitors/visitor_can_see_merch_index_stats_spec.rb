@@ -3,10 +3,17 @@ require 'rails_helper'
 describe 'As a Visitor' do
   before(:each) do
     @user_1 = create(:user, city: "Denver", state: "Colorado")
-    @user_2 = create(:user, city: "Springfield", state: "Missouri")
-    @user_3 = create(:user, city: "Springfield", state: "Illinois")
+    @user_2 = create(:user, city: "Springfield", state: "Colorado")
+    @user_3 = create(:user, city: "Springfield", state: "Colorado")
     @user_4 = create(:user, city: "Miami", state: "Florida")
-    @user_5 = create(:user, city: "Blue Field", state: "Utah")
+    @user_5 = create(:user, city: "Timmy", state: "Florida")
+    @user_6 = create(:user, city: "Denver", state: "Ohio")
+    @user_7 = create(:user, city: "Timmy", state: "Florida")
+    @user_8 = create(:user, city: "Springfield", state: "Colorado")
+    @user_9 = create(:user, city: "Miami", state: "Ohio")
+    @user_10 = create(:user, city: "Blue Field", state: "D.C.")
+    @user_11 = create(:user, city: "Miami", state: "Colorado")
+    @user_12 = create(:user, city: "Blue Field", state: "Washington")
 
     @merch_1 = create(:user, role: 1, name: "merch_1")
     @merch_2 = create(:user, role: 1, name: "merch_2")
@@ -38,14 +45,14 @@ describe 'As a Visitor' do
     @order_2 = create(:order, user: @user_2)
     @order_3 = create(:order, user: @user_3)
     @order_4 = create(:order, user: @user_4)
-    @order_5 = create(:order, user: @user_1)
-    @order_6 = create(:order, user: @user_2)
-    @order_7 = create(:order, user: @user_3)
-    @order_8 = create(:order, user: @user_4)
-    @order_9 = create(:order, user: @user_1)
-    @order_10 = create(:order, user: @user_2)
-    @order_11 = create(:order, user: @user_5)
-    @order_12 = create(:order, user: @user_5)
+    @order_5 = create(:order, user: @user_5)
+    @order_6 = create(:order, user: @user_6)
+    @order_7 = create(:order, user: @user_7)
+    @order_8 = create(:order, user: @user_8)
+    @order_9 = create(:order, user: @user_9)
+    @order_10 = create(:order, user: @user_10)
+    @order_11 = create(:order, user: @user_11)
+    @order_12 = create(:order, user: @user_12)
 
     @order_item_1 = create(:order_item, item: @item_1, order: @order_1, quantity: 300, fulfilled: true, created_at: 12.days.ago, updated_at: 10.days.ago, price: @item_1.price)
     @order_item_2 = create(:order_item, item: @item_2, order: @order_2, quantity: 175, fulfilled: true, created_at: 12.days.ago, updated_at: 9.days.ago, price: @item_2.price)
@@ -100,7 +107,10 @@ describe 'As a Visitor' do
 
   it 'shows top three states where orders are shipped' do
     within ".top-three-states" do
-
+      expect(page).to have_content(@user_1.state)
+      expect(page).to have_content(@user_4.state)
+      expect(page).to have_content(@user_6.state)
+      expect(page).to_not have_content(@user_12.state)
     end
   end
 
@@ -112,7 +122,7 @@ describe 'As a Visitor' do
 
   xit 'shows top three largest orders by quantity' do
     within ".top-three-largest-orders" do
-      
+
     end
   end
 end

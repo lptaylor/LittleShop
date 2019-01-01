@@ -60,6 +60,16 @@ class User < ApplicationRecord
     .limit(3)
   end
 
+  def self.ordered_by_states_most_shipped_to
+    User.joins(:orders, {orders: :order_items})
+    .select("users.state, count(*) as total_by_state")
+    .where("order_items.fulfilled = true")
+    .where("users.role = 0")
+    .group("users.state")
+    .order("total_by_state desc")
+    .limit(3)
+  end
+
   def enable
     update_column(:active, true)
   end

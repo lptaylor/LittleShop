@@ -27,6 +27,12 @@
   <% end  %>
 </div>
 
+<div class="top-three-states">
+  <% @top_three_states.each do |merch| %>
+    <%= merch.state %>
+  <% end  %>
+</div>
+
 <% @mechants.each do |merchant| %>
   <%= merchant.name %>
   <%= merchant.city %>

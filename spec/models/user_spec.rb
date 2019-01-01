@@ -117,10 +117,17 @@ RSpec.describe User, type: :model do
   describe 'statistics methods' do
     before(:each) do
       @user_1 = create(:user, city: "Denver", state: "Colorado")
-      @user_2 = create(:user, city: "Springfield", state: "Missouri")
-      @user_3 = create(:user, city: "Springfield", state: "Illinois")
+      @user_2 = create(:user, city: "Springfield", state: "Colorado")
+      @user_3 = create(:user, city: "Springfield", state: "Colorado")
       @user_4 = create(:user, city: "Miami", state: "Florida")
-      @user_5 = create(:user, city: "Blue Field", state: "Utah")
+      @user_5 = create(:user, city: "Timmy", state: "Florida")
+      @user_6 = create(:user, city: "Denver", state: "Ohio")
+      @user_7 = create(:user, city: "Timmy", state: "Florida")
+      @user_8 = create(:user, city: "Springfield", state: "Colorado")
+      @user_9 = create(:user, city: "Miami", state: "Ohio")
+      @user_10 = create(:user, city: "Blue Field", state: "D.C.")
+      @user_11 = create(:user, city: "Miami", state: "Colorado")
+      @user_12 = create(:user, city: "Blue Field", state: "Washington")
 
       @merch_1 = create(:user, role: 1, name: "merch_1")
       @merch_2 = create(:user, role: 1, name: "merch_2")
@@ -144,22 +151,22 @@ RSpec.describe User, type: :model do
       @item_7 = create(:item, user: @merch_7, price: 7)
       @item_8 = create(:item, user: @merch_8, price: 8)
       @item_9 = create(:item, user: @merch_9, price: 9)
-      @item_10 = create(:item, user: @merch_10, price: 250000)
-      @item_11= create(:item, user: @merch_11, price: 600000)
-      @item_12 = create(:item, user: @merch_12, price: 2000000)
+      @item_10 = create(:item, user: @merch_10, price: 2500030)
+      @item_11= create(:item, user: @merch_11, price: 6000030)
+      @item_12 = create(:item, user: @merch_12, price: 20000030)
 
       @order_1 = create(:order, user: @user_1)
       @order_2 = create(:order, user: @user_2)
       @order_3 = create(:order, user: @user_3)
       @order_4 = create(:order, user: @user_4)
-      @order_5 = create(:order, user: @user_1)
-      @order_6 = create(:order, user: @user_2)
-      @order_7 = create(:order, user: @user_3)
-      @order_8 = create(:order, user: @user_4)
-      @order_9 = create(:order, user: @user_1)
-      @order_10 = create(:order, user: @user_2)
-      @order_11 = create(:order, user: @user_5)
-      @order_12 = create(:order, user: @user_5)
+      @order_5 = create(:order, user: @user_5)
+      @order_6 = create(:order, user: @user_6)
+      @order_7 = create(:order, user: @user_7)
+      @order_8 = create(:order, user: @user_8)
+      @order_9 = create(:order, user: @user_9)
+      @order_10 = create(:order, user: @user_10)
+      @order_11 = create(:order, user: @user_11)
+      @order_12 = create(:order, user: @user_12)
 
       @order_item_1 = create(:order_item, item: @item_1, order: @order_1, quantity: 300, fulfilled: true, created_at: 12.days.ago, updated_at: 10.days.ago, price: @item_1.price)
       @order_item_2 = create(:order_item, item: @item_2, order: @order_2, quantity: 175, fulfilled: true, created_at: 12.days.ago, updated_at: 9.days.ago, price: @item_2.price)
@@ -197,6 +204,12 @@ RSpec.describe User, type: :model do
       bot_ordered_merch = User.ordered_by_fulfillment("desc")
 
       expect(bot_ordered_merch).to eq([@merch_5, @merch_4, @merch_8])
+    end
+
+    it 'will return top states shipped to' do
+      top_states_dirty = User.ordered_by_states_most_shipped_to
+      top_states = top_states_dirty.map {|user| user.state}
+      expect(top_states).to eq([@user_1.state, @user_4.state, @user_6.state])
     end
   end
 end

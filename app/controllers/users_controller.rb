@@ -10,6 +10,7 @@ class UsersController < ApplicationController
     @top_three_revenue = User.top_sellers_by_revenue
     @top_three_by_avg_fulfill_time = User.ordered_by_fulfillment("asc")
     @bottom_three_by_avg_fulfill_time = User.ordered_by_fulfillment("desc")
+    @top_three_states = User.ordered_by_states_most_shipped_to
   end
 
   def new
