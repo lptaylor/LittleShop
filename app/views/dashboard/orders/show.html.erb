@@ -1,0 +1,24 @@
+<h1>Dashboard Orders</h1>
+
+<h2>Purchaser Info:</h2>
+<h4>Name: <%= @order.user.name %></h4>
+<ul>
+  <li><%= @order.user.address %></li>
+  <li><%= @order.user.city %></li>
+  <li><%= @order.user.state %></li>
+  <li><%= @order.user.zipcode %></li>
+</ul>
+
+<h2>Items Purchased from you:</h2>
+<% @order.items.each do |item| %>
+  <% if item.user_id == current_merchant.id %>
+  <ul>
+    <li>Item Name: <%= item.item_name %></li>
+    <li><%= item.image_url %></li>
+    <li>price: <%= item.price %></li>
+    <% if item.order_items.first.quantity == nil %>
+      <li>quantity: <%= item.order_items.first.quantity = 1 %></li>
+    <% end %>
+    </ul>
+  <% end %>
+<% end %>
