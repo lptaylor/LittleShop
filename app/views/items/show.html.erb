@@ -1,37 +1,35 @@
-<p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Item name:</strong>
-  <%= @item.item_name %>
-</p>
+<div class="row">
+  <div class="item-show-container">
 
-<p>
-  <strong>Image:</strong>
-  <%= @item.image_url %>
-</p>
+    <h2>
+      <%= @item.item_name %>
+    </h2>
 
-<p>
-  <strong>Qty in stock:</strong>
-  <%= @item.inventory %>
-</p>
+    <p>
+      <img src="<%=@item.image_url%>">
+    </p>
 
-<p>
-  <strong>Price:</strong>
-  <%= @item.price %>
-</p>
+    <p>
+      <strong>Quantity in Stock:</strong>
+      <%= @item.inventory %>
+    </p>
 
-<p>
-  <strong>Description:</strong>
-  <%= @item.description %>
-</p>
+    <p>
+      <strong>Price:</strong>
+      <%= number_to_currency(@item.price) %>
+    </p>
 
-<p>
-  <strong>Merchant:</strong>
-  <%= @item.merchant_name %>
-</p>
+    <p>
+      <strong>Description:</strong>
+      <%= @item.description %>
+    </p>
 
-<%= button_to "Add Item to Cart", cart_path(item_id: @item.id) %>
+    <p>
+      <strong>Merchant:</strong>
+      <%= @item.merchant_name %>
+    </p>
 
-
-<!-- < %= link_to 'Edit', edit_item_path(@item) %> |
-< %= link_to 'Back', items_path %> -->
+    <%= button_to "Add Item to Cart", cart_path(item_id: @item.id) %>
+  </div>
+</div>

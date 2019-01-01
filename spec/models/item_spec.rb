@@ -50,5 +50,16 @@ RSpec.describe Item, type: :model do
 
       expect(item_1.total_for_item).to eq(123)
     end
+    it 'can check order quantity for merchant item' do
+      user = create(:user, role: 1)
+      item_1 = create(:item, user: user)
+
+      order_1 = create(:order, user: user)
+      create(:order_item, order: order_1, item: item_1, price: 2.5, quantity: 5)
+
+      query = item_1.order_quantity(order_1)
+
+      expect(query).to eq(5)
+    end
   end
 end
