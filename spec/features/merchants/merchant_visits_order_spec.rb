@@ -7,7 +7,8 @@ describe 'when a merchant visits orders show page' do
     @item_1 = create(:item, user: @merchant, price: 100.00)
     @item_2 = create(:item, user: @merchant, price: 101.00)
     @order_1 = create(:order, user: @user_1, items: [@item_1, @item_1, @item_2])
-    @order_item_1 = create(:order_item, order: @order_1, quantity: 1, price: 301.00)
+    @order_item_1 = create(:order_item, order: @order_1, item: @item_1, quantity: 2, price: 200.00)
+    @order_item_2 = create(:order_item, order: @order_1, item: @item_2, quantity: 1, price: 101.00)
 
     visit root_path
     click_link "Login"
@@ -30,5 +31,6 @@ describe 'when a merchant visits orders show page' do
     expect(page).to have_content(@item_1.price)
     expect(page).to have_content(@item_2.item_name)
     expect(page).to have_content(@order_item_1.quantity)
+    expect(page).to have_content(@order_item_2.quantity)
   end
 end

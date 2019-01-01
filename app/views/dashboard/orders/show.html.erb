@@ -10,15 +10,12 @@
 </ul>
 
 <h2>Items Purchased from you:</h2>
-<% @order.items.each do |item| %>
-  <% if item.user_id == current_merchant.id %>
+<% @order_items.each do |o_item| %>
+  <% item = o_item.item %>
   <ul>
     <li>Item Name: <%= item.item_name %></li>
     <li><%= item.image_url %></li>
     <li>price: <%= item.price %></li>
-    <% if item.order_items.first.quantity == nil %>
-      <li>quantity: <%= item.order_items.first.quantity = 1 %></li>
-    <% end %>
-    </ul>
-  <% end %>
+    <li>quantity: <%= item.order_quantity(@order) %></li>
+  </ul>
 <% end %>
