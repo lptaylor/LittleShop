@@ -1,87 +1,118 @@
-# README
-
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
--------------------------------------------------------------------------------
-
 # Little Shop
 
-One Paragraph of project description goes here
+![Image description](https://i.imgur.com/WtD8GUb.png)
+
+Welcome to our Little Shop of Dog Costumes!  We hope you enjoy our app!
+
+Little Shop is a fictional e-commerce application made by a group of four backend students at [Turing School of Software & Design](https://turing.io/) who have a whopping 10 weeks of experience in software development.
+
+In Little Shop, you can access the site as a visitor or registered user who shops for items, a merchant that sells items on the site, or an admin who manages the site.
+
+As a shopper on the site, you will see a list of only the best and the funniest dog costumes that you can choose from to purchase.  You will place your items in your shopping cart that you have chosen, and if logged in,  you will be able to checkout and place your order.
+
+##### *** If you place an order, don't expect it to arrive at your house.  We are just students here ya know!!! *** #####
+
+
+### Active Little Shop - app in Production:
+
+https://afternoon-chamber-43655.herokuapp.com/
+
+### Little Shop - Github Repository:
+https://github.com/lptaylor/LittleShop
+
+
+### Little Shop - Project Management Waffle Board:
+
+We used waffle.io to manage the development of this app.  Checkout our waffle board [here](https://waffle.io/lptaylor/LittleShop).
+
+### Little Shop - User Stories:
+These are the user stories we used to create the app from: https://github.com/turingschool-projects/little_shop_v2/blob/master/stories.md
+### Little Shop - Database Schema:
+
+![Image description](https://i.imgur.com/uFMsE5k.png)
+
 
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes. See deployment for notes on how to deploy the project on a live system.
 
-### Prerequisites
+#### Prerequisites:
 
-What things you need to install the software and how to install them
+* Install Ruby (Version 2.4.5)
+* Install Rails (Version 5.1)
+* Heroku Account - (Create free account [here](https://signup.heroku.com/) if you don't have on already.)
 
+
+#### Installing:
+
+To run this application locally, clone this [repo](https://github.com/lptaylor/LittleShop) and follow the steps below:
+
+1) Install gems:
 ```
-Give examples
-```
-
-### Installing
-
-A step by step series of examples that tell you how to get a development env running
-
-Say what the step will be
-
-```
-Give the example
+$ bundle
 ```
 
-And repeat
 
+2) Create, migrate, & seed database:
 ```
-until finished
-```
-
-End with an example of getting some data out of the system or using it for a little demo
-
-## Running the tests
-
-Explain how to run the automated tests for this system
-
-### Break down into end to end tests
-
-Explain what these tests test and why
-
-```
-Give an example
+$ rake db:{create,migrate,seed}
 ```
 
-### And coding style tests
 
-Explain what these tests test and why
+3) Start your rails server:
+```
+$ rails s
+```
+
+
+4) Open browser and navigate to:
 
 ```
-Give an example
+localhost:3000
 ```
+
+
+## Running the RSpec Test Suite
+
+Little Shop has a full RSpec suite of feature and model tests for every piece of functionality in the app.
+
+#### Running the Full Test Suite:
+
+From the root of the LittleShop directory, type the below command to run the full test suite:
+
+```
+$ rspec
+```
+
+#### Running only Feature Tests:
+
+Type this command from the root of the LittleShop directory.
+
+```
+$ rspec ./spec/features
+```
+#### Running only Model Tests:
+
+Type this command from the root of the LittleShop directory.
+
+```
+$ rspec ./spec/models
+```
+
+#### Running a Single Test File:
+
+Type this command from the root of the LittleShop directory.
+
+*Just change the line number in the command to run only a single test in that file.*
+
+```
+$ rspec ./spec/features/registered_user_can_checkout_spec.rb:40
+```
+
 
 ## Deployment
 
-Add additional notes about how to deploy this on a live system
+To deploy this app through Heroku as we have, you can follow these [instructions](https://devcenter.heroku.com/articles/git) on Heroku's website.
 
 ## Built With
 
@@ -89,14 +120,14 @@ Add additional notes about how to deploy this on a live system
 * [Rails - Version 5.1](https://guides.rubyonrails.org/v5.1/) - Web framework used
 * [RSpec](http://rspec.info/documentation/) - Testing Suite
 * [Heroku](https://www.heroku.com/) - Used to deploy to production
+* [Waffle.io](https://waffle.io/) - Used for project management tracking
+
 
 ## Contributing
 
-When contributing to this repository, please submit a pull request to the [repository](https://github.com/lptaylor/LittleShop/pulls).
+When contributing to this repository, please submit a pull request [here](https://github.com/lptaylor/LittleShop/pulls) and one of the 4 authors will review the request and merge it into master if it looks good.
 
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/your/project/tags).
+##### *** Please note, that we only believe in Test Driven Development, so if your code you push does not have the corresponding tests to go with it, it will be rejected!! *** #####
 
 ## Authors
 
@@ -107,6 +138,6 @@ We use [SemVer](http://semver.org/) for versioning. For the versions available, 
 
 ## Acknowledgments
 
-* Hat tip to anyone whose code was used
-* Inspiration
-* etc
+* Huge thanks to our Mod2 instructors [Ian Douglas](https://iandouglas.com/) & [Dione Wilson](https://github.com/dionew1) for all their help and insight on this project.
+
+* Thanks to all our other fellow [Turing School of Software & Design](https://turing.io/) - Mod2 - Backend classmates that helped us on this project as well.
