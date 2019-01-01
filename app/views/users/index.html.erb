@@ -28,8 +28,20 @@
 </div>
 
 <div class="top-three-states">
-  <% @top_three_states.each do |merch| %>
-    <%= merch.state %>
+  <% @top_three_states.each do |user| %>
+    <%= user.state %>
+  <% end  %>
+</div>
+
+<div class="top-three-cities">
+  <% @top_three_cities.each do |user| %>
+    <%= "#{user.city}, #{user.state}" %>
+  <% end  %>
+</div>
+
+<div class="top-three-largest-orders">
+  <% @top_three_largest_orders.each do |order| %>
+    <%= "#{order.id}, #{order.quantity}" %>
   <% end  %>
 </div>
 

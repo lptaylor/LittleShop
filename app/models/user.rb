@@ -70,6 +70,18 @@ class User < ApplicationRecord
     .limit(3)
   end
 
+  def self.ordered_by_cities_most_shipped_to
+    User.joins(:orders, {orders: :order_items})
+      .select(("users.city, users.state, count(orders.id) as city_states"))
+      .where("order_items.fulfilled = true")
+      .where("users.role = 0")
+      .group(:state)
+      .group(:id)
+      .group(:city)
+      .order("city_states desc")
+      .limit(3)
+  end
+
   def enable
     update_column(:active, true)
   end

@@ -116,15 +116,15 @@ RSpec.describe User, type: :model do
 
   describe 'statistics methods' do
     before(:each) do
-      @user_1 = create(:user, city: "Denver", state: "Colorado")
+      @user_1 = create(:user, city: "Springfield", state: "Colorado")
       @user_2 = create(:user, city: "Springfield", state: "Colorado")
       @user_3 = create(:user, city: "Springfield", state: "Colorado")
-      @user_4 = create(:user, city: "Miami", state: "Florida")
-      @user_5 = create(:user, city: "Timmy", state: "Florida")
-      @user_6 = create(:user, city: "Denver", state: "Ohio")
-      @user_7 = create(:user, city: "Timmy", state: "Florida")
+      @user_4 = create(:user, city: "Dayton", state: "Florida")
+      @user_5 = create(:user, city: "Dayton", state: "Florida")
+      @user_6 = create(:user, city: "Springfield", state: "Ohio")
+      @user_7 = create(:user, city: "Dayton", state: "Florida")
       @user_8 = create(:user, city: "Springfield", state: "Colorado")
-      @user_9 = create(:user, city: "Miami", state: "Ohio")
+      @user_9 = create(:user, city: "Springfield", state: "Ohio")
       @user_10 = create(:user, city: "Blue Field", state: "D.C.")
       @user_11 = create(:user, city: "Miami", state: "Colorado")
       @user_12 = create(:user, city: "Blue Field", state: "Washington")
@@ -211,5 +211,12 @@ RSpec.describe User, type: :model do
       top_states = top_states_dirty.map {|user| user.state}
       expect(top_states).to eq([@user_1.state, @user_4.state, @user_6.state])
     end
+
+    it 'will return top states shipped to' do
+      top_cities_dirty = User.ordered_by_cities_most_shipped_to
+      top_cities = top_cities_dirty.map {|user| user.city}
+      expect(top_cities).to eq([@user_1.city, @user_4.city, @user_6.city])
+    end
+
   end
 end
