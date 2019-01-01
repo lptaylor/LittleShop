@@ -1,3 +1,17 @@
+<h1> Order </h1>
+  <p>Id: <%= @order.id %> </p>
+
+  <ul>Order items:
+    <% @order.order_items.each_with_index do |order_item, index| %>
+      <div class="order-item-<%= index %>">
+        <li>Name: <%= order_item.item.item_name %> </li>
+        <li>Description: <%= order_item.item.description %> </li>
+        <li>Item Price: <%= number_to_currency(order_item.price)%> </li>
+        <li>Quantity: <%= order_item.quantity %> </li>
+        <li>Subtotal: <%= number_to_currency(order_item.subtotal) %> </li>
+        <li><img src="<%=order_item.item.image_url%>" </li>
+        <% end %>
+      </div>
 <section class="jumbotron">
   <h1>Order Id: <%= @order.id %> </h1>
 </section>
@@ -34,3 +48,7 @@
   </div>
 
 </div>
+                  
+<% if order_item.order.order_status == 'pending' %>
+<%= link_to 'Cancel This Order', admin_order_path(@order), method: :delete, data: { confirm: 'Are you sure?' } %>
+<% end %>
