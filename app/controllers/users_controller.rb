@@ -8,8 +8,8 @@ class UsersController < ApplicationController
     @mechants = User.active_merchants
     @top_three_quantity = User.top_sellers_by_quantity
     @top_three_revenue = User.top_sellers_by_revenue
-    @top_three_by_avg_fulfill_time = User.ordered_by_fulfillment("desc")
-    @bottom_three_by_avg_fulfill_time = User.ordered_by_fulfillment("asc")
+    @top_three_by_avg_fulfill_time = User.ordered_by_fulfillment("asc")
+    @bottom_three_by_avg_fulfill_time = User.ordered_by_fulfillment("desc")
   end
 
   def new

@@ -47,18 +47,18 @@ describe 'As a Visitor' do
     @order_11 = create(:order, user: @user_5)
     @order_12 = create(:order, user: @user_5)
 
-    @order_item_1 = create(:order_item, item: @item_1, order: @order_1, quantity: 300, fulfilled: true, created_at: 5.days.ago, updated_at: 4.days.ago, price: @item_1.price)
-    @order_item_2 = create(:order_item, item: @item_2, order: @order_2, quantity: 175, fulfilled: true, created_at: 5.days.ago, updated_at: 3.days.ago, price: @item_2.price)
-    @order_item_3 = create(:order_item, item: @item_3, order: @order_3, quantity: 400, fulfilled: false, created_at: 5.days.ago, updated_at: 1.days.ago, price: @item_3.price)
-    @order_item_4 = create(:order_item, item: @item_4, order: @order_4, quantity: 9, fulfilled: true, created_at: 5.days.ago, updated_at: 1.days.ago, price: @item_4.price)
-    @order_item_5 = create(:order_item, item: @item_5, order: @order_5, quantity: 200, fulfilled: true, created_at: 5.days.ago, updated_at: 1.days.ago, price: @item_5.price)
-    @order_item_6 = create(:order_item, item: @item_6, order: @order_6, quantity: 7, fulfilled: true, created_at: 5.days.ago, updated_at: 1.days.ago, price: @item_6.price)
-    @order_item_7 = create(:order_item, item: @item_7, order: @order_7, quantity: 6, fulfilled: true, created_at: 5.days.ago, updated_at: 1.days.ago, price: @item_7.price)
-    @order_item_8 = create(:order_item, item: @item_8, order: @order_8, quantity: 5, fulfilled: true, created_at: 5.days.ago, updated_at: 1.days.ago, price: @item_8.price)
-    @order_item_9 = create(:order_item, item: @item_9, order: @order_9, quantity: 4, fulfilled: true, created_at: 5.days.ago, updated_at: 1.days.ago, price: @item_9.price)
-    @order_item_10 = create(:order_item, item: @item_10, order: @order_10, quantity: 30, fulfilled: true, created_at: 5.days.ago, updated_at: 3.days.ago, price: @item_10.price)
-    @order_item_11 = create(:order_item, item: @item_11, order: @order_11, quantity: 25, fulfilled: true, created_at: 5.days.ago, updated_at: 3.days.ago, price: @item_11.price)
-    @order_item_12 = create(:order_item, item: @item_12, order: @order_12, quantity: 50, fulfilled: true, created_at: 5.days.ago, updated_at: 5.days.ago, price: @item_12.price)
+    @order_item_1 = create(:order_item, item: @item_1, order: @order_1, quantity: 300, fulfilled: true, created_at: 12.days.ago, updated_at: 10.days.ago, price: @item_1.price)
+    @order_item_2 = create(:order_item, item: @item_2, order: @order_2, quantity: 175, fulfilled: true, created_at: 12.days.ago, updated_at: 9.days.ago, price: @item_2.price)
+    @order_item_3 = create(:order_item, item: @item_3, order: @order_3, quantity: 400, fulfilled: false, created_at: 12.days.ago, updated_at: 4.days.ago, price: @item_3.price)
+    @order_item_4 = create(:order_item, item: @item_4, order: @order_4, quantity: 9, fulfilled: true, created_at: 12.days.ago, updated_at: 2.days.ago, price: @item_4.price)
+    @order_item_5 = create(:order_item, item: @item_5, order: @order_5, quantity: 200, fulfilled: true, created_at: 12.days.ago, updated_at: 1.days.ago, price: @item_5.price)
+    @order_item_6 = create(:order_item, item: @item_6, order: @order_6, quantity: 7, fulfilled: true, created_at: 12.days.ago, updated_at: 5.days.ago, price: @item_6.price)
+    @order_item_7 = create(:order_item, item: @item_7, order: @order_7, quantity: 6, fulfilled: true, created_at: 12.days.ago, updated_at: 5.days.ago, price: @item_7.price)
+    @order_item_8 = create(:order_item, item: @item_8, order: @order_8, quantity: 5, fulfilled: true, created_at: 12.days.ago, updated_at: 3.days.ago, price: @item_8.price)
+    @order_item_9 = create(:order_item, item: @item_9, order: @order_9, quantity: 4, fulfilled: true, created_at: 12.days.ago, updated_at: 5.days.ago, price: @item_9.price)
+    @order_item_10 = create(:order_item, item: @item_10, order: @order_10, quantity: 30, fulfilled: true, created_at: 12.days.ago, updated_at: 5.days.ago, price: @item_10.price)
+    @order_item_11 = create(:order_item, item: @item_11, order: @order_11, quantity: 25, fulfilled: true, created_at: 12.days.ago, updated_at: 5.days.ago, price: @item_11.price)
+    @order_item_12 = create(:order_item, item: @item_12, order: @order_12, quantity: 50, fulfilled: true, created_at: 12.days.ago, updated_at: 11.days.ago, price: @item_12.price)
 
     visit '/merchants'
   end
@@ -80,25 +80,39 @@ describe 'As a Visitor' do
     end
   end
 
-  xit 'shows top three merchants by fulfillment time' do
+  it 'shows top three merchants by fulfillment time' do
     within ".top-three-merch-fulfillment" do
+      expect(page).to have_content(@merch_12.name)
+      expect(page).to have_content(@merch_1.name)
+      expect(page).to have_content(@merch_2.name)
+      expect(page).to_not have_content(@merch_3.name)
+    end
+  end
+
+  it 'shows bottom three merchants by fulfillment time' do
+    within ".bottom-three-merch-fulfillment" do
+      expect(page).to have_content(@merch_5.name)
+      expect(page).to have_content(@merch_4.name)
+      expect(page).to have_content(@merch_8.name)
+      expect(page).to_not have_content(@merch_3.name)
+    end
+  end
+
+  it 'shows top three states where orders are shipped' do
+    within ".top-three-states" do
 
     end
   end
 
-  xit 'shows bottom three merchants by fulfillment time' do
-
-  end
-
-  xit 'shows top three states where orders are shipped' do
-
-  end
-
   xit 'shows top three cities where orders are shipped' do
+    within ".top-three-cities" do
 
+    end
   end
 
   xit 'shows top three largest orders by quantity' do
-
+    within ".top-three-largest-orders" do
+      
+    end
   end
 end
