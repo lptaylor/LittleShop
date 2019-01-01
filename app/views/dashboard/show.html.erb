@@ -7,3 +7,9 @@
 <%= @current_merchant.zipcode %>
 
 <%= link_to "My Items", dashboard_items_path %>
+
+<div class="pending-orders">
+  <% @pending_orders.each do |order| %>
+    <%= link_to order.id, dashboard_order_path(order) %>
+    <% end %>
+</div>
