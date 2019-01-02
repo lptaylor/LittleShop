@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'as a merchant' do
   before(:each) do
-    
+
     @merch_1 = create(:user, role: 1, name: "merch_1")
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@merch_1)
     @merch_2 = create(:user, role: 1, name: "merch_2")
@@ -77,7 +77,7 @@ describe 'as a merchant' do
 
     it 'shows attributes for each order' do
       within '.pending-orders' do
-        save_and_open_page
+      
         expect(page).to have_content(@order_1.created_at)
         expect(page).to have_content(@order_1.total_order_items)
         expect(page).to have_content(@order_1.total_order_price)
