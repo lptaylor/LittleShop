@@ -9,7 +9,7 @@
     <div id="user-<%= user.id %>">
       <i class="fas fa-user"></i>
       <h3><%= link_to user.name, admin_user_path(user.id) %></h3>
-      <h5><%= user.created_at %><h5>
+      <h5><%= user.created_at.to_date %><h5>
       <%if user.active == true %>
         <h4><%= button_to "disable", admin_user_path(user.id), method: :patch %></h4>
       <% else %>
