@@ -3,48 +3,70 @@
   <h1>All Merchants</h1>
 </section>
 
+<section class="merch-stats-container">
+  <div class="top-three-merch-quantity">
+    <h4>Top Merchants by Quantity</h4>
+    <ul>
+      <% @top_three_quantity.each do |merch| %>
+        <li><%= merch.name %></li>
+      <% end  %>
+    </ul>
+  </div>
 
-<div class="top-three-merch-quantity">
-  <% @top_three_quantity.each do |merch| %>
-    <%= merch.name %>
-  <% end  %>
-</div>
+  <div class="top-three-merch-revenue">
+    <h4>Top Merchants by Revenue</h4>
+    <ul>
+      <% @top_three_revenue.each do |merch| %>
+        <li><%= merch.name %></li>
+      <% end  %>
+    </ul>
+  </div>
 
-<div class="top-three-merch-revenue">
-  <% @top_three_revenue.each do |merch| %>
-    <%= merch.name %>
-  <% end  %>
-</div>
+  <div class="top-three-merch-fulfillment">
+    <h4>Fastest Merchants to Fulfill Orders</h4>
+    <ul>
+      <% @top_three_by_avg_fulfill_time.each do |merch| %>
+        <li><%= merch.name %></li>
+      <% end  %>
+    </ul>
+  </div>
 
-<div class="top-three-merch-fulfillment">
-  <% @top_three_by_avg_fulfill_time.each do |merch| %>
-    <%= merch.name %>
-  <% end  %>
-</div>
+  <div class="bottom-three-merch-fulfillment">
+    <h4>Slowest Merchants to Fulfill Orders</h4>
+    <ul>
+      <% @bottom_three_by_avg_fulfill_time.each do |merch| %>
+        <li><%= merch.name %></li>
+      <% end  %>
+    </ul>
+  </div>
 
-<div class="bottom-three-merch-fulfillment">
-  <% @bottom_three_by_avg_fulfill_time.each do |merch| %>
-    <%= merch.name %>
-  <% end  %>
-</div>
+  <div class="top-three-states">
+    <h4>Top States for Orders</h4>
+    <ul>
+      <% @top_three_states.each do |user| %>
+        <li><%= user.state %></li>
+      <% end  %>
+    </ul>
+  </div>
 
-<div class="top-three-states">
-  <% @top_three_states.each do |user| %>
-    <%= user.state %>
-  <% end  %>
-</div>
+  <div class="top-three-cities">
+    <h4>Top Cities for Orders</h4>
+    <ul>
+      <% @top_three_cities.each do |user| %>
+        <li><%= "#{user.city}, #{user.state}" %></li>
+      <% end  %>
+    </ul>
+  </div>
 
-<div class="top-three-cities">
-  <% @top_three_cities.each do |user| %>
-    <%= "#{user.city}, #{user.state}" %>
-  <% end  %>
-</div>
-
-<div class="top-three-largest-orders">
-  <% @top_three_largest_orders.each do |order| %>
-    <%= "#{order.id}, #{order.quantity}" %>
-  <% end  %>
-</div>
+  <div class="top-three-largest-orders">
+    <h4>Largest Orders</h4>
+    <ul>
+      <% @top_three_largest_orders.each do |order| %>
+        <li><%= "Order ID: #{order.id}, Quantity: #{order.quantity}" %></li>
+      <% end  %>
+    </ul>
+  </div>
+</section>
 
 <section class="merchant-show-container">
   <div class="row">
@@ -57,4 +79,3 @@
       </div>
   <% end %>
   </div>
-
