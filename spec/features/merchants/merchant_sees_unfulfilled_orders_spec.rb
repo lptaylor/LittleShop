@@ -77,7 +77,6 @@ describe 'as a merchant' do
 
     it 'shows attributes for each order' do
       within '.pending-orders' do
-      
         expect(page).to have_content(@order_1.created_at)
         expect(page).to have_content(@order_1.total_order_items)
         expect(page).to have_content(@order_1.total_order_price)
