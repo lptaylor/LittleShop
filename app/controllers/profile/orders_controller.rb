@@ -1,4 +1,5 @@
 class Profile::OrdersController < ApplicationController
+  before_action :require_registered_user
 
   def index
     @orders = Order.all

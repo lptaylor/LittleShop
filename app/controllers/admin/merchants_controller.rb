@@ -1,4 +1,6 @@
 class Admin::MerchantsController < ApplicationController
+  before_action :require_admin
+
   def show
     @merchant = User.merchant.find(params[:id])
   end
