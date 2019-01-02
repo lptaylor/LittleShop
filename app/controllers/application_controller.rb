@@ -1,7 +1,7 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
 
-  helper_method :current_user, :current_merchant, :current_admin
+  helper_method :current_user, :current_merchant, :current_admin, :guest
 
   before_action :build_cart
 
@@ -31,6 +31,14 @@ class ApplicationController < ActionController::Base
 
   def current_admin?
     current_user && current_user.admin?
+  end
+
+  def guest
+    current_user.nil?
+  end
+
+  def cart_access
+    current_registered_user? || guest
   end
 
   def require_admin

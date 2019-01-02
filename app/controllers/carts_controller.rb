@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   include ActionView::Helpers::TextHelper
   protect_from_forgery prepend: true
+  before_action :cart_access
 
   def index
     @items = Item.where(id: @cart.contents.keys)

@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+  before_action :require_registered_user || :require_merchant || :require_admin, only: [:show]
 
   def show
     @user = current_user
