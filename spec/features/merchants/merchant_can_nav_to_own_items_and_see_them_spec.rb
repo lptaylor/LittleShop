@@ -153,7 +153,7 @@ describe 'As a merchant' do
       expect(current_path).to eq(edit_dashboard_item_path(@item_4))
       fill_in :item_item_name, with: "LANCE EDIT"
 
-        click_on "Edit Item"
+        click_on "Update Item"
 
       expect(current_path).to eq(dashboard_items_path)
 
@@ -173,7 +173,7 @@ describe 'As a merchant' do
 
       fill_in :item_item_name, with: ""
 
-      click_on 'Edit Item'
+      click_on 'Update Item'
       expect(page).to have_content("1 error prohibited this item from")
     end
 end

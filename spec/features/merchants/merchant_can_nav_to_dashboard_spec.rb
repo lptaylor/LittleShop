@@ -27,7 +27,6 @@ describe 'As a Merchant' do
 
   it 'does not display shopping cart or number of items ' do
     expect(page).to_not have_link("Shopping Cart")
-    # expect(page).to_not have_content("Item Count")
   end
 
   it 'shows merchant profile information without edit button' do

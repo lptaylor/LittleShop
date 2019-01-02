@@ -38,7 +38,7 @@ describe 'as an admin' do
 
       within "#user-#{@user_1.id}" do
         expect(page).to have_link(@user_1.name)
-        expect(page).to have_content(@user_1.created_at)
+        expect(page).to have_content(@user_1.created_at.to_date)
         expect(page).to have_button(enabled)
         expect(page).to_not have_button(disabled)
         expect(page).to_not have_content(@admin_1.name)
@@ -51,21 +51,21 @@ describe 'as an admin' do
 
       within "#user-#{@user_2.id}" do
         expect(page).to have_link(@user_2.name)
-        expect(page).to have_content(@user_2.created_at)
+        expect(page).to have_content(@user_2.created_at.to_date)
         expect(page).to have_button(enabled)
         expect(page).to_not have_button(disabled)
       end
 
       within "#user-#{@user_3.id}" do
         expect(page).to have_link(@user_3.name)
-        expect(page).to have_content(@user_3.created_at)
+        expect(page).to have_content(@user_3.created_at.to_date)
         expect(page).to have_button(enabled)
         expect(page).to_not have_button(disabled)
       end
 
       within "#user-#{@user_4.id}" do
         expect(page).to have_link(@user_4.name)
-        expect(page).to have_content(@user_4.created_at)
+        expect(page).to have_content(@user_4.created_at.to_date)
         expect(page).to have_button(disabled)
         expect(page).to_not have_button(enabled)
       end

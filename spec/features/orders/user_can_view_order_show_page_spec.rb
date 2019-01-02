@@ -24,7 +24,7 @@ describe 'As a registered user' do
       order_item_2 = create(:order_item, order: order_1, item: item_2)
 
       visit profile_order_path(order_1)
-      save_and_open_page
+      
       expect(page).to have_content(order_1.id)
 
       within "#order-item-0" do

@@ -28,4 +28,16 @@
     </div>
   </div>
 
-</section>
+  <div class="user-show order-history">
+    <h1>Order History</h1>
+    <ul class="order-history">
+      <% @user.orders.each_with_index do |order, index| %>
+        <div id="order-<%= index %>">
+          <p>Order: <%= link_to order.id, admin_order_path(order) %>,
+           Status: <%= order.order_status %></p>
+        </div>
+      <% end %>
+    </ul>
+  </div>
+
+  </section>
