@@ -6,8 +6,9 @@
 <div class="merchant-info">
   <h2><%= current_user.name %></h2>
   <p><%= current_user.email %></p>
-  <p><%= current_user.city %></p>
-  <p><%= current_user.state %></p>
+  <p><%= current_user.address %></p>
+  <p><%= current_user.city %>,
+  <%= current_user.state %></p>
   <p><%= current_user.zipcode %></p>
   <h1><%= link_to "My Items", dashboard_items_path %></h1>
 </div>
