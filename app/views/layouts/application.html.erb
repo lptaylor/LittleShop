@@ -20,12 +20,6 @@
         <%= link_to "Register", register_path %>
 
       <% end %>
-      <% if current_user %>
-        <p>Logged in as: <%= current_user.name %></p>
-        <%= link_to "Logout", logout_path, method: :delete %>
-      <% else %>
-        <%= link_to "Login", login_path %>
-      <% end %>
 
       <% if current_user %>
         <%= link_to "My Profile", profile_path %>
@@ -42,12 +36,23 @@
 
       <% end %>
 
-      <div class="cart">
+      <% if current_user %>
+      <p>Logged in as: <%= current_user.name %></p>
+        <div class="cart">
+          <p><%= link_to "Logout", logout_path, method: :delete %>
+        </div>
+        <% else %>
+        <div class="cart">
+          <%= link_to "Login", login_path %></p>
+        </div>
+      <% end %>
+
         <% if !current_user || current_user.role == "registered_user" %>
+        <div class="cart">
           <i class="fas fa-shopping-cart"></i>
           <%= link_to "Shopping Cart: #{@cart.total_item_count}", cart_path %>
+        </div>
         <% end %>
-      </div>
     </nav>
 
     <div>
