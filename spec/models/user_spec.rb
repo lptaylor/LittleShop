@@ -44,6 +44,17 @@ RSpec.describe User, type: :model do
     end
   end
   describe 'class methods' do
+
+    it 'will check for email in db' do
+      user_1 = create(:user, role: 1, email: "lane@dne.com")
+      user_2 = create(:user, role: 1)
+      user_3 = create(:user, role: 1)
+      user_4 = create(:user, role: 1, active: false, created_at: 3.days.ago)
+      user_5 = create(:user, role: 1, active: false, created_at: 3.days.ago)
+
+      expect(User.existing_email(user_1)).to eq("lane@dne.com")
+    end
+
     it 'will return only active merchants' do
       user_1 = create(:user, role: 1)
       user_2 = create(:user, role: 1)
