@@ -1,5 +1,7 @@
-<h1>Dashboard Orders</h1>
-
+<section class="jumbotron">
+  <h1>Dashboard Orders</h1>
+</section>
+<div class="col-md-3">
 <h2>Purchaser Info:</h2>
 <h4>Name: <%= @order.user.name %></h4>
 <ul>
@@ -15,7 +17,8 @@
   <ul>
     <li>Item Name: <%= item.item_name %></li>
     <li><%= item.image_url %></li>
-    <li>price: <%= item.price %></li>
+    <li>price: <%= number_to_currency(item.price) %></li>
     <li>quantity: <%= item.order_quantity(@order) %></li>
   </ul>
 <% end %>
+</div>
