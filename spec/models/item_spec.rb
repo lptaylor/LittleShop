@@ -72,7 +72,7 @@ RSpec.describe Item, type: :model do
       order_10 = create(:order, user: user)
       order_11 = create(:order, user: user)
       order_12 = create(:order, user: user)
-      #
+      
       order_item_1 = create(:order_item, item: item_1, order: order_1, quantity: 12, fulfilled: true)
       order_item_2 = create(:order_item, item: item_2, order: order_2, quantity: 11, fulfilled: true)
       order_item_3 = create(:order_item, item: item_3, order: order_3, quantity: 10, fulfilled: true)
@@ -109,6 +109,7 @@ RSpec.describe Item, type: :model do
 
       expect(item_1.total_for_item).to eq(123)
     end
+
     it 'can check order quantity for merchant item' do
       user = create(:user, role: 1)
       item_1 = create(:item, user: user)
@@ -119,6 +120,16 @@ RSpec.describe Item, type: :model do
       query = item_1.order_quantity(order_1)
 
       expect(query).to eq(5)
+    end
+
+    it 'changes item from actice to inactive and back' do
+      item_1 = create(:item)
+
+      expect(item_1.enabled).to be true
+
+      expect(item_1.toggle_active).to be true
+
+      expect(item_1.enabled).to be false
     end
   end
 end

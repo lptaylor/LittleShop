@@ -11,7 +11,7 @@ describe 'As a Visitor' do
     @user_7 = create(:user, city: "Dayton", state: "Florida")
     @user_8 = create(:user, city: "Springfield", state: "Colorado")
     @user_9 = create(:user, city: "Springfield", state: "Ohio")
-    @user_10 = create(:user, city: "Blue Field", state: "D.C.")
+    @user_10 = create(:user, city: "timmy", state: "D.C.")
     @user_11 = create(:user, city: "Miami", state: "Colorado")
     @user_12 = create(:user, city: "Blue Field", state: "Washington")
 
