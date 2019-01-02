@@ -1,5 +1,5 @@
 class Dashboard::ItemsController < ApplicationController
-  before_action :require_merchant || :require_admin
+  before_action :require_merchant
 
   def index
     current_merchant

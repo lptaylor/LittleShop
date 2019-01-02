@@ -1,5 +1,5 @@
 class Dashboard::OrdersController < ApplicationController
-  before_action :require_merchant || :require_admin
+  before_action :require_merchant
 
   def show
     @order = Order.find(params[:id])
