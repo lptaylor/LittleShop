@@ -6,6 +6,7 @@ RSpec.describe Cart do
       cart = Cart.new({"1" => 2, "3" => 5})
 
       expect(cart.total_item_count).to eq(7)
+      expect(cart.contents.values.sum).to eq(7)
     end
 
     it 'can add an item' do
@@ -51,6 +52,6 @@ RSpec.describe Cart do
         "2" => 1
       }
       expect(cart.contents).to eq(expected)
-    end  
+    end
   end
 end

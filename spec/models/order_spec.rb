@@ -154,5 +154,17 @@ RSpec.describe Order, type: :model do
         top_orders = top_orders_dirty.map {|order| order.id}
         expect(top_orders).to eq([@order_6.id, @order_1.id, @order_5.id])
     end
+    it 'check method for adding cart items to order' do
+      user = create(:user)
+      item_3 = create(:item, inventory: 5)
+      cart = Cart.new({"#{item_3.id}" => 10})
+
+      order_1 = create(:order, user: user)
+      create(:order_item, order: order_1, item: item_3, price: 2.5, quantity: 1)
+
+      order_1.add_cart_items(cart.contents)
+
+      expect(order_1.items.first).to eq(item_3)
+    end
   end
 end
