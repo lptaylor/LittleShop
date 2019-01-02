@@ -1,4 +1,6 @@
 class Dashboard::OrdersController < ApplicationController
+  before_action :require_merchant
+
   def show
     @order = Order.find(params[:id])
     @merchant = current_merchant
