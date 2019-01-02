@@ -113,5 +113,14 @@ describe 'Registered User' do
       expect(@item_1.reload.inventory).to eq(20)
       expect(@item_2.reload.inventory).to eq(10)
     end
+    it 'cart shows empty after hitting checkout' do
+      visit item_path(@item_1)
+      click_button "Add Item to Cart"
+
+      click_link "Shopping Cart"
+      click_link "Check Out"
+
+      expect(page).to have_content("Shopping Cart: 0")
+    end
   end
 end
