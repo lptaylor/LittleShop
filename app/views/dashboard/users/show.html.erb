@@ -1,18 +1,28 @@
-<h1>My Dashboard</h1>
+<section class="jumbotron">
+  <i class="fas fa-mask"></i>
+  <h1>My Dashboard</h1>
+</section>
 
-<%= current_user.name %>
-<%= current_user.email %>
-<%= current_user.city %>
-<%= current_user.state %>
-<%= current_user.zipcode %>
+<div class="merchant-info">
+  <h2><%= current_user.name %></h2>
+  <p><%= current_user.email %></p>
+  <p><%= current_user.city %></p>
+  <p><%= current_user.state %></p>
+  <p><%= current_user.zipcode %></p>
+  <h1><%= link_to "My Items", dashboard_items_path %></h1>
+</div>
 
-<%= link_to "My Items", dashboard_items_path %>
 
-<div class="pending-orders">
-  <% @pending_orders.each do |order| %>
-  <li><%= link_to order.id, dashboard_order_path(order) %></li>
-  <li><%= order.created_at %></li>
-  <li><%= order.total_order_items %></li>  
-  <li><%= order.total_order_price %></li>  
-  <% end %>
+  <div class="pending-orders">
+    <h2>Pending Orders</h2>
+    <div id="pending-orders-container" class="row">
+    <% @pending_orders.each do |order| %>
+      <div class="merch-order col-md-3"
+        <p><%= link_to "Order Id: #{order.id}", dashboard_order_path(order) %></p>
+        <p>Order Created: <%= order.created_at.to_date %></p>
+        <p>Total Items in Order: <%= order.total_order_items %></p>
+        <p>Order Total: <%= number_to_currency(order.total_order_price) %></p>
+      </div>
+    <% end %>
+  </div>
 </div>
