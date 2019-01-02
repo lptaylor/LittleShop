@@ -4,17 +4,27 @@ include ActionView::Helpers::NumberHelper
 
 describe 'As a registered user' do
   describe 'when I visit an order show page' do
+    before(:each) do
+      @user = create(:user)
+
+      visit root_path
+      click_link "Login"
+
+      fill_in :email, with: @user.email
+      fill_in :password, with: @user.password
+
+      click_button "Login"
+    end
     it 'displays information about the order' do
-      user = create(:user)
       item_1 = create(:item)
       item_2 = create(:item)
 
-      order_1 = create(:order, user: user)
+      order_1 = create(:order, user: @user)
       order_item_1 = create(:order_item, order: order_1, item: item_1)
       order_item_2 = create(:order_item, order: order_1, item: item_2)
 
       visit profile_order_path(order_1)
-
+      save_and_open_page
       expect(page).to have_content(order_1.id)
 
       within "#order-item-0" do

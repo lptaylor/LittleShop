@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ActionView::Helpers::NumberHelper
 
 describe 'as a merchant' do
   before(:each) do
@@ -77,15 +78,15 @@ describe 'as a merchant' do
 
     it 'shows attributes for each order' do
       within '.pending-orders' do
-        expect(page).to have_content(@order_1.created_at)
+        expect(page).to have_content(@order_1.created_at.to_date)
         expect(page).to have_content(@order_1.total_order_items)
-        expect(page).to have_content(@order_1.total_order_price)
-        expect(page).to have_content(@order_7.created_at)
+        expect(page).to have_content(number_to_currency(@order_1.total_order_price))
+        expect(page).to have_content(@order_7.created_at.to_date)
         expect(page).to have_content(@order_7.total_order_items)
-        expect(page).to have_content(@order_7.total_order_price)
-        expect(page).to have_content(@order_9.created_at)
+        expect(page).to have_content(number_to_currency(@order_7.total_order_price))
+        expect(page).to have_content(@order_9.created_at.to_date)
         expect(page).to have_content(@order_9.total_order_items)
-        expect(page).to have_content(@order_9.total_order_price)
+        expect(page).to have_content(number_to_currency(@order_9.total_order_price))
       end
     end
 end

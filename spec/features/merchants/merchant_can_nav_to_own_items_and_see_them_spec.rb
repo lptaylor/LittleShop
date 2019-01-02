@@ -1,4 +1,5 @@
 require 'rails_helper'
+include ActionView::Helpers::NumberHelper
 
 describe 'As a merchant' do
     before(:each) do
@@ -35,7 +36,7 @@ describe 'As a merchant' do
       within ".item-#{@item_1.id}" do
         expect(page).to have_content(@item_1.id)
         expect(page).to have_content(@item_1.item_name)
-        expect(page).to have_content(@item_1.price)
+        expect(page).to have_content(number_to_currency(@item_1.price))
         expect(page).to have_content(@item_1.inventory)
         expect(page).to have_link("Edit This Item")
         expect(page).to have_link("Delete This Item")
@@ -100,7 +101,7 @@ describe 'As a merchant' do
 
       expect(page).to have_content(item_1.item_name)
       expect(page).to have_content(item_1.inventory)
-      expect(page).to have_content(item_1.price)
+      expect(page).to have_content(number_to_currency(item_1.price))
     end
 
     it 'will not create item without required details' do
@@ -139,7 +140,7 @@ describe 'As a merchant' do
       within ".item-#{Item.last.id}" do
         expect(page).to have_content(item_1.item_name)
         expect(page).to have_content(item_1.inventory)
-        expect(page).to have_content(item_1.price)
+        expect(page).to have_content(number_to_currency(item_1.price))
       end
     end
 
@@ -159,7 +160,7 @@ describe 'As a merchant' do
       within ".item-#{@item_4.id}" do
         expect(page).to have_content("LANCE EDIT")
         expect(page).to have_content(@item_4.inventory)
-        expect(page).to have_content(@item_4.price)
+        expect(page).to have_content(number_to_currency(@item_4.price))
       end
     end
 
