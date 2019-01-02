@@ -4,11 +4,6 @@ class Dashboard::ItemsController < ApplicationController
     current_merchant
   end
 
-  def toggle_active(item)
-    toggle_active(item)
-    redirect dashboard_items_path
-  end
-
   def new
     @item = Item.new
   end
