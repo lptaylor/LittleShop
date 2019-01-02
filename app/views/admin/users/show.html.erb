@@ -1,7 +1,10 @@
-<h1>Welcome, <%= @user.email %></h1>
+<section class="jumbotron">
+  <i class="fas fa-user"></i>
+  <h1>Welcome, <%= @user.email %></h1>
+</section>
 
-<div class="profile_info">
-  <p>Name: <%= @user.name %></p>
+<div class="profile_info user_show">
+  <h1>Name: <%= @user.name %></h1>
   <p>Email: <%= @user.email %></p>
   <p>Address: <%= @user.address %></p>
   <p>City: <%= @user.city %></p>
@@ -9,15 +12,25 @@
   <p>Zipcode: <%= @user.zipcode %></p>
 </div>
 
-<%= link_to "Edit Profile", edit_admin_user_path(@user) %>
-<%= link_to "Upgrade to Merchant", admin_user_path(@user, upgrade: true), :method => :put %>
+<div class="buttons">
+  <div class="admin_button">
+    <%= link_to "Edit Profile", edit_admin_user_path(@user) %>
+  </div>
 
-<h2>Order History</h2>
-<ul class="order-history">
-  <% @user.orders.each_with_index do |order, index| %>
-    <div id="order-<%= index %>">
-      <li>Order: <%= link_to order.id, admin_order_path(order) %>,
-       Status: <%= order.order_status %></li>
-    </div>
-  <% end %>
-</ul>
+  <div class="admin_button">
+    <%= link_to "Upgrade to Merchant", admin_user_path(@user, upgrade: true), :method => :put %>
+  </div>
+</div>
+
+
+<div class="admin_orders user_show">
+  <h1>Order History</h1>
+  <ul class="order-history">
+    <% @user.orders.each_with_index do |order, index| %>
+      <div id="order-<%= index %>">
+        <p>Order: <%= link_to order.id, admin_order_path(order) %>,
+         Status: <%= order.order_status %></p>
+      </div>
+    <% end %>
+  </ul>
+</div>

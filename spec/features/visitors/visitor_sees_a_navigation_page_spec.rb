@@ -8,7 +8,7 @@ describe 'As a user' do
       click_link "Homepage"
 
       expect(current_path).to eq(root_path)
-      expect(page).to have_content("Welcome!")
+      expect(page).to have_content("Welcome to Little Shop of Dog Costumes!")
 
       visit root_path
       click_link "Items"

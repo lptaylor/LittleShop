@@ -3,6 +3,7 @@
 @import "items.scss";
 @import "orders.scss";
 @import "cart.scss";
+@import "admin.scss";
 
 body {
   background-color: #21A0A0;
@@ -56,6 +57,7 @@ a {
   border-width: 2px;
   padding: 10px;
   text-align: right;
+  padding-top: 20px;
 }
 
 .login {

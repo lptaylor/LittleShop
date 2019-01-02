@@ -1,6 +1,6 @@
 # Little Shop
 
-![Image description](https://i.imgur.com/WtD8GUb.png)
+![Image description](https://i.imgur.com/ymlOBo6.png)
 
 Welcome to our Little Shop of Dog Costumes!  We hope you enjoy our app!
 
